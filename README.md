@@ -20,3 +20,4 @@ flask run
   3. Assign a minimum of 2 other, preferably front-end,  developers to review your code.
   4. Add the labels that are appropriate for your PR.
   5. Add screenshots at browser (1280x720) size and iPhone 6 size
+  6. Include a link to the Trello card, so that we know what issue you are working on in the sprint.
