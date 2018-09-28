@@ -14,75 +14,28 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/es/Button/Button";
-
-const styles = theme => ({
-  menuButton:{
-    marginLeft: -1.2,
-    marginRight: 2,
-    [theme.breakpoints.up("sm")]: {
-      display: "none"
-    }
-  },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    marginRight: theme.spacing.unit * 2,
-    border: '.1rem solid #E1E1E1',
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit * 3,
-      width: "auto"
-    }
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%"
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200
-    }
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
-});
+import ButtonBase from "@material-ui/core/es/ButtonBase/ButtonBase";
+import Popper from "@material-ui/core/es/Popper/Popper";
+import Grow from "@material-ui/core/es/Grow/Grow";
+import Paper from "@material-ui/core/es/Paper/Paper";
+import ClickAwayListener from "@material-ui/core/es/ClickAwayListener/ClickAwayListener";
+import MenuList from "@material-ui/core/es/MenuList/MenuList";
+import Drawer from "@material-ui/core/es/Drawer/Drawer";
+import List from "@material-ui/core/es/List/List";
+import Divider from "@material-ui/core/es/Divider/Divider";
 
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    savedMenu: false,
+    mobileDrawer: false,
+  };
+
+  toggleDrawer  = () => {
+    this.setState({
+      mobileDrawer: !this.state.mobileDrawer,
+    });
   };
 
   handleProfileMenuOpen = event => {
@@ -102,11 +55,20 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  handleSavedMenuOpen = () => {
+    this.setState({ savedMenu: true });
+  };
+
+  handleClose = () => {
+    this.setState({savedMenu: false})
+  }
+
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const { open } = this.state;
 
     const renderMenu = (
       <Menu
@@ -138,50 +100,78 @@ class PrimarySearchAppBar extends React.Component {
       </Menu>
     );
 
+    const renderSavedMenu = (
+      <Popper open={this.state.savedMenu} anchorEl={this.anchorEl} transition disablePortal>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="menu-list-grow"
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={this.handleClose}>
+                <MenuList>
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    );
+
     return (
-      <div className='header'>
+      <div className="header">
         <AppBar position="static">
           <Toolbar>
             <IconButton
-              className={classes.menuButton}
+              className="menuButton"
               color="inherit"
               aria-label="Open drawer"
+              onClick={this.toggleDrawer}
             >
               <MenuIcon />
             </IconButton>
-            <img src={require('../../logo.svg')} alt='Webnb' style={{maxHeight: '2rem'}}/>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
+            <div>
+              <img
+                src={require("../../logo.svg")}
+                alt="Webnb"
+                style={{ maxHeight: "2rem" }}
+                onClick={console.log('Logo Clicked')}
+              />
+            </div>
+            <div className="search">
+              <div className="searchIcon">
                 <SearchIcon />
               </div>
               <Input
                 placeholder="Search…"
                 disableUnderline
                 classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
+                  root: "inputRoot",
+                  input: "inputInput"
                 }}
               />
             </div>
-            <div className='grow' />
-            <div className={classes.sectionDesktop}>
+            <div className="grow" />
+            <div className="sectionDesktop">
               <Button
-                className='header_button'
-                color="secondary"
+                className="header_button"
                 disableRipple
+                onClick={this.handleSavedMenuOpen}
               >
                 Saved
               </Button>
-              <Button
-                color="secondary"
-                disableRipple
-              >
+              {renderSavedMenu}
+              <Button className="header_button" disableRipple>
                 Trips
               </Button>
-              <Button
-                color="secondary"
-                disableRipple
-              >
+              <Button className="header_button" disableRipple>
                 Rewards
               </Button>
               <IconButton
@@ -197,6 +187,20 @@ class PrimarySearchAppBar extends React.Component {
         </AppBar>
         {renderMenu}
         {renderMobileMenu}
+        <Drawer anchor="top" open={this.state.mobileDrawer} onClose={this.toggleDrawer}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer}
+            onKeyDown={this.toggleDrawer}
+          >
+            <div>
+              <List>DData</List>
+              <Divider />
+              <List>Data</List>
+            </div>
+          </div>
+        </Drawer>
       </div>
     );
   }
@@ -206,4 +210,4 @@ PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(PrimarySearchAppBar);
+export default PrimarySearchAppBar;
