@@ -2,8 +2,12 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import Icon from "@material-ui/core/Icon";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Grid from "@material-ui/core/Grid";
+import classNames from "classnames";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const styleFooterButton = {
   position: "fixed",
@@ -11,9 +15,25 @@ const styleFooterButton = {
   right: 20
 };
 
-const footerGrid = {
-  textAlign: "center"
-};
+const footers = [
+  {
+    title: "Company",
+    description: [
+      <Link to="/Test">Test</Link>,
+      "History",
+      "Contact us",
+      "Locations"
+    ]
+  },
+  {
+    title: "Features",
+    description: ["Cool stuff", "Random feature"]
+  },
+  {
+    title: "Legal",
+    description: ["Privacy policy", "Terms of use"]
+  }
+];
 
 class Footer extends React.Component {
   state = { drawer: false };
@@ -27,37 +47,55 @@ class Footer extends React.Component {
   render() {
     return (
       <div>
-        <button
+        {/*Anchored Button to open footer*/}
+        <Button
           style={styleFooterButton}
           onClick={this.toggleDrawer("drawer", true)}
+          variant="contained"
         >
           <span>
             <Icon className="material-icons md-18">help</Icon>
           </span>
           <span>Terms, Privacy, Currency & More</span>
-        </button>
+        </Button>
 
-        <Drawer
+        {/*Swipeable Footer Drawer*/}
+        <SwipeableDrawer
           anchor="bottom"
           open={this.state.drawer}
           onClose={this.toggleDrawer("drawer", false)}
+          onOpen={this.toggleDrawer("drawer", true)}
         >
-          <div>
-            <Grid container spacing={16} style={footerGrid}>
-              <Grid item xs>
-                <h1>Link 1</h1>
-              </Grid>
+          {/* Footer */}
+          <footer
+            className={classNames(this.footer, this.layout)}
+            style={{ margin: 20, textAlign: "center" }}
+          >
+            {/*Grid containing headings and links*/}
+            <Grid container spacing={18} justify="space-evenly">
+              {footers.map(footer => (
+                <Grid item xs key={footer.title}>
+                  {/*headings*/}
+                  <Typography variant="title" color="textPrimary" gutterBottom>
+                    {footer.title}
+                  </Typography>
 
-              <Grid item xs>
-                <h1>Link 1</h1>
-              </Grid>
-
-              <Grid item xs>
-                <h1>Link 1</h1>
-              </Grid>
+                  {/*links*/}
+                  {footer.description.map(item => (
+                    <Typography
+                      key={item}
+                      variant="heading"
+                      color="textSecondary"
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </Grid>
+              ))}
             </Grid>
-          </div>
-        </Drawer>
+          </footer>
+          {/* End footer */}
+        </SwipeableDrawer>
       </div>
     );
   }
