@@ -7,7 +7,6 @@ export const Theme = createMuiTheme({
       root: {
         fontSize: "1.4rem",
         fontWeight: "500",
-        fontFamily: "Cereal",
         background: "none",
         color: "#BE1E2D",
         "&:hover": {
@@ -34,6 +33,9 @@ export const Theme = createMuiTheme({
         }
       }
     }
+  },
+  typography: {
+    fontFamily: ['Cereal']
   },
   palette: {
     primary: {
