@@ -3,18 +3,13 @@ import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/es/Button/Button";
-import ButtonBase from "@material-ui/core/es/ButtonBase/ButtonBase";
 import Popper from "@material-ui/core/es/Popper/Popper";
 import Grow from "@material-ui/core/es/Grow/Grow";
 import Paper from "@material-ui/core/es/Paper/Paper";
@@ -23,18 +18,24 @@ import MenuList from "@material-ui/core/es/MenuList/MenuList";
 import Drawer from "@material-ui/core/es/Drawer/Drawer";
 import List from "@material-ui/core/es/List/List";
 import Divider from "@material-ui/core/es/Divider/Divider";
+import ListItemIcon from "@material-ui/core/es/ListItemIcon/ListItemIcon";
+import ListItemText from "@material-ui/core/es/ListItemText/ListItemText";
+import HomeIcon from '@material-ui/icons/Home'
+import SaveIcon from '@material-ui/icons/Favorite'
+import TripsIcon from '@material-ui/icons/CardTravel'
+import RewardIcon from '@material-ui/icons/Loyalty'
 
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
     savedMenu: false,
-    mobileDrawer: false,
+    mobileDrawer: false
   };
 
-  toggleDrawer  = () => {
+  toggleDrawer = () => {
     this.setState({
-      mobileDrawer: !this.state.mobileDrawer,
+      mobileDrawer: !this.state.mobileDrawer
     });
   };
 
@@ -60,15 +61,84 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({savedMenu: false})
-  }
-
+    this.setState({ savedMenu: false });
+  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     const { open } = this.state;
+
+    const accountList = (
+      <MenuList>
+        <MenuItem className="menuItem">
+          <ListItemIcon className="Icon">
+            <AccountCircle />
+          </ListItemIcon>
+          <ListItemText
+            classes={{ primary: "primary" }}
+            inset
+            primary="Account Settings"
+          />
+        </MenuItem>
+      </MenuList>
+    );
+
+    const navigationList = (
+      <MenuList>
+        <MenuItem className="menuItem">
+          <ListItemIcon className="icon">
+            <SaveIcon />
+          </ListItemIcon>
+          <ListItemText
+            classes={{ primary: "primary" }}
+            inset
+            primary="Saved"
+          />
+        </MenuItem>
+        <MenuItem className="menuItem">
+          <ListItemIcon className="icon">
+            <TripsIcon />
+          </ListItemIcon>
+          <ListItemText
+            classes={{ primary: "primary" }}
+            inset
+            primary="Trips"
+          />
+        </MenuItem>
+        <MenuItem className="menuItem">
+          <ListItemIcon className="Icon">
+            <RewardIcon/>
+          </ListItemIcon>
+          <ListItemText
+            classes={{ primary: "primary" }}
+            inset
+            primary="Rewards"
+          />
+        </MenuItem>
+      </MenuList>
+    );
+    const list = (
+      <div className="list">
+        <MenuList>
+          <MenuItem className="menuItem">
+            <ListItemIcon className="icon">
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{ primary: "primary" }}
+              inset
+              primary="Home"
+            />
+          </MenuItem>
+        </MenuList>
+        <Divider />
+        <List>{navigationList}</List>
+        <Divider />
+        <List>{accountList}</List>
+      </div>
+    );
 
     const renderMenu = (
       <Menu
@@ -101,7 +171,12 @@ class PrimarySearchAppBar extends React.Component {
     );
 
     const renderSavedMenu = (
-      <Popper open={this.state.savedMenu} anchorEl={this.anchorEl} transition disablePortal>
+      <Popper
+        open={this.state.savedMenu}
+        anchorEl={this.anchorEl}
+        transition
+        disablePortal
+      >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
@@ -127,7 +202,7 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className="header">
-        <AppBar position="static">
+        <AppBar position="absolute" className="appbar">
           <Toolbar>
             <IconButton
               className="menuButton"
@@ -142,7 +217,7 @@ class PrimarySearchAppBar extends React.Component {
                 src={require("../../logo.svg")}
                 alt="Webnb"
                 style={{ maxHeight: "2rem" }}
-                onClick={console.log('Logo Clicked')}
+                onClick={console.log("Logo Clicked")}
               />
             </div>
             <div className="search">
@@ -185,22 +260,25 @@ class PrimarySearchAppBar extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
-        <Drawer anchor="top" open={this.state.mobileDrawer} onClose={this.toggleDrawer}>
+        <Drawer
+          classes={{
+            paper: "drawer_mobile"
+          }}
+          anchor="top"
+          open={this.state.mobileDrawer}
+          onClose={this.toggleDrawer}
+        >
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer}
             onKeyDown={this.toggleDrawer}
           >
-            <div>
-              <List>DData</List>
-              <Divider />
-              <List>Data</List>
-            </div>
+            {list}
           </div>
         </Drawer>
+        {renderMenu}
+        {renderMobileMenu}
       </div>
     );
   }

@@ -113,3 +113,10 @@
     display: none;
   }
 }
+.drawer_mobile{
+  position: relative!important;
+  top: 56px!important;
+}
+.appbar{
+  z-index: 1400 !important;
+}
