@@ -24,12 +24,17 @@ import HomeIcon from '@material-ui/icons/Home'
 import SaveIcon from '@material-ui/icons/Favorite'
 import TripsIcon from '@material-ui/icons/CardTravel'
 import RewardIcon from '@material-ui/icons/Loyalty'
+import SavedMenu from "./SavedMenu";
 
 class PrimarySearchAppBar extends React.Component {
   state = {
-    anchorEl: null,
+    savedMenuAnchorEl: null,
+    tripsMenuAnchorEl: null,
+    rewardsMenuAnchorEl: null,
     mobileMoreAnchorEl: null,
     savedMenu: false,
+    tripsMenu: false,
+    rewardsMenu: false,
     mobileDrawer: false
   };
 
@@ -46,6 +51,9 @@ class PrimarySearchAppBar extends React.Component {
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
+    this.handleSavedMenuClose();
+    this.handleTripsMenuClose();
+    this.handleRewardsMenuClose();
   };
 
   handleMobileMenuOpen = event => {
@@ -60,15 +68,30 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ savedMenu: true });
   };
 
-  handleClose = () => {
-    this.setState({ savedMenu: false });
+  handleSavedMenuClose = () =>{
+    this.setState({savedMenu: false})
+  }
+
+  handleTripsMenuOpen = () => {
+    this.setState({ tripsMenu: true });
   };
+
+  handleTripsMenuClose = () =>{
+    this.setState({tripsMenu: false})
+  }
+
+  handleRewardsMenuOpen = () => {
+    this.setState({ rewardsMenu: true });
+  };
+
+  handleRewardsMenuClose = () =>{
+    this.setState({rewardsMenu: false})
+  }
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    const { open } = this.state;
 
     const accountList = (
       <MenuList>
@@ -173,7 +196,7 @@ class PrimarySearchAppBar extends React.Component {
     const renderSavedMenu = (
       <Popper
         open={this.state.savedMenu}
-        anchorEl={this.anchorEl}
+        anchorEl={this.state.savedMenuAnchorEl}
         transition
         disablePortal
       >
@@ -187,12 +210,8 @@ class PrimarySearchAppBar extends React.Component {
             }}
           >
             <Paper>
-              <ClickAwayListener onClickAway={this.handleClose}>
-                <MenuList>
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-                </MenuList>
+              <ClickAwayListener onClickAway={this.handleMenuClose}>
+                <SavedMenu/>
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -200,6 +219,57 @@ class PrimarySearchAppBar extends React.Component {
       </Popper>
     );
 
+    const renderTripsMenu = (
+      <Popper
+        open={this.state.tripsMenu}
+        anchorEl={this.state.tripsMenuAnchorEl}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="menu-list-grow"
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={this.handleMenuClose}>
+                <SavedMenu/>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    );
+
+    const renderRewardsMenu = (
+      <Popper
+        open={this.state.rewardsMenu}
+        anchorEl={this.state.rewardsMenuAnchorEl}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="menu-list-grow"
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={this.handleMenuClose}>
+                <SavedMenu/>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    );
     return (
       <div className="header">
         <AppBar position="absolute" className="appbar">
@@ -237,18 +307,32 @@ class PrimarySearchAppBar extends React.Component {
             <div className="sectionDesktop">
               <Button
                 className="header_button"
+                buttonRef={node => {
+                  this.state.savedMenuAnchorEl = node;
+                }}
                 disableRipple
                 onClick={this.handleSavedMenuOpen}
               >
                 Saved
               </Button>
               {renderSavedMenu}
-              <Button className="header_button" disableRipple>
+              <Button className="header_button" disableRipple
+                      onClick={this.handleTripsMenuOpen}
+                      buttonRef={node => {
+                        this.state.tripsMenuAnchorEl= node;
+                      }}
+              >
                 Trips
               </Button>
-              <Button className="header_button" disableRipple>
+              {renderTripsMenu}
+              <Button className="header_button" disableRipple
+                      onClick={this.handleRewardsMenuOpen}
+                      buttonRef={node => {
+                        this.state.rewardsMenuAnchorEl = node;
+                      }}>
                 Rewards
               </Button>
+              {renderRewardsMenu}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : null}
                 aria-haspopup="true"
