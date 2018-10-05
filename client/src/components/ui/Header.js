@@ -26,7 +26,7 @@ import TripsIcon from '@material-ui/icons/CardTravel'
 import RewardIcon from '@material-ui/icons/Loyalty'
 import SavedMenu from "./SavedMenu";
 
-class PrimarySearchAppBar extends React.Component {
+class Header extends React.Component {
   state = {
     savedMenuAnchorEl: null,
     tripsMenuAnchorEl: null,
@@ -368,8 +368,9 @@ class PrimarySearchAppBar extends React.Component {
   }
 }
 
-PrimarySearchAppBar.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default PrimarySearchAppBar;
+
+export default Header;
