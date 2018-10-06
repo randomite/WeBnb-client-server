@@ -59,6 +59,15 @@
     border-bottom: #be1e2d 0.2rem solid !important;
   }
 }
+.header_button_clear{
+  @extend .header_button;
+  color: $white !important;
+  &:hover {
+  background-color: #ffffff00 !important;
+  border-bottom: $white 0.2rem solid !important;
+}
+
+}
 
 .inputInput {
   padding: $themePadding !important;
@@ -119,4 +128,13 @@
 }
 .appbar{
   z-index: 1400 !important;
+}
+.clear{
+
+}
+.authenticate_modal{
+  position: absolute;
+  width: $themePadding * 50;
+  background-color: $white;
+  padding: $themePadding *4;
 }

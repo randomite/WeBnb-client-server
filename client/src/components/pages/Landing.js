@@ -10,8 +10,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="landing" style={backgroundStyle}>
-        <Header/>
-        <div>SEARCH</div>
+        <Header variant='secondary'/>
       </div>
     );
   }
