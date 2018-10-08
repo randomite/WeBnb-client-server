@@ -1,0 +1,182 @@
+.header {
+  width: 100%;
+}
+.grow {
+  flex-grow: 1;
+}
+.logo {
+  max-height: 100%;
+  min-height: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  max-width: 46px;
+  width: 15%;
+  float: left;
+}
+.brand {
+  margin: auto 0;
+}
+.header-right {
+  width: 35%;
+  height: 100%;
+  float: right !important;
+}
+.header-middle {
+  float: left;
+  width: 50%;
+}
+.header_list {
+  list-style: none !important;
+  height: 100%;
+}
+.header_list li {
+  display: inline-block !important;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 7rem;
+
+  :hover {
+    border-bottom: $primary 0.2rem solid;
+  }
+}
+
+.header_list li div {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: $font-main;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0.8rem !important;
+}
+.header_button {
+  font-family: $font-main !important;
+  padding: 10px 22px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent !important;
+  &:hover {
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #be1e2d !important;
+  }
+}
+.header_button_clear {
+  @extend .header_button;
+  color: $white !important;
+  &:hover {
+    background-color: #ffffff00 !important;
+    border-bottom: 2px solid $white !important;
+  }
+}
+
+.inputInput {
+  padding: $themePadding !important;
+  width: 100%;
+  @media screen and (min-width: $sm) {
+    width: 20rem;
+  }
+}
+.menuButton {
+  margin-left: -0.12rem !important;
+  margin-right: 0.2rem !important;
+  @media screen and (min-width: $md) {
+    display: none !important;
+  }
+}
+.search {
+  position: relative;
+  border-radius: $borderradius;
+  margin-right: $themePadding * 2;
+  border: 0.1rem $lightgrey solid;
+  margin-left: $themePadding;
+  width: 100%;
+
+  @media screen and (min-width: $sm) {
+    margin-left: $themePadding * 3;
+    width: auto;
+  }
+}
+.searchIcon {
+  width: $themePadding * 9;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputRoot {
+  color: inherit;
+  width: 100%;
+}
+.sectionDesktop {
+  display: none;
+  height: 4rem;
+  @media screen and (min-width: $md) {
+    display: flex;
+  }
+}
+.sectionMobile {
+  display: flex;
+  @media screen and (min-width: $md) {
+    display: none;
+  }
+}
+.drawer_mobile {
+  position: relative !important;
+  top: 56px !important;
+}
+.appbar {
+  z-index: 1400 !important;
+}
+.clear {
+}
+.authenticate_modal {
+  position: absolute;
+  width: $themePadding * 50;
+  background-color: $white;
+  padding: $themePadding * 4;
+}
+.menu_icon {
+  display: inline-block;
+  cursor: pointer;
+
+  .bar {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 7px 0;
+    transition: 0.4s;
+  }
+
+  .bar1 {
+    @extend .bar;
+  }
+  .bar2 {
+    @extend .bar;
+  }
+  .bar3 {
+    @extend .bar;
+  }
+}
+
+.change {
+  .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-8px, 5px);
+    transform: rotate(-45deg) translate(-8px, 5px);
+  }
+}
+
+.change {
+  .bar2 {
+    opacity: 0;
+  }
+}
+
+.change {
+  .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -5px);
+    transform: rotate(45deg) translate(-8px, -5px);
+  }
+}

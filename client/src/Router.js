@@ -9,7 +9,6 @@ const Router = () => (
   <main>
     <Switch>
       <Route path='/' component={Landing}/>
-
     </Switch>
   </main>
 )
