@@ -53,10 +53,12 @@
   font-family: $font-main !important;
   padding: 10px 18px !important;
   border-radius: 0 !important;
-
+  box-shadow: none !important;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent !important;
   &:hover {
     background-color: #ffffff !important;
-    border-bottom: #be1e2d 2px solid !important;
+    border-bottom: 2px solid #be1e2d !important;
   }
 }
 .header_button_clear{
