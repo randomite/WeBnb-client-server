@@ -6,13 +6,19 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./Router";
 import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 import  {Theme} from './Theme'
+import {Provider }from 'react-redux'
+import store from './redux/store'
 
+
+console.log(store.getState())
 ReactDOM.render(
-  <BrowserRouter>
-    <MuiThemeProvider theme={Theme}>
-      <Router/>
-    </MuiThemeProvider>
-  </BrowserRouter>,
+  <Provider store={store} >
+    <BrowserRouter>
+      <MuiThemeProvider theme={Theme}>
+        <Router/>
+      </MuiThemeProvider>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 registerServiceWorker();

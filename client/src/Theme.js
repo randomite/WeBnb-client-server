@@ -3,20 +3,33 @@ import { createMuiTheme } from "@material-ui/core";
 export const Theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#FFFFFF'
+      main: "#FFFFFF"
     },
     secondary: {
-      main: '#BE1E2D'
-    },
+      main: "#BE1E2D"
+    }
   },
-  overrides:{
-    MuiAppBar : {
+  overrides: {
+    MuiAppBar: {
       colorDefault: {
-        background: '#FFFFFF'
+        background: "#FFFFFF"
       },
       colorSecondary: {
         backgroundColor: "#FFFFFF00",
-        boxShadow: 'none',
+        boxShadow: "none"
+      }
+    },
+    MuiFormControl: {
+      root: {
+        borderRadius: '4px',
+        "&:hover": {
+          boxShadow: "0 0 10px 1px #00000038",
+        }
+      }
+    },
+    MuiDialogContent:{
+      root: {
+        padding: 24
       }
     },
     MuiButton: {
@@ -49,12 +62,8 @@ export const Theme = createMuiTheme({
         }
       }
     },
-      typography: {
-    fontFamily: ['Cereal']
-  },
-
-  },
+    typography: {
+      fontFamily: ["Cereal"]
+    }
   }
 });
-
-    

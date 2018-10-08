@@ -20,22 +20,15 @@ import List from "@material-ui/core/es/List/List";
 import Divider from "@material-ui/core/es/Divider/Divider";
 import ListItemIcon from "@material-ui/core/es/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/es/ListItemText/ListItemText";
-import HomeIcon from '@material-ui/icons/Home'
-import SaveIcon from '@material-ui/icons/Favorite'
-import TripsIcon from '@material-ui/icons/CardTravel'
-import RewardIcon from '@material-ui/icons/Loyalty'
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import HomeIcon from "@material-ui/icons/Home";
+import SaveIcon from "@material-ui/icons/Favorite";
+import TripsIcon from "@material-ui/icons/CardTravel";
+import RewardIcon from "@material-ui/icons/Loyalty";
 import SavedMenu from "./SavedMenu";
-import Dialog from "@material-ui/core/es/Dialog/Dialog";
-import DialogTitle from "@material-ui/core/es/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/es/DialogContent/DialogContent";
-import DialogActions from "@material-ui/core/es/DialogActions/DialogActions";
-import TextField from "@material-ui/core/es/TextField/TextField";
-import FormControl from "@material-ui/core/es/FormControl/FormControl";
-import InputLabel from "@material-ui/core/es/InputLabel/InputLabel";
-import InputAdornment from "@material-ui/core/es/InputAdornment/InputAdornment";
-let buttonStyle = 'header_button';
+import AuthenticationModal from './AuthenticationModal'
+import store from '../../redux/store'
+
+let buttonStyle = "header_button";
 
 class Header extends React.Component {
   state = {
@@ -48,20 +41,13 @@ class Header extends React.Component {
     rewardsMenu: false,
     mobileDrawer: false,
     loggedIn: false,
-    signUpDialog: false,
-    logInDialog: false,
-    showPassword: false,
   };
 
-  componentWillMount(){
-    if(this.props.variant === 'secondary'){
-      buttonStyle = 'header_button_clear'
-    } else buttonStyle = 'header_button'
+  componentWillMount() {
+    if (this.props.variant === "secondary") {
+      buttonStyle = "header_button_clear";
+    } else buttonStyle = "header_button";
   }
-
-  handlePasswordChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
 
   toggleDrawer = () => {
     this.setState({
@@ -81,9 +67,6 @@ class Header extends React.Component {
     this.handleRewardsMenuClose();
   };
 
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
 
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
@@ -93,45 +76,34 @@ class Header extends React.Component {
     this.setState({ savedMenu: true });
   };
 
-  handleSavedMenuClose = () =>{
-    this.setState({savedMenu: false})
-  }
+  handleSavedMenuClose = () => {
+    this.setState({ savedMenu: false });
+  };
 
   handleTripsMenuOpen = () => {
     this.setState({ tripsMenu: true });
   };
 
-  handleTripsMenuClose = () =>{
-    this.setState({tripsMenu: false})
-  }
+  handleTripsMenuClose = () => {
+    this.setState({ tripsMenu: false });
+  };
 
   handleRewardsMenuOpen = () => {
     this.setState({ rewardsMenu: true });
   };
 
-  handleRewardsMenuClose = () =>{
-    this.setState({rewardsMenu: false})
-  }
+  handleRewardsMenuClose = () => {
+    this.setState({ rewardsMenu: false });
+  };
 
-  handleSignUpDialogOpen = () => {
-    this.setState({signUpDialog: true})
-  }
-  handleSignUpDialogClose = () => {
-    console.log('this should close')
-    this.setState({signUpDialog: false})
-  }
-  handleLogInDialogOpen = () => {
-    this.setState({logInDialog: true})
-  }
-  handleLogInDialogClose = () => {
-    console.log('this should close')
-    this.setState({logInDialog: false})
-  }
-
-  handleClickShowPassword = () => {
-    this.setState(state => ({ showPassword: !state.showPassword }));
-  }
-
+  handleAuthDialogOpen = (variant) => {
+    store.dispatch({type: 'authentication/SHOW_MODAL', payload: {openModal: true, modalType: variant}})
+    console.log(variant);
+  };
+  handleAuthDialogClose = () => {
+    console.log("this should close");
+    this.setState({ authenticationDialog: false, });
+  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -142,7 +114,7 @@ class Header extends React.Component {
       <MenuList>
         <MenuItem className="menuItem">
           <ListItemIcon className="Icon">
-            <AccountCircle/>
+            <AccountCircle />
           </ListItemIcon>
           <ListItemText
             classes={{ primary: "primary" }}
@@ -177,7 +149,7 @@ class Header extends React.Component {
         </MenuItem>
         <MenuItem className="menuItem">
           <ListItemIcon className="Icon">
-            <RewardIcon/>
+            <RewardIcon />
           </ListItemIcon>
           <ListItemText
             classes={{ primary: "primary" }}
@@ -186,103 +158,6 @@ class Header extends React.Component {
           />
         </MenuItem>
       </MenuList>
-    );
-
-    const renderSignUpDialog = (
-      <ClickAwayListener onClickAway={this.handleSignUpDialogClose}>
-        <Dialog
-          fullScreen={false}
-          open={this.state.signUpDialog}
-          onClose={this.handleSignUpDialogClose}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogTitle id="responsive-dialog-title">{"Sign Up"}</DialogTitle>
-          <DialogContent>
-            <TextField
-              id="email"
-              label="Email"
-              placeholder="email@domain.com"
-              className={''}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="first_name"
-              label="Name"
-              placeholder="John"
-              className={''}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              id="last_name"
-              label="With placeholder"
-              placeholder="Placeholder"
-              className={''}
-              margin="normal"
-              variant="outlined"
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleSignUpDialogClose} color="secondary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleSignUpDialogClose} color="secondary" autoFocus>
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </ClickAwayListener>
-    );
-
-    const renderLogInDialog = (
-      <ClickAwayListener onClickAway={this.handleLogInDialogClose}>
-        <Dialog
-          fullScreen={false}
-          open={this.state.logInDialog}
-          onClose={this.handleLogInDialogClose}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogTitle id="responsive-dialog-title">{"Log In"}</DialogTitle>
-          <DialogContent>
-            <TextField
-              id="email"
-              label="Email"
-              placeholder="email@domain.com"
-              className={''}
-              margin="normal"
-              variant="outlined"
-            />
-            <FormControl className={''}>
-              <InputLabel htmlFor="adornment-password">Password</InputLabel>
-              <Input
-                id="adornment-password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                value={this.state.password}
-                onChange={this.handlePasswordChange()}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="Toggle password visibility"
-                      onClick={this.handleClickShowPassword}
-                    >
-                      {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleLogInDialogClose} color="secondary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleLogInDialogClose} color="secondary" autoFocus>
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </ClickAwayListener>
     );
 
     const mobileMenuList = (
@@ -354,7 +229,7 @@ class Header extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu/>
+                <SavedMenu />
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -380,7 +255,7 @@ class Header extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu/>
+                <SavedMenu />
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -406,7 +281,7 @@ class Header extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu/>
+                <SavedMenu />
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -427,20 +302,25 @@ class Header extends React.Component {
           Saved
         </Button>
         {renderSavedMenu}
-        <Button className={buttonStyle} disableRipple
-                onClick={this.handleTripsMenuOpen}
-                buttonRef={node => {
-                  this.state.tripsMenuAnchorEl= node;
-                }}
+        <Button
+          className={buttonStyle}
+          disableRipple
+          onClick={this.handleTripsMenuOpen}
+          buttonRef={node => {
+            this.state.tripsMenuAnchorEl = node;
+          }}
         >
           Trips
         </Button>
         {renderTripsMenu}
-        <Button className={buttonStyle} disableRipple
-                onClick={this.handleRewardsMenuOpen}
-                buttonRef={node => {
-                  this.state.rewardsMenuAnchorEl = node;
-                }}>
+        <Button
+          className={buttonStyle}
+          disableRipple
+          onClick={this.handleRewardsMenuOpen}
+          buttonRef={node => {
+            this.state.rewardsMenuAnchorEl = node;
+          }}
+        >
           Rewards
         </Button>
         {renderRewardsMenu}
@@ -458,18 +338,20 @@ class Header extends React.Component {
     const renderLogInHeader = (
       <div className="sectionDesktop">
         {renderSavedMenu}
-        <Button className={buttonStyle} disableRipple
-                onClick = {this.handleSignUpDialogOpen}
+        <Button
+          className={buttonStyle}
+          disableRipple
+          onClick={()=>this.handleAuthDialogOpen('SignUp')}
         >
           Sign Up
         </Button>
-        {renderSignUpDialog}
-        <Button className={buttonStyle} disableRipple
-        onClick = {this.handleLogInDialogOpen}
+        <Button
+          className={buttonStyle}
+          disableRipple
+          onClick={()=>this.handleAuthDialogOpen('LogIn')}
         >
           Log In
         </Button>
-        {renderLogInDialog}
       </div>
     );
 
@@ -488,9 +370,7 @@ class Header extends React.Component {
         />
       </div>
     );
-    const renderNoSearch = (
-      null
-    );
+    const renderNoSearch = null;
 
     const renderMobileMenuButton = (
       <IconButton
@@ -520,18 +400,22 @@ class Header extends React.Component {
         <Divider />
         <List>
           <MenuList>
-            <MenuItem className="menuItem">
+            <MenuItem
+              className="menuItem"
+              onClick={()=>this.handleAuthDialogOpen('SignUp') }
+            >
               <ListItemText
                 classes={{ primary: "primary" }}
                 inset
                 primary="Sign Up"
               />
             </MenuItem>
-            <MenuItem className="menuItem">
+            <MenuItem className="menuItem" onClick={()=>this.handleAuthDialogOpen('LogIn')}>
               <ListItemText
                 classes={{ primary: "primary" }}
                 inset
                 primary="Log in"
+                on
               />
             </MenuItem>
           </MenuList>
@@ -541,20 +425,24 @@ class Header extends React.Component {
 
     return (
       <div className="header">
-        <AppBar position="absolute" className="appbar" color={this.props.variant} >
+        <AppBar
+          position="absolute"
+          className="appbar"
+          color={this.props.variant}
+        >
           <Toolbar>
             {renderMobileMenuButton}
             <div>
               <img
                 src={require("../../logo.svg")}
                 alt="Webnb"
-                style={{ maxHeight: "2rem", }}
+                style={{ maxHeight: "2rem" }}
                 onClick={console.log("Logo Clicked")}
               />
             </div>
-            {this.props.variant === 'secondary' ?  renderNoSearch : renderSearch }
+            {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
             <div className="grow" />
-            {this.state.loggedIn ?  renderDesktopUserHeader : renderLogInHeader}
+            {this.state.loggedIn ? renderDesktopUserHeader : renderLogInHeader}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -576,6 +464,7 @@ class Header extends React.Component {
         </Drawer>
         {renderMenu}
         {renderMobileMenu}
+        <AuthenticationModal/>
       </div>
     );
   }
@@ -583,8 +472,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  variant: PropTypes.string,
+  variant: PropTypes.string
 };
-
 
 export default Header;
