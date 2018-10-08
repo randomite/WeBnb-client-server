@@ -24,7 +24,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import SaveIcon from "@material-ui/icons/Favorite";
 import TripsIcon from "@material-ui/icons/CardTravel";
 import RewardIcon from "@material-ui/icons/Loyalty";
-import SavedMenu from "./SavedMenu";
+import SavedMenu from "./HeaderPreviewMenu";
 import AuthenticationModal from './AuthenticationModal'
 import store from '../../redux/store'
 
