@@ -25,9 +25,9 @@ import SaveIcon from "@material-ui/icons/Favorite";
 import TripsIcon from "@material-ui/icons/CardTravel";
 import RewardIcon from "@material-ui/icons/Loyalty";
 import SavedMenu from "./HeaderPreviewMenu";
-import AuthenticationModal from './AuthenticationModal'
-import {connect} from 'react-redux'
-import store from '../../redux/store'
+import AuthenticationModal from "./AuthenticationModal";
+import { connect } from "react-redux";
+import store from "../../redux/store";
 
 let buttonStyle = "header_button";
 
@@ -41,7 +41,7 @@ class Header extends React.Component {
     tripsMenu: false,
     rewardsMenu: false,
     mobileDrawer: false,
-    loggedIn: false,
+    loggedIn: false
   };
 
   componentWillMount() {
@@ -51,6 +51,8 @@ class Header extends React.Component {
   }
 
   toggleDrawer = () => {
+    document.getElementById("menu_icon").classList.toggle('change');
+
     this.setState({
       mobileDrawer: !this.state.mobileDrawer
     });
@@ -67,7 +69,6 @@ class Header extends React.Component {
     this.handleTripsMenuClose();
     this.handleRewardsMenuClose();
   };
-
 
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
@@ -97,8 +98,11 @@ class Header extends React.Component {
     this.setState({ rewardsMenu: false });
   };
 
-  handleAuthDialogOpen = (variant) => {
-    store.dispatch({type: 'authentication/SHOW_MODAL', payload: {openModal: true, modalType: variant}})
+  handleAuthDialogOpen = variant => {
+    store.dispatch({
+      type: "authentication/SHOW_MODAL",
+      payload: { openModal: true, modalType: variant }
+    });
     console.log(variant);
   };
 
@@ -106,7 +110,7 @@ class Header extends React.Component {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    console.log('HEADER PROPS', this.props)
+    console.log("HEADER PROPS", this.props);
 
     const accountList = (
       <MenuList>
@@ -339,14 +343,14 @@ class Header extends React.Component {
         <Button
           className={buttonStyle}
           disableRipple
-          onClick={()=>this.handleAuthDialogOpen('SignUp')}
+          onClick={() => this.handleAuthDialogOpen("SignUp")}
         >
           Sign Up
         </Button>
         <Button
           className={buttonStyle}
           disableRipple
-          onClick={()=>this.handleAuthDialogOpen('LogIn')}
+          onClick={() => this.handleAuthDialogOpen("LogIn")}
         >
           Log In
         </Button>
@@ -377,7 +381,11 @@ class Header extends React.Component {
         aria-label="Open drawer"
         onClick={this.toggleDrawer}
       >
-        <MenuIcon />
+        <div id ='menu_icon' className='menu_icon' >
+          <div className='bar1'/>
+          <div className='bar2'/>
+          <div className='bar3'/>
+        </div>
       </IconButton>
     );
 
@@ -400,7 +408,7 @@ class Header extends React.Component {
           <MenuList>
             <MenuItem
               className="menuItem"
-              onClick={()=>this.handleAuthDialogOpen('SignUp') }
+              onClick={() => this.handleAuthDialogOpen("SignUp")}
             >
               <ListItemText
                 classes={{ primary: "primary" }}
@@ -408,7 +416,10 @@ class Header extends React.Component {
                 primary="Sign Up"
               />
             </MenuItem>
-            <MenuItem className="menuItem" onClick={()=>this.handleAuthDialogOpen('LogIn')}>
+            <MenuItem
+              className="menuItem"
+              onClick={() => this.handleAuthDialogOpen("LogIn")}
+            >
               <ListItemText
                 classes={{ primary: "primary" }}
                 inset
@@ -462,7 +473,7 @@ class Header extends React.Component {
         </Drawer>
         {renderMenu}
         {renderMobileMenu}
-        <AuthenticationModal/>
+        <AuthenticationModal />
       </div>
     );
   }

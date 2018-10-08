@@ -61,14 +61,13 @@
     border-bottom: 2px solid #be1e2d !important;
   }
 }
-.header_button_clear{
+.header_button_clear {
   @extend .header_button;
   color: $white !important;
   &:hover {
-  background-color: #ffffff00 !important;
-  border-bottom: 2px solid $white !important;
-}
-
+    background-color: #ffffff00 !important;
+    border-bottom: 2px solid $white !important;
+  }
 }
 
 .inputInput {
@@ -124,19 +123,60 @@
     display: none;
   }
 }
-.drawer_mobile{
-  position: relative!important;
-  top: 56px!important;
+.drawer_mobile {
+  position: relative !important;
+  top: 56px !important;
 }
-.appbar{
+.appbar {
   z-index: 1400 !important;
 }
-.clear{
-
+.clear {
 }
-.authenticate_modal{
+.authenticate_modal {
   position: absolute;
   width: $themePadding * 50;
   background-color: $white;
-  padding: $themePadding *4;
+  padding: $themePadding * 4;
+}
+.menu_icon {
+  display: inline-block;
+  cursor: pointer;
+
+  .bar {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 7px 0;
+    transition: 0.4s;
+  }
+
+  .bar1 {
+    @extend .bar;
+  }
+  .bar2 {
+    @extend .bar;
+  }
+  .bar3 {
+    @extend .bar;
+  }
+}
+
+.change {
+  .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-8px, 5px);
+    transform: rotate(-45deg) translate(-8px, 5px);
+  }
+}
+
+.change {
+  .bar2 {
+    opacity: 0;
+  }
+}
+
+.change {
+  .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -5px);
+    transform: rotate(45deg) translate(-8px, -5px);
+  }
 }
