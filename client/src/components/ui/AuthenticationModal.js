@@ -280,6 +280,13 @@ class AuthenticationModal extends React.Component {
                 type={this.state.showPassword ? "text" : "password"}
                 value={this.state.password}
                 onChange={this.handlePasswordChange("password")}
+                error={
+                  this.state.password === ""
+                    ? false
+                    : !validator.isLength(this.state.password, {
+                      min: 6,
+                    })
+                }
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
