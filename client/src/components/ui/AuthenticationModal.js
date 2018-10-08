@@ -26,7 +26,8 @@ class AuthenticationModal extends React.Component {
     //SING UP ? SIGN IN
     email: "",
     password: "",
-    passwordConfirm: ""
+    passwordConfirm: "",
+    verification: ""
   };
 
   handlePasswordChange = prop => event => {
@@ -39,8 +40,12 @@ class AuthenticationModal extends React.Component {
   };
 
   handleEmailChange = e => {
-    console.log("EMAIL", e.target.value);
+    // console.log("EMAIL", e.target.value);
     this.setState({ email: e.target.value });
+  };
+
+  handleVerificationChange = e => {
+    this.setState({ verification: e.target.value });
   };
 
   handleClickShowPassword = () => {
@@ -50,6 +55,8 @@ class AuthenticationModal extends React.Component {
   handleCloseModal = () => {
     this.props.dispatch({ type: "authentication/HIDE_MODAL" });
   };
+
+  handleVerification = () => {};
 
   handleSignUp = () => {
     //   let endpoint = 'URL'
@@ -64,7 +71,10 @@ class AuthenticationModal extends React.Component {
     //     this.props.dispatch({ type: "authentication/HIDE_MODAL" });
     //   })
     this.props.dispatch({ type: "user/LOG_IN" });
-    this.props.dispatch({ type: "authentication/HIDE_MODAL" });
+    this.props.dispatch({
+      type: "authentication/SHOW_MODAL",
+      payload: { openModal: true, modalType: "verification" }
+    });
   };
 
   handleLogIn = () => {
@@ -84,12 +94,54 @@ class AuthenticationModal extends React.Component {
   };
 
   render() {
+    const renderValidationDialog = (
+      <Dialog open={this.props.openModal} onClose={this.handleCloseModal}>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            this.handleVerification;
+          }}
+        >
+          <DialogTitle>{"Verify Account"}</DialogTitle>
+          <DialogContent>
+            <TextField
+              label='Verification Code'
+              placeholder='123456'
+              name="verification"
+              variant="outlined"
+              fullWidth
+              id="verification"
+              required
+              margin="dense"
+              helperText={"Enter your verification code"}
+              value={this.state.verification}
+              onChange={this.handleVerificationChange}
+              error={
+                this.state.verification === ""
+                  ? false
+                  : !validator.isLength(this.state.verification, {
+                      min: 6,
+                      max: 6
+                    })
+              }
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseModal}>Cancel</Button>
+            <Button variant="contained" autoFocus type="submit">
+              Submit
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+    );
+
     const renderSignUpDialog = (
       <Dialog open={this.props.openModal} onClose={this.handleCloseModal}>
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.handleSignUp(e.target);
+            this.handleSignUp();
           }}
         >
           <DialogTitle>{"Sign Up"}</DialogTitle>
@@ -113,13 +165,23 @@ class AuthenticationModal extends React.Component {
               onChange={this.handleEmailChange}
             />
             <div>
-              <FormControl variant="outlined" required margin="normal" fullWidth>
+              <FormControl
+                variant="outlined"
+                required
+                margin="normal"
+                fullWidth
+              >
                 <InputLabel htmlFor="adornment-password">Password</InputLabel>
                 <OutlinedInput
                   labelWidth={10}
                   type={this.state.showPassword ? "text" : "password"}
                   value={this.state.password}
                   onChange={this.handlePasswordChange("password")}
+                  error={
+                    this.state.password === ""
+                      ? false
+                      : !validator.isLength(this.state.password, { min: 6 })
+                  }
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -139,7 +201,12 @@ class AuthenticationModal extends React.Component {
                   Enter a password with 6 character minimum
                 </FormHelperText>
               </FormControl>
-              <FormControl variant="outlined" required margin="normal" fullWidth>
+              <FormControl
+                variant="outlined"
+                required
+                margin="normal"
+                fullWidth
+              >
                 <InputLabel htmlFor="adornment-password">Password</InputLabel>
                 <OutlinedInput
                   required
@@ -174,14 +241,14 @@ class AuthenticationModal extends React.Component {
             </Button>
           </DialogActions>
         </form>
+        {this.props.modalType === "verification"
+          ? renderValidationDialog
+          : null}
       </Dialog>
     );
 
     const renderLogInDialog = (
-      <Dialog
-        open={this.props.openModal}
-        onClose={this.handleCloseModal}
-      >
+      <Dialog open={this.props.openModal} onClose={this.handleCloseModal}>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -206,7 +273,7 @@ class AuthenticationModal extends React.Component {
               margin="normal"
               required
             />
-            <FormControl variant="outlined" required fullWidth margin='normal'>
+            <FormControl variant="outlined" required fullWidth margin="normal">
               <InputLabel htmlFor="adornment-password">Password</InputLabel>
               <OutlinedInput
                 labelWidth={10}
