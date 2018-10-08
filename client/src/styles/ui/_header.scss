@@ -10,7 +10,7 @@
   text-align: center;
   justify-content: center;
   display: flex;
-  max-width: 8rem;
+  max-width: 46px;
   width: 15%;
   float: left;
 }
@@ -51,12 +51,12 @@
 }
 .header_button {
   font-family: $font-main !important;
-  padding: 0.8rem 1.6rem !important;
+  padding: 10px 18px !important;
   border-radius: 0 !important;
 
   &:hover {
     background-color: #ffffff !important;
-    border-bottom: #be1e2d 0.2rem solid !important;
+    border-bottom: #be1e2d 2px solid !important;
   }
 }
 .header_button_clear{

@@ -40,7 +40,7 @@ class Header extends React.Component {
     tripsMenu: false,
     rewardsMenu: false,
     mobileDrawer: false,
-    loggedIn: false,
+    loggedIn: true,
   };
 
   componentWillMount() {
