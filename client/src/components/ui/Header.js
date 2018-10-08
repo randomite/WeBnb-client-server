@@ -26,6 +26,7 @@ import TripsIcon from "@material-ui/icons/CardTravel";
 import RewardIcon from "@material-ui/icons/Loyalty";
 import SavedMenu from "./HeaderPreviewMenu";
 import AuthenticationModal from './AuthenticationModal'
+import {connect} from 'react-redux'
 import store from '../../redux/store'
 
 let buttonStyle = "header_button";
@@ -40,7 +41,7 @@ class Header extends React.Component {
     tripsMenu: false,
     rewardsMenu: false,
     mobileDrawer: false,
-    loggedIn: true,
+    loggedIn: false,
   };
 
   componentWillMount() {
@@ -100,15 +101,12 @@ class Header extends React.Component {
     store.dispatch({type: 'authentication/SHOW_MODAL', payload: {openModal: true, modalType: variant}})
     console.log(variant);
   };
-  handleAuthDialogClose = () => {
-    console.log("this should close");
-    this.setState({ authenticationDialog: false, });
-  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    console.log('HEADER PROPS', this.props)
 
     const accountList = (
       <MenuList>
@@ -442,7 +440,7 @@ class Header extends React.Component {
             </div>
             {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
             <div className="grow" />
-            {this.state.loggedIn ? renderDesktopUserHeader : renderLogInHeader}
+            {this.props.isLogedIn ? renderDesktopUserHeader : renderLogInHeader}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -459,7 +457,7 @@ class Header extends React.Component {
             onClick={this.toggleDrawer}
             onKeyDown={this.toggleDrawer}
           >
-            {this.state.loggedIn ? mobileMenuList : noUserMobileMenuList}
+            {this.props.isLogedIn ? mobileMenuList : noUserMobileMenuList}
           </div>
         </Drawer>
         {renderMenu}
@@ -474,4 +472,4 @@ Header.propTypes = {
   variant: PropTypes.string
 };
 
-export default Header;
+export default connect(state => state.user)(Header);

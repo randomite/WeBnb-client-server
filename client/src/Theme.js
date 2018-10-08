@@ -19,14 +19,6 @@ export const Theme = createMuiTheme({
         boxShadow: "none"
       }
     },
-    MuiFormControl: {
-      root: {
-        borderRadius: '4px',
-        "&:hover": {
-          boxShadow: "0 0 10px 1px #00000038",
-        }
-      }
-    },
     MuiDialogContent:{
       root: {
         padding: 24
