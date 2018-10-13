@@ -15,6 +15,7 @@ class Landing extends React.Component {
     return (
       <div className="landing" style={backgroundStyle}>
         <Header variant='secondary'/>
+        <Footer/>
       </div>
     );
   }
