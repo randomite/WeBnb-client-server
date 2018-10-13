@@ -11,9 +11,9 @@ const Router = () => (
   <main>
     <Switch>
       <Route path ='/AboutUs' component={AboutUs}/>
-      <Route path='/' component={Landing}/>
       <Route path='/privacy' component={Privacy}/>
       <Route path='/terms' component={Terms}/>
+      <Route path='/' component={Landing}/>
     </Switch>
   </main>
 );

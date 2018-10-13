@@ -19,7 +19,7 @@ const footers = [
   {
     title: "Company",
     description: [
-      <Link to="/Test">Test</Link>,
+      <Link to="/AboutUs">About us</Link>,
       "History",
       "Contact us",
       "Locations"
@@ -31,7 +31,10 @@ const footers = [
   },
   {
     title: "Legal",
-    description: ["Privacy policy", "Terms of use"]
+    description: [
+      <Link to='/privacy'>Privacy policy</Link>,
+      <Link to='/terms'>Terms of use</Link>,
+    ]
   }
 ];
 
