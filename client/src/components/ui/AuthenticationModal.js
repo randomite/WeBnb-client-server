@@ -9,7 +9,6 @@ import {
   FormControl,
   TextField,
   InputLabel,
-  Input,
   InputAdornment,
   IconButton,
   DialogActions,
@@ -18,7 +17,7 @@ import {
 import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
-import axios from "axios";
+import {instance} from "../../Axios";
 
 class AuthenticationModal extends React.Component {
   state = {
@@ -56,41 +55,49 @@ class AuthenticationModal extends React.Component {
     this.props.dispatch({ type: "authentication/HIDE_MODAL" });
   };
 
-  handleVerification = () => {};
-
-  handleSignUp = () => {
-    //   let endpoint = 'URL'
-    //   let data = {
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   }
-    //   axios.post(endpoint, data, ).then((response) =>{
-    //     console.log('Response: ',response)
-    //     // TODO SAVE THE TOKEN
-    //     this.props.dispatch({ type: "user/LOG_IN" });
-    //     this.props.dispatch({ type: "authentication/HIDE_MODAL" });
-    //   })
-    this.props.dispatch({ type: "user/LOG_IN" });
-    this.props.dispatch({
-      type: "authentication/SHOW_MODAL",
-      payload: { openModal: true, modalType: "verification" }
+  handleVerification = () => {
+    let endpoint = "confverification";
+    let data = {
+      email: this.state.email.toString(),
+      code: this.state.verification.toString()
+    };
+    instance.post(endpoint, data).then(response => {
+      console.log("Conf Response", response);
     });
   };
 
+  handleSignUp = () => {
+    let endpoint = "signup";
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    instance
+      .post(endpoint, data)
+      .then(response => {
+        console.log("Sign Up Response: ", response);
+        this.props.dispatch({
+          type: "authentication/SHOW_MODAL",
+          payload: { openModal: true, modalType: "verification" }
+        });
+        // this.props.dispatch({ type: "authentication/HIDE_MODAL" });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   handleLogIn = () => {
-    //   let endpoint = 'URL'
-    //   let data = {
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   }
-    //   axios.post(endpoint, data, ).then((response) =>{
-    //     console.log('Response: ',response)
-    //     // TODO SAVE THE TOKEN
-    //     this.props.dispatch({ type: "user/LOG_IN" });
-    //     this.props.dispatch({ type: "authentication/HIDE_MODAL" });
-    //   })
-    this.props.dispatch({ type: "user/LOG_IN" });
-    this.props.dispatch({ type: "authentication/HIDE_MODAL" });
+    let endpoint = "login";
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    instance.post(endpoint, data).then(response => {
+      console.log("Response: ", response);
+      // this.props.dispatch({ type: "user/LOG_IN" });
+      // this.props.dispatch({ type: "authentication/HIDE_MODAL" });
+    });
   };
 
   render() {
@@ -104,9 +111,10 @@ class AuthenticationModal extends React.Component {
         >
           <DialogTitle>{"Verify Account"}</DialogTitle>
           <DialogContent>
+            <h4>Check your email for a verification code</h4>
             <TextField
-              label='Verification Code'
-              placeholder='123456'
+              label="Verification Code"
+              placeholder="123456"
               name="verification"
               variant="outlined"
               fullWidth
@@ -180,7 +188,7 @@ class AuthenticationModal extends React.Component {
                   error={
                     this.state.password === ""
                       ? false
-                      : !validator.isLength(this.state.password, { min: 6 })
+                      : !validator.isLength(this.state.password, { min: 8 })
                   }
                   endAdornment={
                     <InputAdornment position="end">
@@ -284,8 +292,8 @@ class AuthenticationModal extends React.Component {
                   this.state.password === ""
                     ? false
                     : !validator.isLength(this.state.password, {
-                      min: 6,
-                    })
+                        min: 6
+                      })
                 }
                 endAdornment={
                   <InputAdornment position="end">
