@@ -5,13 +5,16 @@
 @import './pages/privacy';
 @import './pages/footer';
 @import './pages/terms';
+@import './ui/header';
+@import 'ui/header_preview_menu';
+
 * {
     margin: 0;
     padding: 0;
 }
 
 html {
-    font-size: 62.5%;
+    //font-size: 62.5%;
 }
 
 body {

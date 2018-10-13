@@ -1,11 +1,32 @@
 import { createMuiTheme } from "@material-ui/core";
 
 export const Theme = createMuiTheme({
-  // Button Theme Overrides
+  palette: {
+    primary: {
+      main: "#FFFFFF"
+    },
+    secondary: {
+      main: "#BE1E2D"
+    }
+  },
   overrides: {
+    MuiAppBar: {
+      colorDefault: {
+        background: "#FFFFFF"
+      },
+      colorSecondary: {
+        backgroundColor: "#FFFFFF00",
+        boxShadow: "none"
+      }
+    },
+    MuiDialogContent:{
+      root: {
+        padding: 24
+      }
+    },
     MuiButton: {
       root: {
-        fontSize: "1.4rem",
+        fontSize: "14px",
         fontWeight: "500",
         background: "none",
         color: "#BE1E2D",
@@ -27,22 +48,14 @@ export const Theme = createMuiTheme({
         }
       },
       outlined: {
-        border: "#BE1E2D .1rem solid",
+        border: "#BE1E2D 1px solid",
         "&$disabled": {
-          border: "#e0e0e0 .1rem solid"
+          border: "#e0e0e0 1px solid"
         }
-      }
-    }
-  },
-  typography: {
-    fontFamily: ['Cereal']
-  },
-  palette: {
-    primary: {
-      main: "#FFFFFF"
+      },
     },
-    secondary: {
-      main: "#BE1E2D"
+    typography: {
+      fontFamily: ["Cereal"]
     }
   }
 });

@@ -14,10 +14,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="landing" style={backgroundStyle}>
-        <Header>HEADER</Header>
-        <div>SEARCH</div>
-        <Footer>FOOTER</Footer>
-        <Link to="/Test">Test</Link>
+        <Header variant='secondary'/>
       </div>
     );
   }
