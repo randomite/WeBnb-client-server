@@ -1,0 +1,23 @@
+.aboutUs {
+    font-family: $font-main;
+    color: $primary;
+    margin-top: 5rem;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.p1 {
+    margin-top: 3rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding : 10px;
+}
+
+.grid-item {
+    padding: 40px;
+}
