@@ -435,7 +435,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <AppBar
-          position="absolute"
+          position="fixed"
           className="appbar"
           color={this.props.variant}
         >
