@@ -12,12 +12,15 @@ import {
   InputAdornment,
   IconButton,
   DialogActions,
-  Button
+  Button,
+  CircularProgress
 } from "@material-ui/core";
 import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
-import {instance} from "../../Axios";
+import { instance } from "../../Axios";
+
+const minPasswordLength = 6;
 
 class AuthenticationModal extends React.Component {
   state = {
@@ -26,7 +29,8 @@ class AuthenticationModal extends React.Component {
     email: "",
     password: "",
     passwordConfirm: "",
-    verification: ""
+    verification: "",
+    submitButton: false
   };
 
   handlePasswordChange = prop => event => {
@@ -56,17 +60,28 @@ class AuthenticationModal extends React.Component {
   };
 
   handleVerification = () => {
-    let endpoint = "confverification";
+    let self = this;
+    this.setState({ submitButton: true });
+    let endpoint = "confirmsignup";
     let data = {
-      email: this.state.email.toString(),
-      code: this.state.verification.toString()
+      email: this.state.email,
+      code: this.state.verification
     };
-    instance.post(endpoint, data).then(response => {
-      console.log("Conf Response", response);
-    });
+    instance
+      .post(endpoint, data)
+      .then(response => {
+        console.log("Verification", response);
+        this.handleLogIn();
+      })
+      .catch(function(error) {
+        self.setState({ submitButton: false });
+        alert(error);
+      });
   };
 
   handleSignUp = () => {
+    let self = this;
+    this.setState({ submitButton: true });
     let endpoint = "signup";
     let data = {
       email: this.state.email,
@@ -75,29 +90,50 @@ class AuthenticationModal extends React.Component {
     instance
       .post(endpoint, data)
       .then(response => {
-        console.log("Sign Up Response: ", response);
         this.props.dispatch({
           type: "authentication/SHOW_MODAL",
           payload: { openModal: true, modalType: "verification" }
         });
-        // this.props.dispatch({ type: "authentication/HIDE_MODAL" });
       })
       .catch(function(error) {
-        console.log(error);
+        self.setState({ submitButton: false });
+        alert(error);
       });
   };
 
   handleLogIn = () => {
+    let self = this;
+    this.setState({ submitButton: true });
     let endpoint = "login";
     let data = {
       email: this.state.email,
       password: this.state.password
     };
-    instance.post(endpoint, data).then(response => {
-      console.log("Response: ", response);
-      // this.props.dispatch({ type: "user/LOG_IN" });
-      // this.props.dispatch({ type: "authentication/HIDE_MODAL" });
-    });
+    instance
+      .post(endpoint, data)
+      .then(response => {
+        console.log("Log In Response: ", response);
+        this.setState({ submitButton: false });
+        this.props.dispatch({ type: "authentication/HIDE_MODAL" });
+        this.props.dispatch({
+          type: "user/LOG_IN",
+          payload: {
+            email: this.state.email,
+            access_token: response.data.access_token,
+            id_token: response.data.id_token,
+            refresh_token: response.data.refresh_token,
+            username: response.data.username,
+          }
+        });
+        localStorage.setItem('access_token', response.data.access_token);
+        localStorage.setItem('id_token', response.data.id_token);
+        localStorage.setItem('refresh_token', response.data.refresh_token);
+        localStorage.setItem('username', response.data.username)
+      })
+      .catch(function(error) {
+        self.setState({ submitButton: false });
+        alert(error);
+      });
   };
 
   render() {
@@ -106,12 +142,30 @@ class AuthenticationModal extends React.Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.handleVerification;
+            this.handleVerification();
           }}
         >
           <DialogTitle>{"Verify Account"}</DialogTitle>
           <DialogContent>
-            <h4>Check your email for a verification code</h4>
+            <h4>Enter the 6 digit verification code sent to your email</h4>
+            <TextField
+              name="email"
+              variant="outlined"
+              fullWidth
+              id="email"
+              error={
+                this.state.email === ""
+                  ? false
+                  : !validator.isEmail(this.state.email)
+              }
+              label="Email"
+              placeholder="email@domain.com"
+              margin="normal"
+              required
+              helperText="Enter your email address"
+              value={this.state.email}
+              onChange={this.handleEmailChange}
+            />
             <TextField
               label="Verification Code"
               placeholder="123456"
@@ -136,9 +190,19 @@ class AuthenticationModal extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleCloseModal}>Cancel</Button>
-            <Button variant="contained" autoFocus type="submit">
-              Submit
-            </Button>
+            <div className="circular_progress_wrapper">
+              <Button
+                variant="contained"
+                autoFocus
+                type="submit"
+                disabled={this.state.submitButton}
+              >
+                Submit
+              </Button>
+              {this.state.submitButton && (
+                <CircularProgress size={24} className="circular_progress" />
+              )}
+            </div>
           </DialogActions>
         </form>
       </Dialog>
@@ -188,7 +252,9 @@ class AuthenticationModal extends React.Component {
                   error={
                     this.state.password === ""
                       ? false
-                      : !validator.isLength(this.state.password, { min: 8 })
+                      : !validator.isLength(this.state.password, {
+                          min: minPasswordLength
+                        })
                   }
                   endAdornment={
                     <InputAdornment position="end">
@@ -206,7 +272,7 @@ class AuthenticationModal extends React.Component {
                   }
                 />
                 <FormHelperText>
-                  Enter a password with 6 character minimum
+                  Enter a password with 8 character minimum
                 </FormHelperText>
               </FormControl>
               <FormControl
@@ -243,10 +309,31 @@ class AuthenticationModal extends React.Component {
             </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCloseModal}>Cancel</Button>
-            <Button variant="contained" autoFocus type="submit">
-              Submit
+            <Button
+              onClick={() => {
+                this.props.dispatch({
+                  type: "authentication/SHOW_MODAL",
+                  payload: { openModal: true, modalType: "verification" }
+                });
+              }}
+              variant="outlined"
+            >
+              Verify Account
             </Button>
+            <Button onClick={this.handleCloseModal}>Cancel</Button>
+            <div className="circular_progress_wrapper">
+              <Button
+                variant="contained"
+                autoFocus
+                type="submit"
+                disabled={this.state.submitButton}
+              >
+                Submit
+              </Button>
+              {this.state.submitButton && (
+                <CircularProgress size={24} className="circular_progress" />
+              )}
+            </div>
           </DialogActions>
         </form>
         {this.props.modalType === "verification"
@@ -292,7 +379,7 @@ class AuthenticationModal extends React.Component {
                   this.state.password === ""
                     ? false
                     : !validator.isLength(this.state.password, {
-                        min: 6
+                        min: minPasswordLength
                       })
                 }
                 endAdornment={
@@ -314,9 +401,19 @@ class AuthenticationModal extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleCloseModal}>Cancel</Button>
-            <Button variant="contained" autoFocus type="submit">
-              Submit
-            </Button>
+            <div className="circular_progress_wrapper">
+              <Button
+                variant="contained"
+                autoFocus
+                type="submit"
+                disabled={this.state.submitButton}
+              >
+                Submit
+              </Button>
+              {this.state.submitButton && (
+                <CircularProgress size={24} className="circular_progress" />
+              )}
+            </div>
           </DialogActions>
         </form>
       </Dialog>

@@ -48,6 +48,21 @@ class Header extends React.Component {
     if (this.props.variant === "secondary") {
       buttonStyle = "header_button_clear";
     } else buttonStyle = "header_button";
+
+    // Check if the user has a session already
+    console.log("Local Storage",localStorage)
+    if(localStorage.getItem('access_token')){
+      store.dispatch({
+        type: "user/LOG_IN",
+        payload: {
+          email: localStorage.getItem('username'),
+          access_token: localStorage.getItem('access_token'),
+          id_token: localStorage.getItem("id_token"),
+          refresh_token: localStorage.getItem('refresh_token'),
+          username: localStorage.getItem('username'),
+        }
+      });
+    }
   }
 
   toggleDrawer = () => {

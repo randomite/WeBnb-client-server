@@ -1,12 +1,12 @@
 import axios from 'axios'
-import qs from "qs";
+import Qs from "qs";
 
 const config = {
-  baseURL: 'localhost:5000/api/',
-  headers: {"Content-Type": "multipart/form-data"},
-  paramsSerializer: function (params) {
-    return qs.stringify(params, {arrayFormat: 'brackets'})
-  }
+  baseURL: 'https://safe-journey-90334.herokuapp.com/api',
+  // headers: {"Content-Type": "multipart/form-data"},
+  transformRequest: [function (data, headers) {
+    return Qs.stringify(data);
+  }],
 };
 
 export const instance = axios.create(config);
