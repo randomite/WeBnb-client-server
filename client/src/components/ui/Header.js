@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/es/Button/Button";
@@ -51,23 +50,30 @@ class Header extends React.Component {
     } else buttonStyle = "header_button";
 
     // Check if the user has a session already
-    console.log("Local Storage",localStorage)
-    if(localStorage.getItem('access_token')){
-      store.dispatch({
-        type: "user/LOG_IN",
-        payload: {
-          email: localStorage.getItem('username'),
-          access_token: localStorage.getItem('access_token'),
-          id_token: localStorage.getItem("id_token"),
-          refresh_token: localStorage.getItem('refresh_token'),
-          username: localStorage.getItem('username'),
-        }
+    console.log("Local Storage", localStorage);
+    if (localStorage.getItem("access_token")) {
+      let endpoint = "verifytoken";
+      let config = {
+        headers: { access_token: localStorage.getItem("access_token") }
+      };
+      instance.post(endpoint, null, config).then(response => {
+        console.log("Verification Response", response);
+        store.dispatch({
+          type: "user/LOG_IN",
+          payload: {
+            email: localStorage.getItem("username"),
+            access_token: localStorage.getItem("access_token"),
+            id_token: localStorage.getItem("id_token"),
+            refresh_token: localStorage.getItem("refresh_token"),
+            username: localStorage.getItem("username")
+          }
+        });
       });
     }
   }
 
   toggleDrawer = () => {
-    document.getElementById("menu_icon").classList.toggle('change');
+    document.getElementById("menu_icon").classList.toggle("change");
 
     this.setState({
       mobileDrawer: !this.state.mobileDrawer
@@ -122,19 +128,20 @@ class Header extends React.Component {
     console.log(variant);
   };
 
-  handleLogOut = () =>{
+  handleLogOut = () => {
     let endpoint = "logout";
     let config = {
-      headers: {'access_token': localStorage.getItem('access_token')}
-    }
-    instance.post(endpoint, null, config ).then(response => {
+      headers: { access_token: localStorage.getItem("access_token") }
+    };
+    instance.post(endpoint, null, config).then(response => {
       store.dispatch({
         type: "user/LOG_OUT"
       });
-      console.log('log out Response',response)
+      console.log("log out Response", response);
       localStorage.clear();
-    })
-  }
+      window.location.reload();
+    });
+  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -214,19 +221,29 @@ class Header extends React.Component {
     );
 
     const renderMenu = (
-      <Popper open={isMenuOpen} anchorEl={this.anchorEl} transition disablePortal>
+      <Popper
+        open={isMenuOpen}
+        anchorEl={this.anchorEl}
+        transition
+        disablePortal
+      >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             id="menu-list-grow"
-            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
                 <MenuList>
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                   <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                  <MenuItem onClick={this.handleLogOut} className='log_out'>Logout</MenuItem>
+                  <MenuItem onClick={this.handleLogOut} className="log_out">
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
@@ -423,10 +440,10 @@ class Header extends React.Component {
         aria-label="Open drawer"
         onClick={this.toggleDrawer}
       >
-        <div id ='menu_icon' className='menu_icon' >
-          <div className='bar1'/>
-          <div className='bar2'/>
-          <div className='bar3'/>
+        <div id="menu_icon" className="menu_icon">
+          <div className="bar1" />
+          <div className="bar2" />
+          <div className="bar3" />
         </div>
       </IconButton>
     );
