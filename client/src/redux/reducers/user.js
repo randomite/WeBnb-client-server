@@ -23,6 +23,19 @@ export default (state = initialState, action) => {
         id_token: action.payload.id_token,
         refresh_token: action.payload.refresh_token
       };
+    case "user/LOG_OUT":
+      return {
+        username: null,
+        email: null,
+        first_name: null,
+        last_name: null,
+        rewards: {},
+        bookings: [],
+        access_token: null,
+        isLogedIn: false,
+        id_token: null,
+        refresh_token: null,
+      };
     default:
       return state;
   }

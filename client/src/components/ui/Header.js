@@ -28,6 +28,7 @@ import SavedMenu from "./HeaderPreviewMenu";
 import AuthenticationModal from "./AuthenticationModal";
 import { connect } from "react-redux";
 import store from "../../redux/store";
+import { instance } from "../../Axios";
 
 let buttonStyle = "header_button";
 
@@ -121,6 +122,20 @@ class Header extends React.Component {
     console.log(variant);
   };
 
+  handleLogOut = () =>{
+    let endpoint = "logout";
+    let config = {
+      headers: {'access_token': localStorage.getItem('access_token')}
+    }
+    instance.post(endpoint, null, config ).then(response => {
+      store.dispatch({
+        type: "user/LOG_OUT"
+      });
+      console.log('log out Response',response)
+      localStorage.clear();
+    })
+  }
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
@@ -199,16 +214,25 @@ class Header extends React.Component {
     );
 
     const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-      </Menu>
+      <Popper open={isMenuOpen} anchorEl={this.anchorEl} transition disablePortal>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="menu-list-grow"
+            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={this.handleMenuClose}>
+                <MenuList>
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleLogOut} className='log_out'>Logout</MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     );
 
     const renderMobileMenu = (
@@ -344,6 +368,9 @@ class Header extends React.Component {
         <IconButton
           aria-owns={isMenuOpen ? "material-appbar" : null}
           aria-haspopup="true"
+          buttonRef={node => {
+            this.anchorEl = node;
+          }}
           onClick={this.handleProfileMenuOpen}
           color="inherit"
         >
