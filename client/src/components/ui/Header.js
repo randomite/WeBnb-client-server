@@ -54,7 +54,7 @@ class Header extends React.Component {
     } else buttonStyle = "header_button";
 
     // Check if the user has a session already
-    console.log("Local Storage", localStorage);
+    // console.log("Local Storage", localStorage);
     if (localStorage.getItem("access_token")) {
       let endpoint = "verifytoken";
       let config = {
@@ -151,8 +151,6 @@ class Header extends React.Component {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    console.log("HEADER PROPS", this.props);
-
     const accountList = (
       <MenuList>
         <MenuItem className="menuItem">
