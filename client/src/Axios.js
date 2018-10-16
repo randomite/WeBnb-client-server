@@ -2,7 +2,7 @@ import axios from 'axios'
 import Qs from "qs";
 
 const config = {
-  baseURL: 'https://safe-journey-90334.herokuapp.com/api',
+  baseURL: process.env.REACT_APP_API_URL,
   // headers: {"Content-Type": "multipart/form-data"},
   transformRequest: [function (data, headers) {
     return Qs.stringify(data);
