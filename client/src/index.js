@@ -9,7 +9,7 @@ import { Theme } from "./Theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-console.log(store.getState());
+// console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

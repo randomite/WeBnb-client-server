@@ -5,7 +5,7 @@ export default (state = initialState, action) => {
     case 'authentication/SHOW_MODAL':
       return {...state, openModal: true, modalType: action.payload.modalType}
     case 'authentication/HIDE_MODAL':
-      return {...state, openModal: false}
+      return {...state, openModal: false};
     default:
       return state;
   }

@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/es/Button/Button";
@@ -28,6 +27,11 @@ import SavedMenu from "./HeaderPreviewMenu";
 import AuthenticationModal from "./AuthenticationModal";
 import { connect } from "react-redux";
 import store from "../../redux/store";
+import { instance } from "../../Axios";
+import SvgIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import { path } from "../ui/Logo";
+import {withRouter} from "react-router-dom";
+import LogOutIcon from '@material-ui/icons/ExitToApp'
 
 let buttonStyle = "header_button";
 
@@ -48,10 +52,32 @@ class Header extends React.Component {
     if (this.props.variant === "secondary") {
       buttonStyle = "header_button_clear";
     } else buttonStyle = "header_button";
+
+    // Check if the user has a session already
+    // console.log("Local Storage", localStorage);
+    if (localStorage.getItem("access_token")) {
+      let endpoint = "verifytoken";
+      let config = {
+        headers: { access_token: localStorage.getItem("access_token") }
+      };
+      instance.post(endpoint, null, config).then(response => {
+        console.log("Verification Response", response);
+        store.dispatch({
+          type: "user/LOG_IN",
+          payload: {
+            email: localStorage.getItem("username"),
+            access_token: localStorage.getItem("access_token"),
+            id_token: localStorage.getItem("id_token"),
+            refresh_token: localStorage.getItem("refresh_token"),
+            username: localStorage.getItem("username")
+          }
+        });
+      });
+    }
   }
 
   toggleDrawer = () => {
-    document.getElementById("menu_icon").classList.toggle('change');
+    document.getElementById("menu_icon").classList.toggle("change");
 
     this.setState({
       mobileDrawer: !this.state.mobileDrawer
@@ -106,12 +132,25 @@ class Header extends React.Component {
     console.log(variant);
   };
 
+  handleLogOut = () => {
+    let endpoint = "logout";
+    let config = {
+      headers: { access_token: localStorage.getItem("access_token") }
+    };
+    instance.post(endpoint, null, config).then(response => {
+      store.dispatch({
+        type: "user/LOG_OUT"
+      });
+      console.log("log out Response", response);
+      localStorage.clear();
+      window.location.reload();
+    });
+  };
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    console.log("HEADER PROPS", this.props);
-
     const accountList = (
       <MenuList>
         <MenuItem className="menuItem">
@@ -122,6 +161,15 @@ class Header extends React.Component {
             classes={{ primary: "primary" }}
             inset
             primary="Account Settings"
+          />
+        </MenuItem>
+        <MenuItem className="menuItem" onClick={this.handleLogOut}>
+          <ListItemIcon className="Icon">
+            <LogOutIcon />
+          </ListItemIcon>
+          <ListItemText
+            inset
+            primary="Log Out"
           />
         </MenuItem>
       </MenuList>
@@ -184,16 +232,35 @@ class Header extends React.Component {
     );
 
     const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+      <Popper
         open={isMenuOpen}
-        onClose={this.handleMenuClose}
+        anchorEl={this.anchorEl}
+        transition
+        disablePortal
       >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-      </Menu>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            id="menu-list-grow"
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={this.handleMenuClose}>
+                <MenuList>
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleLogOut} className="log_out">
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     );
 
     const renderMobileMenu = (
@@ -329,6 +396,9 @@ class Header extends React.Component {
         <IconButton
           aria-owns={isMenuOpen ? "material-appbar" : null}
           aria-haspopup="true"
+          buttonRef={node => {
+            this.anchorEl = node;
+          }}
           onClick={this.handleProfileMenuOpen}
           color="inherit"
         >
@@ -381,10 +451,10 @@ class Header extends React.Component {
         aria-label="Open drawer"
         onClick={this.toggleDrawer}
       >
-        <div id ='menu_icon' className='menu_icon' >
-          <div className='bar1'/>
-          <div className='bar2'/>
-          <div className='bar3'/>
+        <div id="menu_icon" className="menu_icon">
+          <div className="bar1" />
+          <div className="bar2" />
+          <div className="bar3" />
         </div>
       </IconButton>
     );
@@ -441,14 +511,18 @@ class Header extends React.Component {
         >
           <Toolbar>
             {renderMobileMenuButton}
-            <div>
-              <img
-                src={require("../../logo.svg")}
-                alt="Webnb"
-                style={{ maxHeight: "2rem" }}
-                onClick={console.log("Logo Clicked")}
-              />
-            </div>
+            <a href="/">
+              <SvgIcon
+                className='logo'
+                viewBox="0 0 355.5 281.42"
+                fontSize="large"
+                color={
+                  this.props.variant === "secondary" ? "primary" : "secondary"
+                }
+              >
+                {path}
+              </SvgIcon>
+            </a>
             {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
             <div className="grow" />
             {this.props.isLogedIn ? renderDesktopUserHeader : renderLogInHeader}
@@ -483,4 +557,4 @@ Header.propTypes = {
   variant: PropTypes.string
 };
 
-export default connect(state => state.user)(Header);
+export default connect(state => state.user)(withRouter(Header));
