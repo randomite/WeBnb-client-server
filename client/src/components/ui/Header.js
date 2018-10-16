@@ -28,7 +28,9 @@ import AuthenticationModal from "./AuthenticationModal";
 import { connect } from "react-redux";
 import store from "../../redux/store";
 import { instance } from "../../Axios";
-
+import SvgIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import { path } from "../ui/Logo";
+import {withRouter} from "react-router-dom";
 let buttonStyle = "header_button";
 
 class Header extends React.Component {
@@ -500,14 +502,18 @@ class Header extends React.Component {
         >
           <Toolbar>
             {renderMobileMenuButton}
-            <div>
-              <img
-                src={require("../../logo.svg")}
-                alt="Webnb"
-                style={{ maxHeight: "2rem" }}
-                onClick={console.log("Logo Clicked")}
-              />
-            </div>
+            <a href="/">
+              <SvgIcon
+                className='logo'
+                viewBox="0 0 355.5 281.42"
+                fontSize="large"
+                color={
+                  this.props.variant === "secondary" ? "primary" : "secondary"
+                }
+              >
+                {path}
+              </SvgIcon>
+            </a>
             {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
             <div className="grow" />
             {this.props.isLogedIn ? renderDesktopUserHeader : renderLogInHeader}
@@ -542,4 +548,4 @@ Header.propTypes = {
   variant: PropTypes.string
 };
 
-export default connect(state => state.user)(Header);
+export default connect(state => state.user)(withRouter(Header));
