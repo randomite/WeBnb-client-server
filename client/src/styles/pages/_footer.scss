@@ -6,3 +6,17 @@
   color: $black;
   font-family: &$font-main;
 }
+.footer_link{
+  text-decoration: none;
+  color: $primary
+}
+.footer_button{
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+}
+.footer_button_text{
+  @media screen and (min-width: $sm) {
+    display: none !important;
+  }
+}

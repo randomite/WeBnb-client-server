@@ -9,20 +9,11 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
-const styleFooterButton = {
-  position: "fixed",
-  bottom: 20,
-  right: 20
-};
-
 const footers = [
   {
     title: "Company",
     description: [
-      <Link to="/AboutUs">About us</Link>,
-      "History",
-      "Contact us",
-      "Locations"
+      <Link to="/AboutUs" className='footer_link'>About us</Link>,
     ]
   },
   {
@@ -32,8 +23,8 @@ const footers = [
   {
     title: "Legal",
     description: [
-      <Link to='/privacy'>Privacy policy</Link>,
-      <Link to='/terms'>Terms of use</Link>,
+      <Link to='/privacy' className='footer_link'>Privacy policy</Link>,
+      <Link to='/terms' className='footer_link'>Terms of use</Link>,
     ]
   }
 ];
@@ -52,14 +43,15 @@ class Footer extends React.Component {
       <div>
         {/*Anchored Button to open footer*/}
         <Button
-          style={styleFooterButton}
+          className='footer_button'
           onClick={this.toggleDrawer("drawer", true)}
           variant="contained"
+          color='primary'
         >
           <span>
             <Icon className="material-icons md-18">help</Icon>
           </span>
-          <span>Terms, Privacy, Currency & More</span>
+          <span className='footer_button_text'>Terms, Privacy, Currency & More</span>
         </Button>
 
         {/*Swipeable Footer Drawer*/}
