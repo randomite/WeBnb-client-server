@@ -31,6 +31,8 @@ import { instance } from "../../Axios";
 import SvgIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import { path } from "../ui/Logo";
 import {withRouter} from "react-router-dom";
+import LogOutIcon from '@material-ui/icons/ExitToApp'
+
 let buttonStyle = "header_button";
 
 class Header extends React.Component {
@@ -161,6 +163,15 @@ class Header extends React.Component {
             classes={{ primary: "primary" }}
             inset
             primary="Account Settings"
+          />
+        </MenuItem>
+        <MenuItem className="menuItem" onClick={this.handleLogOut}>
+          <ListItemIcon className="Icon">
+            <LogOutIcon />
+          </ListItemIcon>
+          <ListItemText
+            inset
+            primary="Log Out"
           />
         </MenuItem>
       </MenuList>
