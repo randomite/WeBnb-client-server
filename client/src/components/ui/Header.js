@@ -45,7 +45,6 @@ class Header extends React.Component {
     tripsMenu: false,
     rewardsMenu: false,
     mobileDrawer: false,
-    loggedIn: false
   };
 
   componentWillMount() {
@@ -231,7 +230,7 @@ class Header extends React.Component {
       </div>
     );
 
-    const renderMenu = (
+    const renderProfileMenu = (
       <Popper
         open={isMenuOpen}
         anchorEl={this.anchorEl}
@@ -494,7 +493,6 @@ class Header extends React.Component {
                 classes={{ primary: "primary" }}
                 inset
                 primary="Log in"
-                on
               />
             </MenuItem>
           </MenuList>
@@ -525,7 +523,7 @@ class Header extends React.Component {
             </a>
             {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
             <div className="grow" />
-            {this.props.isLogedIn ? renderDesktopUserHeader : renderLogInHeader}
+            {this.props.isLoggedIn ? renderDesktopUserHeader : renderLogInHeader}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -542,10 +540,10 @@ class Header extends React.Component {
             onClick={this.toggleDrawer}
             onKeyDown={this.toggleDrawer}
           >
-            {this.props.isLogedIn ? mobileMenuList : noUserMobileMenuList}
+            {this.props.isLoggedIn ? mobileMenuList : noUserMobileMenuList}
           </div>
         </Drawer>
-        {renderMenu}
+        {renderProfileMenu}
         {renderMobileMenu}
         <AuthenticationModal />
       </div>

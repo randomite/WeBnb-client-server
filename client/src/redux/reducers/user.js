@@ -6,7 +6,7 @@ const initialState = {
   rewards: {},
   bookings: [],
   access_token: null,
-  isLogedIn: false,
+  isLoggedIn: false,
   id_token: null,
   refresh_token: null,
 };
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case "user/LOG_IN":
       return {
         ...state,
-        isLogedIn: true,
+        isLoggedIn: true,
         username: action.payload.username,
         email: action.payload.email,
         access_token: action.payload.access_token,
@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
         rewards: {},
         bookings: [],
         access_token: null,
-        isLogedIn: false,
+        isLoggedIn: false,
         id_token: null,
         refresh_token: null,
       };
