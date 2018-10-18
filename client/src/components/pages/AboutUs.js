@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
+const teamMembers = require('./aboutUs.json')
 
 class AboutUs extends Component {
+
   render() {
+      const gridItems = teamMembers.map((member) =>
+          <div className="grid-item">
+              <img src="person.jpg" alt="icon"/>
+              <p>{member.name}</p>
+          </div>);
+
     return (
       <div>
         <Header/>
@@ -19,34 +27,7 @@ class AboutUs extends Component {
             culpa qui officia deserunt mollit anim id est laborum."
           </p>
           <div className="grid-container">
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-              <p>Name here</p>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
-            <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
-            </div>
+              {gridItems}
           </div>
         </div>
         <Footer/>
