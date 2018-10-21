@@ -8,7 +8,7 @@ class AboutUs extends Component {
   render() {
       const gridItems = teamMembers.map((member) =>
           <div className="grid-item">
-              <img src="person.jpg" alt="icon"/>
+              <img src={member.picture} alt="icon"/>
               <p>{member.name}</p>
           </div>);
 
