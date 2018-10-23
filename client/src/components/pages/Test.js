@@ -8,16 +8,9 @@ class Test extends React.Component {
   render() {
     return (
       <div>
+        Just putting this here:
         <HotelCard
           name={"Yo"}
-          rooms={6}
-          price={200}
-          image={imgurl}
-          link={"/terms"}
-        />
-
-        <HotelCard
-          name={"Yo2"}
           rooms={6}
           price={200}
           image={imgurl}

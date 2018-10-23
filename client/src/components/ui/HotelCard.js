@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,53 +7,32 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";
 
-const styles = {
-  card: {
-    maxWidth: 300
-  },
-  media: {
-    height: 250,
-    width: 300
-  },
-  text: {
-    width: 300,
-    position: "absolute",
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-    color: "white",
-    padding: "5px 0px 5px 5px"
-  }
-};
-
 class HotelCard extends React.Component {
   //handles the navigation to the hotel view page
   handleNavigate = () => {
-    console.log("navigate");
     this.props.history.push(this.props.link);
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
-      <Card className={classes.card}>
+      <Card className="hotel-card">
         <CardActionArea onClick={this.handleNavigate}>
-          <CardMedia className={classes.media} image={this.props.image}>
-            <CardContent style={styles.text}>
+          <CardMedia className="hotel-card-media" image={this.props.image}>
+            <CardContent className="hotel-card-text">
               {/*# of rooms available*/}
-              <Typography component="p" id="numberOfRooms" color="inherit">
+              <Typography component="p" color="inherit">
                 Hotel • {this.props.rooms} rooms available
               </Typography>
               {/*Name of the Hotel*/}
-              <Typography variant="h1" component="h3" id="name" color="inherit">
+              <Typography variant="h1" component="h3" color="inherit">
                 {this.props.name}
               </Typography>
               {/*Price of the lowest costing room*/}
-              <Typography component="p" id="price" color="inherit">
+              <Typography component="p" color="inherit">
                 ${this.props.price} per night
               </Typography>
               {/*The reviews */}
-              <Typography component="p" id="rating" color="inherit">
+              <Typography component="p" color="inherit">
                 {this.props.reviews} reviews
               </Typography>
             </CardContent>
@@ -65,8 +43,9 @@ class HotelCard extends React.Component {
   }
 }
 
+/*
 HotelCard.propTypes = {
   classes: PropTypes.object.isRequired
-};
+};*/
 
-export default withStyles(styles)(withRouter(HotelCard));
+export default withRouter(HotelCard);
