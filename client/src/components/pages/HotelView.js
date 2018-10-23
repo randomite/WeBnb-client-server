@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../ui/Header'
 import Lightbox from 'react-images';
-import Gallery from 'react-photo-gallery';
+import Gallery from '../ui/Gallery'
 
 
 export default class HotelView extends React.Component{
@@ -54,7 +54,7 @@ export default class HotelView extends React.Component{
             <Header/>
             <div className='hotel'>
                 <div className='gallery'>
-                    <Gallery photos={photos} onClick={this.openLightbox}  columns={4} margin={1} />
+                    <Gallery images={photos}/>
                     <Lightbox images={photos}
                               onClose={this.closeLightbox}
                               onClickPrev={this.gotoPrevious}
@@ -63,7 +63,7 @@ export default class HotelView extends React.Component{
                               isOpen={this.state.lightboxIsOpen}
                     />
                 </div>
-                <div>
+                <div className='hotel_details'>
                     <h1>HOTEL NAME</h1>
                 </div>
             </div>
