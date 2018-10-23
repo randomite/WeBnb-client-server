@@ -5,9 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import imgurl from "../../img/TestImage.jpg";
 
 const styles = {
   card: {
@@ -18,39 +16,43 @@ const styles = {
     width: 300
   },
   text: {
-    width: "100%",
+    width: 300,
     position: "absolute",
     bottom: 0,
     backgroundColor: "rgba(0, 0, 0, 0.6)",
     color: "white",
-    padding: 10
+    padding: "5px 0px 0px 5px"
   }
 };
 
-function HotelCard(props) {
-  const { classes } = props;
-  return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia className={classes.media} image={imgurl}>
-          <CardContent className={classes.text}>
-            <Typography component="p" id="numberOfRooms" color="inherit">
-              Hotel 5 rooms available
-            </Typography>
-            <Typography variant="h6" component="h2" id="name" color="inherit">
-              The Venetian Las Vegas
-            </Typography>
-            <Typography component="p" id="price" color="inherit">
-              $ 408 per night
-            </Typography>
-            <Typography component="p" id="rating" color="inherit">
-              133 reviews
-            </Typography>
-          </CardContent>
-        </CardMedia>
-      </CardActionArea>
-    </Card>
-  );
+handleNavigate;
+
+class HotelCard extends React.Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <Card className={classes.card}>
+        <CardActionArea onClick={this.handleNavigate}>
+          <CardMedia className={classes.media} image={this.props.image}>
+            <CardContent className={classes.text}>
+              <Typography component="p" id="numberOfRooms" color="inherit">
+                Hotel • {this.props.rooms} rooms available
+              </Typography>
+              <Typography variant="h1" component="h3" id="name" color="inherit">
+                {this.props.name}
+              </Typography>
+              <Typography component="p" id="price" color="inherit">
+                ${this.props.price} per night
+              </Typography>
+              <Typography component="p" id="rating" color="inherit">
+                {this.props.reviews} reviews
+              </Typography>
+            </CardContent>
+          </CardMedia>
+        </CardActionArea>
+      </Card>
+    );
+  }
 }
 
 HotelCard.propTypes = {
