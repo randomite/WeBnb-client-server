@@ -5,5 +5,14 @@
   "address": "453 Street Name",
   "city":"Imerovigli",
   "state":"Imerovigli",
-  "rooms": {}
+  "rooms": [
+    {
+      "id": 1,
+      "room_type": "Presidential Suite",
+      "hotel_id": 1,
+      "room_type_code":0,
+      "room_number": 123,
+      "image_url": "",
+      "bookings":[]
+    }]
 }

@@ -2,13 +2,34 @@ import React from 'react'
 import Header from '../ui/Header'
 import Lightbox from 'react-images';
 import Gallery from '../ui/Gallery'
+import {CalendarMonthGrid, isSameDay} from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
+import moment from 'moment'
+import AvailableDatesWrapper from '../ui/AvailableDatesWrapper'
+import RoomGrid from '../ui/RoomGrid'
 
+const datesList = [
+    moment(),
+    moment().add(1, 'days'),
+    moment().add(3, 'days'),
+    moment().add(9, 'days'),
+    moment().add(10, 'days'),
+    moment().add(11, 'days'),
+    moment().add(12, 'days'),
+    moment().add(13, 'days'),
+];
+
+const hotel_data = require('./hotel_data')
 
 export default class HotelView extends React.Component{
-
     constructor() {
         super();
-        this.state = { currentImage: 0 };
+        this.state = { currentImage: 0,
+            startDate: null,
+            endDate: null,
+            focusedInput: null,
+        };
         this.closeLightbox = this.closeLightbox.bind(this);
         this.openLightbox = this.openLightbox.bind(this);
         this.gotoNext = this.gotoNext.bind(this);
@@ -39,6 +60,7 @@ export default class HotelView extends React.Component{
 
     render() {
 
+        console.log("moment", moment())
         const photos = [
             { src: 'https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg', width: 4, height: 3 },
             { src: 'https://s-ec.bstatic.com/images/hotel/max1024x768/629/62976649.jpg', width: 1, height: 1 },
@@ -64,7 +86,21 @@ export default class HotelView extends React.Component{
                     />
                 </div>
                 <div className='hotel_details'>
-                    <h1>HOTEL NAME</h1>
+                    <h1>{hotel_data.name}</h1>
+                    <h5>{hotel_data.address}</h5>
+                    {/*<div>*/}
+                        {/*<h3>Availability</h3>*/}
+                        {/*<div>*/}
+                            {/*<AvailableDatesWrapper isDayBlocked={day1 => datesList.some(day2 => isSameDay(day1, day2))}/>*/}
+                            {/*<CalendarMonthGrid   initialMonth={moment().add(1,'month')}   numberOfMonths={2} />*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                    <div>
+                        <h3>Available Rooms</h3>
+                        <div>
+                            <RoomGrid rooms={hotel_data.rooms}/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
