@@ -22,11 +22,12 @@ const styles = {
     bottom: 0,
     backgroundColor: "rgba(0, 0, 0, 0.6)",
     color: "white",
-    padding: "5px 0px 0px 5px"
+    padding: "5px 0px 5px 5px"
   }
 };
 
 class HotelCard extends React.Component {
+  //handles the navigation to the hotel view page
   handleNavigate = () => {
     console.log("navigate");
     this.props.history.push(this.props.link);
@@ -39,16 +40,20 @@ class HotelCard extends React.Component {
       <Card className={classes.card}>
         <CardActionArea onClick={this.handleNavigate}>
           <CardMedia className={classes.media} image={this.props.image}>
-            <CardContent className={classes.text}>
+            <CardContent style={styles.text}>
+              {/*# of rooms available*/}
               <Typography component="p" id="numberOfRooms" color="inherit">
                 Hotel • {this.props.rooms} rooms available
               </Typography>
+              {/*Name of the Hotel*/}
               <Typography variant="h1" component="h3" id="name" color="inherit">
                 {this.props.name}
               </Typography>
+              {/*Price of the lowest costing room*/}
               <Typography component="p" id="price" color="inherit">
                 ${this.props.price} per night
               </Typography>
+              {/*The reviews */}
               <Typography component="p" id="rating" color="inherit">
                 {this.props.reviews} reviews
               </Typography>

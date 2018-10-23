@@ -12,7 +12,14 @@ class Test extends React.Component {
           name={"Yo"}
           rooms={6}
           price={200}
-          review={111}
+          image={imgurl}
+          link={"/terms"}
+        />
+
+        <HotelCard
+          name={"Yo2"}
+          rooms={6}
+          price={200}
           image={imgurl}
           link={"/terms"}
         />
