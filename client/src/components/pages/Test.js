@@ -14,6 +14,7 @@ class Test extends React.Component {
           price={200}
           review={111}
           image={imgurl}
+          link={"/terms"}
         />
       </div>
     );

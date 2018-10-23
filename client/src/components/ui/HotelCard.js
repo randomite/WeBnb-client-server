@@ -6,6 +6,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import { withRouter } from "react-router-dom";
 
 const styles = {
   card: {
@@ -25,11 +26,15 @@ const styles = {
   }
 };
 
-handleNavigate;
-
 class HotelCard extends React.Component {
+  handleNavigate = () => {
+    console.log("navigate");
+    this.props.history.push(this.props.link);
+  };
+
   render() {
     const { classes } = this.props;
+
     return (
       <Card className={classes.card}>
         <CardActionArea onClick={this.handleNavigate}>
@@ -59,4 +64,4 @@ HotelCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(HotelCard);
+export default withStyles(styles)(withRouter(HotelCard));
