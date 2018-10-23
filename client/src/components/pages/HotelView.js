@@ -54,7 +54,7 @@ export default class HotelView extends React.Component{
             <Header/>
             <div className='hotel'>
                 <div className='gallery'>
-                    <Gallery images={photos}/>
+                    <Gallery images={photos} onClick={(e)=>{this.openLightbox(e, {index: 0})}}/>
                     <Lightbox images={photos}
                               onClose={this.closeLightbox}
                               onClickPrev={this.gotoPrevious}
