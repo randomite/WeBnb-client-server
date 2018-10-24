@@ -11,42 +11,46 @@
 .gallery_main{
   width: 50%;
   overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  display:block;
+  position: relative;
+  @media screen and (max-width: $md) {
+    width: 100%;
+  }
+  opacity: 1 !important;
+  transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+  transform: scale(1) !important;
 
-  img{
+  &:hover{
+    transform: scale(1.05) !important;
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+  }
+}
+.gallery_extra{
+  width: 50%;
+  display: flex;
+  overflow: hidden !important;
+  -webkit-box-align: center !important;
+  @media screen and (max-width: $md) {
+    display: none;
+  }
+  div div {
+    height: 50%;
+    overflow: hidden;
+  }
+
+  div div div{
     height: 100%;
-    display:block;
-    position: relative;
-    left: -50%;
-    opacity: 1 !important;
-    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
     transform: scale(1) !important;
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
 
     &:hover{
       transform: scale(1.05) !important;
       transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
-    }
-  }
-}
-.gallery_extra{
-  width: 25%;
-
-  div{
-    overflow: hidden;
-    height: 50%;
-
-    img{
-      transform: scale(1) !important;
-      height: 100%;
-      display:block;
-      position: relative;
-      left: -50%;
-      opacity: 1 !important;
-      transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
-
-      &:hover{
-        transform: scale(1.05) !important;
-        transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
-      }
     }
   }
 }
@@ -55,4 +59,8 @@
   position: absolute;
   right: 3%;
   top: 90%;
+}
+.col2{
+  width: 50%;
+  overflow: hidden;
 }
