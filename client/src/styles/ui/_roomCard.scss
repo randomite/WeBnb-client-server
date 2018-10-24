@@ -1,6 +1,11 @@
 .room_card{
   border-radius: 4px;
   width: 150px;
-  height: 200px;
-  border: #be1e2d solid 1px;
+  border: $lightgrey solid 1px;
+  padding: 15px;
+  cursor: pointer;
+}
+.room_type{
+  font-weight: 600;
+  font-size: 16px;
 }

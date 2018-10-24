@@ -3,16 +3,26 @@
   "name": "Aqua Luxury Suites Santorini",
   "rating": 2.5,
   "address": "453 Street Name",
-  "city":"Imerovigli",
-  "state":"Imerovigli",
+  "city": "Imerovigli",
+  "state": "Imerovigli",
   "rooms": [
     {
       "id": 1,
       "room_type": "Presidential Suite",
       "hotel_id": 1,
-      "room_type_code":0,
+      "room_type_code": 0,
       "room_number": 123,
       "image_url": "",
-      "bookings":[]
-    }]
+      "bookings": []
+    },
+    {
+      "id": 2,
+      "room_type": "Regular Suite",
+      "hotel_id": 1,
+      "room_type_code": 0,
+      "room_number": 123,
+      "image_url": "",
+      "bookings": []
+    }
+  ]
 }
