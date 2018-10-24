@@ -20,19 +20,19 @@ class HotelCard extends React.Component {
           <CardMedia className="hotel-card-media" image={this.props.image}>
             <CardContent className="hotel-card-text">
               {/*# of rooms available*/}
-              <Typography component="p" color="inherit">
+              <Typography component="p" color="inherit" id="rooms">
                 Hotel • {this.props.rooms} rooms available
               </Typography>
               {/*Name of the Hotel*/}
-              <Typography variant="h1" component="h3" color="inherit">
+              <Typography variant="h1" component="h3" color="inherit" id="name">
                 {this.props.name}
               </Typography>
               {/*Price of the lowest costing room*/}
-              <Typography component="p" color="inherit">
+              <Typography component="p" color="inherit" id="price">
                 ${this.props.price} per night
               </Typography>
               {/*The reviews */}
-              <Typography component="p" color="inherit">
+              <Typography component="p" color="inherit" id="reviews">
                 {this.props.reviews} reviews
               </Typography>
             </CardContent>
@@ -46,6 +46,7 @@ class HotelCard extends React.Component {
 /*
 HotelCard.propTypes = {
   classes: PropTypes.object.isRequired
-};*/
+};
+*/
 
 export default withRouter(HotelCard);
