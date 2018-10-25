@@ -16,6 +16,7 @@
   right: 20px !important;
 }
 .footer_button_text {
+  margin-left: 2px;
   @media screen and (max-width: $sm) {
     display: none !important;
   }
