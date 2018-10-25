@@ -43,10 +43,11 @@ class HotelCard extends React.Component {
   }
 }
 
-/*
 HotelCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  rooms: PropTypes.number,
+  name: PropTypes.string,
+  price: PropTypes.number,
+  image: PropTypes.string,
 };
-*/
 
 export default withRouter(HotelCard);
