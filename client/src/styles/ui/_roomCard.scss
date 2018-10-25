@@ -1,11 +1,33 @@
-.room_card{
+.room_card {
   border-radius: 4px;
-  width: 150px;
   border: $lightgrey solid 1px;
   padding: 15px;
   cursor: pointer;
 }
-.room_type{
+.room_type {
   font-weight: 600;
   font-size: 16px;
+}
+.active {
+  border: $primary solid 1px;
+}
+.price_breakdown {
+  div {
+    display: flex;
+    line-height: 20px;
+    ::after {
+      content: " * ";
+      height: 1px;
+      width: 100%;
+      display: inline-block;
+      position: absolute;
+
+    }
+
+    div {
+      text-align: end;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
 }

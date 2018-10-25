@@ -2,24 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import Beds from "./Beds";
 import store from "../../redux/store";
+import {connect} from 'react-redux'
 
-export default class RoomCard extends React.Component {
+ class RoomCard extends React.Component {
+
   handelRoomSelected = () => {
     store.dispatch({
       type: "booking/SELECT_ROOM",
       payload: {
-        room: {
-          id: this.props.room.id,
-          room_type: this.props.room.room_type,
-          room_type_code: this.props.room.room_type_code,
-          room_number: this.props.room.room_number,
-          image_url: this.props.room.image_url
-        }
+        room: this.props.room
       }
     });
   };
 
   render() {
+    console.log("PROPS:", this.props)
     const noRoom = (
       <div className="room_card">
         <div>No Room Selected</div>
@@ -27,7 +24,13 @@ export default class RoomCard extends React.Component {
     );
 
     const roomSelected = (
-      <div className="room_card" onClick={this.handelRoomSelected}>
+      <div
+        className={ this.props.id === this.props.room.id
+            ? "room_card active"
+            : "room_card"
+        }
+        onClick={this.handelRoomSelected}
+      >
         <div>
           <Beds room_type={1} />
         </div>
@@ -44,3 +47,10 @@ export default class RoomCard extends React.Component {
 RoomCard.propTypes = {
   room: PropTypes.object
 };
+
+export default connect(state => state.booking.room.id)(RoomCard)
+
+function mapStateToProps(state) {
+  console.log('STATE',state);        // state
+  console.log('ARGS',arguments[1]); // undefined
+}

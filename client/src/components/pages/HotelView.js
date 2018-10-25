@@ -2,15 +2,12 @@ import React from "react";
 import Header from "../ui/Header";
 import Lightbox from "react-images";
 import Gallery from "../ui/Gallery";
-import { CalendarMonthGrid, isSameDay } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import moment from "moment";
-import AvailableDatesWrapper from "../ui/AvailableDatesWrapper";
 import RoomGrid from "../ui/RoomGrid";
-import { Button } from "@material-ui/core";
-import RoomCard from "../ui/RoomCard";
 import BookingDetails from "../ui/BookingDetails";
+import instance from '../../Axios'
 
 const datesList = [
   moment(),
@@ -153,7 +150,7 @@ export default class HotelView extends React.Component {
                 </div>
               </div>
             </div>
-            <BookingDetails/>
+            <BookingDetails />
           </div>
         </div>
       </div>

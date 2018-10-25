@@ -10,7 +10,14 @@
       "id": 1,
       "room_type": "Presidential Suite",
       "hotel_id": 1,
-      "room_type_code": 0,
+      "room_type_code": {
+        "rate": 400.99,
+        "beds": {
+          "king": 2
+        },
+        "max_num_guest": 4,
+        "description": "This is the presidential suite"
+      },
       "room_number": 123,
       "image_url": "",
       "bookings": []
@@ -19,7 +26,14 @@
       "id": 2,
       "room_type": "Regular Suite",
       "hotel_id": 1,
-      "room_type_code": 0,
+      "room_type_code": {
+        "rate": 40.99,
+        "beds": {
+          "queen": 1
+        },
+        "max_num_guest": 2,
+        "description": "This is the presidential suite"
+      },
       "room_number": 123,
       "image_url": "",
       "bookings": []
