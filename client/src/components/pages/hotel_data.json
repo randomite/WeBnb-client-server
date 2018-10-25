@@ -20,12 +20,12 @@
         "description": "This is the presidential suite"
       },
       "room_number": 123,
-      "image_url": ["https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg",
-        "https://s-ec.bstatic.com/images/hotel/max1024x768/629/62976649.jpg",
-        "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064958.jpg",
-        "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064956.jpg",
-        "https://t-ec.bstatic.com/images/hotel/max1024x768/100/100691762.jpg"
-
+      "image_url": [
+        {"src": "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"},
+        {"src": "https://s-ec.bstatic.com/images/hotel/max1024x768/629/62976649.jpg"},
+        {"src": "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064958.jpg"},
+        {"src": "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064956.jpg"},
+        {"src": "https://t-ec.bstatic.com/images/hotel/max1024x768/100/100691762.jpg"}
       ],
       "bookings": []
     },
@@ -43,9 +43,9 @@
       },
       "room_number": 123,
       "image_url": [
-        "https://s-ec.bstatic.com/images/hotel/max1280x900/757/75747856.jpg",
-        "https://t-ec.bstatic.com/images/hotel/max1024x768/209/20962970.jpg",
-        "https://t-ec.bstatic.com/images/hotel/max1280x900/114/114064952.jpg"
+        {"src": "https://s-ec.bstatic.com/images/hotel/max1280x900/757/75747856.jpg"},
+        {"src": "https://t-ec.bstatic.com/images/hotel/max1024x768/209/20962970.jpg"},
+        {"src": "https://t-ec.bstatic.com/images/hotel/max1280x900/114/114064952.jpg"}
       ],
       "bookings": []
     }

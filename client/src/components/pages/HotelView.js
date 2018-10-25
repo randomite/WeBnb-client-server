@@ -25,22 +25,34 @@ const hotel_data = require("./hotel_data");
 export default class HotelView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      currentImage: 0,
-      startDate: null,
-      endDate: null,
-      focusedInput: null
-    };
     this.closeLightbox = this.closeLightbox.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
 
+    let temp = hotel_data.rooms.map(room => {
+      return room.image_url
+    })
+
+    this.state = {
+      currentImage: 0,
+      startDate: null,
+      endDate: null,
+      focusedInput: null,
+      photos: temp.reduce(
+        function(accumulator, currentValue) {
+          return accumulator.concat(currentValue);
+        },
+        []
+      )
+    };
+
     //GET DATA FROM BACK END
   }
   openLightbox(event, obj) {
+    console.log('OPEN LIGHTBOX',obj)
     this.setState({
-      currentImage: obj.index,
+      currentImage: obj,
       lightboxIsOpen: true
     });
   }
@@ -62,18 +74,6 @@ export default class HotelView extends React.Component {
   }
 
   render() {
-    console.log("moment", moment());
-
-    let temp = hotel_data.rooms.map(room => {
-      return room.image_url
-    })
-
-    var photos = temp.reduce(
-      function(accumulator, currentValue) {
-        return accumulator.concat(currentValue);
-      },
-      []
-    );
 
     return (
       <div>
@@ -81,13 +81,13 @@ export default class HotelView extends React.Component {
         <div className="hotel">
           <div className="gallery">
             <Gallery
-              images={photos}
-              onClick={e => {
-                this.openLightbox(e, { index: 0 });
+              images={this.state.photos}
+              onClick={(e, index) => {
+                this.openLightbox(e,index);
               }}
             />
             <Lightbox
-              images={photos}
+              images={this.state.photos}
               onClose={this.closeLightbox}
               onClickPrev={this.gotoPrevious}
               onClickNext={this.gotoNext}
