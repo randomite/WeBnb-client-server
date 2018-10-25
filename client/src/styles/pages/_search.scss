@@ -1,8 +1,22 @@
+.page_content {
+  margin-top: 70px;
+  display: flex;
+}
 .search_results {
-  padding-top: 64px;
+  float: left;
 }
 .hotels {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.map_switch {
+  margin-top: 70px;
+}
+
+.map {
+  float: right;
+  width: 100%;
+  margin-right: 10px;
 }
