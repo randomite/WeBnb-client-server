@@ -59,7 +59,7 @@
         "hotel_id": 1,
         "room_type_code": {
           "room_type": "Presidential Suite",
-          "rate": 40.00
+          "rate": 40.0
         },
         "room_number": 123,
         "image_url": [
@@ -72,7 +72,259 @@
         "hotel_id": 1,
         "room_type_code": {
           "room_type": "Regular Suite",
-          "rate": 40.00
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Aqua Luxury Suites Santorini 2",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 40.0
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.0
         },
         "room_number": 123,
         "image_url": [

@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom";
 class HotelCard extends React.Component {
   //handles the navigation to the hotel view page
   handleNavigate = () => {
-    this.props.history.push(this.props.link);
+    this.props.history.push("hotel/" + this.props.id);
   };
 
   render() {
@@ -47,7 +47,7 @@ HotelCard.propTypes = {
   rooms: PropTypes.number,
   name: PropTypes.string,
   price: PropTypes.number,
-  image: PropTypes.string,
+  image: PropTypes.string
 };
 
 export default withRouter(HotelCard);
