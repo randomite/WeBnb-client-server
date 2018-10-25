@@ -35,6 +35,8 @@ export default class HotelView extends React.Component {
     this.openLightbox = this.openLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
+
+    //GET DATA FROM BACK END
   }
   openLightbox(event, obj) {
     this.setState({
@@ -61,56 +63,17 @@ export default class HotelView extends React.Component {
 
   render() {
     console.log("moment", moment());
-    const photos = [
-      {
-        src:
-          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg",
-        width: 4,
-        height: 3
+
+    let temp = hotel_data.rooms.map(room => {
+      return room.image_url
+    })
+
+    var photos = temp.reduce(
+      function(accumulator, currentValue) {
+        return accumulator.concat(currentValue);
       },
-      {
-        src:
-          "https://s-ec.bstatic.com/images/hotel/max1024x768/629/62976649.jpg",
-        width: 1,
-        height: 1
-      },
-      {
-        src:
-          "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064958.jpg",
-        width: 3,
-        height: 4
-      },
-      {
-        src:
-          "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064956.jpg",
-        width: 3,
-        height: 4
-      },
-      {
-        src:
-          "https://t-ec.bstatic.com/images/hotel/max1024x768/100/100691762.jpg",
-        width: 3,
-        height: 4
-      },
-      {
-        src:
-          "https://t-ec.bstatic.com/images/hotel/max1024x768/209/20962970.jpg",
-        width: 4,
-        height: 3
-      },
-      {
-        src:
-          "https://s-ec.bstatic.com/images/hotel/max1280x900/757/75747856.jpg",
-        width: 3,
-        height: 4
-      },
-      {
-        src:
-          "https://t-ec.bstatic.com/images/hotel/max1280x900/114/114064952.jpg",
-        width: 4,
-        height: 3
-      }
-    ];
+      []
+    );
 
     return (
       <div>

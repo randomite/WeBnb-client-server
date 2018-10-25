@@ -5,12 +5,13 @@
   "address": "453 Street Name",
   "city": "Imerovigli",
   "state": "Imerovigli",
+  "postal_code": 95111,
   "rooms": [
     {
       "id": 1,
-      "room_type": "Presidential Suite",
       "hotel_id": 1,
       "room_type_code": {
+        "room_type": "Presidential Suite",
         "rate": 400.99,
         "beds": {
           "king": 2
@@ -19,14 +20,20 @@
         "description": "This is the presidential suite"
       },
       "room_number": 123,
-      "image_url": "",
+      "image_url": ["https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg",
+        "https://s-ec.bstatic.com/images/hotel/max1024x768/629/62976649.jpg",
+        "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064958.jpg",
+        "https://t-ec.bstatic.com/images/hotel/max1024x768/114/114064956.jpg",
+        "https://t-ec.bstatic.com/images/hotel/max1024x768/100/100691762.jpg"
+
+      ],
       "bookings": []
     },
     {
       "id": 2,
-      "room_type": "Regular Suite",
       "hotel_id": 1,
       "room_type_code": {
+        "room_type": "Regular Suite",
         "rate": 40.99,
         "beds": {
           "queen": 1
@@ -35,7 +42,11 @@
         "description": "This is the presidential suite"
       },
       "room_number": 123,
-      "image_url": "",
+      "image_url": [
+        "https://s-ec.bstatic.com/images/hotel/max1280x900/757/75747856.jpg",
+        "https://t-ec.bstatic.com/images/hotel/max1024x768/209/20962970.jpg",
+        "https://t-ec.bstatic.com/images/hotel/max1280x900/114/114064952.jpg"
+      ],
       "bookings": []
     }
   ]
