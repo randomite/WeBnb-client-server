@@ -26,6 +26,7 @@ export default class Search extends React.Component {
     displayMap: false
   };
 
+  //Function to display/hide map
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
@@ -36,7 +37,9 @@ export default class Search extends React.Component {
       <div>
         <Header />
         {/*Filter here*/}
+        {/*This component is the switch to display or hide the map_switch*/}
         <div className="map_switch">
+          {/*Form Control Label allows you to add text tot the Switch*/}
           <FormControlLabel
             control={
               <Switch
@@ -48,16 +51,17 @@ export default class Search extends React.Component {
             label="Display Map"
           />
         </div>
+        {/*Displays # of searche results*/}
         <div>
-          {/*Displays # of searche results*/}
           <h2>{Object.keys(search_data).length} Hotels</h2>
         </div>
+        {/*Displays contents of the */}
         <div className="page_content">
-          {/*Displays search results*/}
+          {/*Displays search results with Hotel Cards*/}
           <div className="search_results">
             <div className="hotels">{this.renderHotels()}</div>
           </div>
-          {/*Displays map of search results*/}
+          {/*Displays map of search results with slide effect*/}
           <Slide
             direction="left"
             in={displayMap}
@@ -66,7 +70,7 @@ export default class Search extends React.Component {
             timeout={{ enter: 1000, exit: 1000 }}
           >
             <div className="map">
-              {this.state.displayMap ? <HotelMap /> : null}
+              {this.state.displayMap ? <HotelMap hotels={search_data} /> : null}
             </div>
           </Slide>
         </div>

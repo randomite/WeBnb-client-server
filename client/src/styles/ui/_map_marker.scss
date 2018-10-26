@@ -1,0 +1,13 @@
+.marker {
+  display: flex;
+  height: 20px;
+  width: 50px;
+  background-color: $grey;
+  border-radius: 5px;
+}
+
+.marker-text {
+  color: white;
+  text-align: center;
+  margin: auto;
+}
