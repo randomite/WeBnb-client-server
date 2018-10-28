@@ -145,5 +145,103 @@
         "bookings": []
       }
     ]
+  },
+  {
+    "id": 4,
+    "lat": 40.744679,
+    "lng": -71.948542,
+    "name": "Aqua Luxury Suites Santorini",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "postal_code": 95111,
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 400.99,
+          "beds": {
+            "king": 2
+          },
+          "max_num_guest": 4,
+          "description": "This is the presidential suite"
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.99,
+          "beds": {
+            "queen": 1
+          },
+          "max_num_guest": 2,
+          "description": "This is the presidential suite"
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "lat": 40.745,
+    "lng": -71.948542,
+    "name": "Aqua Luxury Suites Santorini",
+    "rating": 2.5,
+    "address": "453 Street Name",
+    "city": "Imerovigli",
+    "state": "Imerovigli",
+    "postal_code": 95111,
+    "rooms": [
+      {
+        "id": 1,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Presidential Suite",
+          "rate": 400.99,
+          "beds": {
+            "king": 2
+          },
+          "max_num_guest": 4,
+          "description": "This is the presidential suite"
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      },
+      {
+        "id": 2,
+        "hotel_id": 1,
+        "room_type_code": {
+          "room_type": "Regular Suite",
+          "rate": 40.99,
+          "beds": {
+            "queen": 1
+          },
+          "max_num_guest": 2,
+          "description": "This is the presidential suite"
+        },
+        "room_number": 123,
+        "image_url": [
+          "https://s-ec.bstatic.com/images/hotel/max1024x768/757/75745672.jpg"
+        ],
+        "bookings": []
+      }
+    ]
   }
 ]

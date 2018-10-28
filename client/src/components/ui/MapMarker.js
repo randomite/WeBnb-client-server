@@ -9,7 +9,9 @@ class MapMarker extends React.Component {
   render() {
     return (
       <div className="marker">
-        <div className="marker-text">{this.props.price}</div>
+        <div className="marker-text" onClick={this.handleNavigate}>
+          ${this.props.price}
+        </div>
       </div>
     );
   }

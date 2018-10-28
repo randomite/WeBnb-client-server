@@ -6,6 +6,7 @@ import HotelCard from "../ui/HotelCard";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Slide from "@material-ui/core/Slide";
+import Grow from "@material-ui/core/Grow";
 const search_data = require("./search_data");
 
 export default class Search extends React.Component {
@@ -23,16 +24,16 @@ export default class Search extends React.Component {
   };
 
   state = {
-    displayMap: false
+    checked: false
   };
 
   //Function to display/hide map
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
+  handleChange = () => {
+    this.setState(state => ({ checked: !state.checked }));
   };
 
   render() {
-    const { displayMap } = this.state;
+    const { checked } = this.state;
     return (
       <div>
         <Header />
@@ -41,13 +42,7 @@ export default class Search extends React.Component {
         <div className="map_switch">
           {/*Form Control Label allows you to add text tot the Switch*/}
           <FormControlLabel
-            control={
-              <Switch
-                checked={this.state.displayMap}
-                onChange={this.handleChange("displayMap")}
-                value="displayMap"
-              />
-            }
+            control={<Switch checked={checked} onChange={this.handleChange} />}
             label="Display Map"
           />
         </div>
@@ -55,24 +50,27 @@ export default class Search extends React.Component {
         <div>
           <h2>{Object.keys(search_data).length} Hotels</h2>
         </div>
-        {/*Displays contents of the */}
+
+        {/*Displays contents of the page */}
         <div className="page_content">
-          {/*Displays search results with Hotel Cards*/}
-          <div className="search_results">
-            <div className="hotels">{this.renderHotels()}</div>
-          </div>
-          {/*Displays map of search results with slide effect*/}
           <Slide
             direction="left"
-            in={displayMap}
+            timeout={{ enter: 1000, exit: 1000 }}
+            in={checked}
             mountOnEnter
             unmountOnExit
-            timeout={{ enter: 1000, exit: 1000 }}
           >
-            <div className="map">
-              {this.state.displayMap ? <HotelMap hotels={search_data} /> : null}
+            <div className="map-container">
+              <HotelMap hotels={search_data} />
             </div>
           </Slide>
+          {/*Displays search results with Hotel Cards*/}
+          <div className="search_results">
+            <Grow in={true} timeout={{ enter: 1000, exit: 1000 }}>
+              <div className="hotels">{this.renderHotels()}</div>
+            </Grow>
+          </div>
+          {/*Displays map of search results with slide effect*/}
         </div>
 
         <Footer />
