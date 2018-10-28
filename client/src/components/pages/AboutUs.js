@@ -7,10 +7,12 @@ class AboutUs extends Component {
 
   render() {
       const gridItems = teamMembers.map((member) =>
-          <div className="grid-item">
-              <img src={member.picture} alt="icon"/>
-              <p>{member.name}</p>
-          </div>);
+        <div className="grid-item">
+            <a href={member.github} target="_blank">
+            <img src={member.picture} alt="icon"/></a>
+            <p className="name">{member.name}</p>
+            <p>{member.role}</p>
+        </div>);
 
     return (
       <div>
