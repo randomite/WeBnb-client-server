@@ -15,7 +15,7 @@
   .hotels {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     margin-left: 10px;
     overflow-y: auto;
     z-index: 10;
@@ -37,7 +37,7 @@
   .hotels {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .map_switch {
     margin-top: 70px;
