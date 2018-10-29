@@ -9,15 +9,15 @@ class HotelMap extends React.Component {
       <MapMarker
         key={hotel.id}
         price={hotel.rooms[0].room_type_code.rate}
-        lat={hotel.lat}
-        lng={hotel.lng}
+        lat={hotel.latitude}
+        lng={hotel.longitude}
         id={hotel.id}
       />
     ));
   };
 
   static defaultProps = {
-    center: { lat: 40.744679, lng: -73.948542 },
+    center: { lat: 37.7792808, lng: -122.4192363 },
     zoom: 5
   };
 

@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "lat": 40.744679,
-    "lng": -73.948542,
+    "latitude": 40.744679,
+    "longitude": -73.948542,
     "name": "Aqua Luxury Suites Santorini",
     "rating": 2.5,
     "address": "453 Street Name",
