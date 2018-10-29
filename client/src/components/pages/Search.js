@@ -38,17 +38,19 @@ export default class Search extends React.Component {
       <div>
         <Header />
         {/*Filter here*/}
-        {/*This component is the switch to display or hide the map_switch*/}
-        <div className="map_switch">
-          {/*Form Control Label allows you to add text tot the Switch*/}
-          <FormControlLabel
-            control={<Switch checked={checked} onChange={this.handleChange} />}
-            label="Display Map"
-          />
-        </div>
-        {/*Displays # of searche results*/}
-        <div>
-          <h2>{Object.keys(search_data).length} Hotels</h2>
+        <div style={{maxWidth: '1080px', margin: 'auto'}}>
+          {/*This component is the switch to display or hide the map_switch*/}
+          <div className="map_switch">
+            {/*Form Control Label allows you to add text tot the Switch*/}
+            <FormControlLabel
+              control={<Switch checked={checked} onChange={this.handleChange} />}
+              label="Display Map"
+            />
+          </div>
+          {/*Displays # of searche results*/}
+          <div>
+            <h2>{Object.keys(search_data).length} Hotels</h2>
+          </div>
         </div>
 
         {/*Displays contents of the page */}
