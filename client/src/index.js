@@ -8,6 +8,9 @@ import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 import { Theme } from "./Theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
 
 // console.log(store.getState());
 ReactDOM.render(
