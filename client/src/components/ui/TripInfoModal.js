@@ -140,14 +140,19 @@ class TripInfoModal extends React.Component {
     console.log("TRIP MODAL PROPS", this.props);
 
     const guestsDropDown = (
-      <Button
+      <FormControl
         id="guestDropDownButton"
         variant="outlined"
         fullWidth
         onClick={this.handleGuestPopoverOpen}
       >
-        1 Guest
-      </Button>
+        <OutlinedInput
+          labelWidth={0}
+          value={`${this.props.guests.total} Guests`}
+        >
+
+        </OutlinedInput>
+      </FormControl>
     );
     return (
       <form>

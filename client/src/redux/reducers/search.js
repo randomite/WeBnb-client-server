@@ -5,9 +5,9 @@ const initialState = {
   latitude: null,
   longitude: null,
   guests: {
-    adults: 0,
+    adults: 1,
     children: 0,
-    total: 0
+    total: 1
   },
   startDate: null,
   endDate: null
