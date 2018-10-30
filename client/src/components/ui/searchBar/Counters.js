@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { INCREMENT_ADULT, DECREMENT_ADULT, INCREMENT_SENIOR, DECREMENT_SENIOR, INCREMENT_CHILDREN, DECREMENT_CHILDREN, INCREMENT_INFANT, DECREMENT_INFANT } from '..../actions';
+import { INCREMENT_ADULT, DECREMENT_ADULT, INCREMENT_SENIOR, DECREMENT_SENIOR, INCREMENT_CHILDREN, DECREMENT_CHILDREN, INCREMENT_INFANT, DECREMENT_INFANT } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
     return {

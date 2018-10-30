@@ -31,6 +31,7 @@ import PlacesAutocomplete, {
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import Select from "@material-ui/core/Select/Select";
 import Popover from "@material-ui/core/Popover/Popover";
+import Counters from "./searchBar/Counters";
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -256,7 +257,7 @@ class TripInfoModal extends React.Component {
             horizontal: "center"
           }}
         >
-          The content of the Popover.
+          <Counters/>
 
         </Popover>
         <Button
