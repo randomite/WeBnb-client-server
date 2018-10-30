@@ -54,15 +54,26 @@ class TripInfoModal extends React.Component {
     this.setState({ address });
   };
 
-  handleGuestPopoverOpen = ()=>{
-    this.setState({guestsPopover: true})
-  }
+  handleGuestPopoverOpen = () => {
+    this.setState({ guestsPopover: true });
+  };
 
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success", latLng))
+      .then(latLng => {
+        console.log("Success", latLng);
+        this.props.dispatch({
+          type: "search/SET_LOCATION",
+          payload: {
+            latitude: latLng.lat,
+            longitude: latLng.lng,
+            address: address,
+          }
+        });
+      })
       .catch(error => console.error("Error", error));
+    this.setState({ address: address });
   };
 
   change = e => {
@@ -118,7 +129,12 @@ class TripInfoModal extends React.Component {
     console.log("TRIP MODAL PROPS", this.props);
 
     const guestsDropDown = (
-      <Button id='guestDropDownButton' variant="outlined" fullWidth onClick={this.handleGuestPopoverOpen}>
+      <Button
+        id="guestDropDownButton"
+        variant="outlined"
+        fullWidth
+        onClick={this.handleGuestPopoverOpen}
+      >
         1 Guest
       </Button>
     );
@@ -245,9 +261,9 @@ class TripInfoModal extends React.Component {
         <br />
         {guestsDropDown}
         <Popover
-          anchorEl={document.getElementById('guestDropDownButton')}
+          anchorEl={document.getElementById("guestDropDownButton")}
           open={this.state.guestsPopover}
-          onClose={() =>this.setState({guestsPopover: false})}
+          onClose={() => this.setState({ guestsPopover: false })}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center"
@@ -257,8 +273,7 @@ class TripInfoModal extends React.Component {
             horizontal: "center"
           }}
         >
-          <Counters/>
-
+          <Counters />
         </Popover>
         <Button
           variant="contained"
