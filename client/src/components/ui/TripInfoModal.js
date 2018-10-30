@@ -68,7 +68,7 @@ class TripInfoModal extends React.Component {
           payload: {
             latitude: latLng.lat,
             longitude: latLng.lng,
-            address: address,
+            address: address
           }
         });
       })
@@ -169,34 +169,34 @@ class TripInfoModal extends React.Component {
             loading
           }) => (
             <div>
-              <input
-                {...getInputProps({
-                  placeholder: "Where?",
-                  className: "location-search-input"
-                })}
+              <TextField
+                {...getInputProps({ className: "location-search-input" })}
+                variant="outlined"
+                label="Where?"
+                id="suggestionsid"
               />
-              <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
-                {suggestions.map(suggestion => {
-                  const className = suggestion.active
-                    ? "suggestion-item--active"
-                    : "suggestion-item";
-                  // inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                    : { backgroundColor: "#ffffff", cursor: "pointer" };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
+                <div className="autocomplete-dropdown-container location_autofill" >
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+                      ? "suggestion-item--active"
+                      : "suggestion-item";
+                    // inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                      : { backgroundColor: "#ffffff", cursor: "pointer" };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
             </div>
           )}
         </PlacesAutocomplete>
