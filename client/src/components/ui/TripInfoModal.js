@@ -1,35 +1,21 @@
 import React from "react";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { connect } from "react-redux";
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
   FormControl,
   TextField,
-  InputLabel,
-  InputAdornment,
-  IconButton,
-  DialogActions,
   Button,
   CircularProgress
 } from "@material-ui/core";
 import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
-import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
 import { instance } from "../../Axios";
 import  {
   DateRangePicker,
-  SingleDatePicker,
-  DayPickerRangeController,
 } from "react-dates";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import Select from "@material-ui/core/Select/Select";
 import Popover from "@material-ui/core/Popover/Popover";
 import Counters from "./searchBar/Counters";
 
