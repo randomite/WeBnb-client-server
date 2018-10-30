@@ -1,4 +1,9 @@
-import moment from "moment";
+import {
+  INCREMENT_ADULT,
+  DECREMENT_ADULT,
+  INCREMENT_CHILDREN,
+  DECREMENT_CHILDREN
+} from "../actions";
 
 const initialState = {
   address: "",
@@ -15,6 +20,42 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case INCREMENT_ADULT:
+      return {
+        ...state,
+        guests: {
+          ...state.guests,
+          adults: state.guests.adults + 1,
+          total: state.guests.total + 1
+        }
+      };
+    case DECREMENT_ADULT:
+      return {
+        ...state,
+        guests: {
+          ...state.guests,
+          adults: state.guests.adults - 1,
+          total: state.guests.total - 1
+        }
+      };
+    case INCREMENT_CHILDREN:
+      return {
+        ...state,
+        guests: {
+          ...state.guests,
+          children: state.guests.children + 1,
+          total: state.guests.total + 1
+        }
+      };
+    case DECREMENT_CHILDREN:
+      return {
+        ...state,
+        guests: {
+          ...state.guests,
+          children: state.guests.children - 1,
+          total: state.guests.total - 1
+        }
+      };
     case "search/SET_LOCATION":
       return {
         ...state,
@@ -29,10 +70,11 @@ export default (state = initialState, action) => {
       return { ...state, startDate: action.payload.startDate };
     }
     case "search/SET_DATES": {
-      return {...state,
+      return {
+        ...state,
         startDate: action.payload.startDate,
         endDate: action.payload.endDate
-      }
+      };
     }
     default:
       return state;
