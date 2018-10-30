@@ -202,7 +202,6 @@ class TripInfoModal extends React.Component {
           block
           startDatePlaceholderText="Check In"
           endDatePlaceholderText='Check Out'
-          showClearDates
         startDate={this.props.startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
           endDate={this.props.endDate} // momentPropTypes.momentObj or null,
