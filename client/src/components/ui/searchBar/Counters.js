@@ -35,21 +35,23 @@ const Counters = props => {
         <div className="children">
           <div className="form-inline">
             <span className="counter_text">Children</span>
-            <button
-              disabled={props.children === 0}
-              className="counter_btn"
-              onClick={() => props.dispatch({ type: DECREMENT_CHILDREN })}
-            >
-              -
-            </button>
-            <span className="counter_text">{props.children}</span>
-            <button
-              disabled={total === 2}
-              className="counter_btn"
-              onClick={() => props.dispatch({ type: INCREMENT_CHILDREN })}
-            >
-              +
-            </button>
+            <div>
+              <button
+                disabled={props.children === 0}
+                className="counter_btn"
+                onClick={() => props.dispatch({ type: DECREMENT_CHILDREN })}
+              >
+                -
+              </button>
+              <span className="counter_text">{props.children}</span>
+              <button
+                disabled={total === 2}
+                className="counter_btn"
+                onClick={() => props.dispatch({ type: INCREMENT_CHILDREN })}
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -31,18 +31,6 @@ class Landing extends React.Component {
         <div className='landing_content'>
           <TripInfoModal onChange={fields => this.onChange(fields)} />
         </div>
-        {/*<div className="outterbox">*/}
-          {/*<div className="outterbox1">*/}
-            {/*<div className="outterbox2">*/}
-              {/*<div className="outterbox3">*/}
-                {/*<div className="desktopView">*/}
-                  {/*<TripInfoModal onChange={fields => this.onChange(fields)} />*/}
-                {/*</div>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-          {/*</div>*/}
-        {/*</div>*/}
-
         <Footer />
       </div>
     );

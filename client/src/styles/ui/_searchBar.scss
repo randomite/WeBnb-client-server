@@ -45,10 +45,9 @@ button[disabled]{
 .counter_text {
 	font-weight: bold;
 	font-size: 18px;
-	padding: 20px;
 }
-
 .who {
-	display: grid;
+	display: block;
+	padding: 24px;
 	background-color: white;
 }

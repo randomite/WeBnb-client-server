@@ -228,6 +228,7 @@ class TripInfoModal extends React.Component {
         <Button
           variant="contained"
           color="secondary"
+          type='submit'
           onClick={e => this.onSubmit(e)}
         >
           Search
