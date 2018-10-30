@@ -19,10 +19,10 @@ import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
 import { instance } from "../../Axios";
-import {
+import  {
   DateRangePicker,
   SingleDatePicker,
-  DayPickerRangeController
+  DayPickerRangeController,
 } from "react-dates";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -152,21 +152,6 @@ class TripInfoModal extends React.Component {
     return (
       <form>
         <p>Bookings catered for you</p>
-        {/*<TextField*/}
-        {/*name="destination"*/}
-        {/*variant="outlined"*/}
-        {/*fullWidth*/}
-        {/*label="Where To"*/}
-        {/*placeholder="Anywhere"*/}
-        {/*margin="normal"*/}
-        {/*required*/}
-        {/*errrorText={this.state.destinationError}*/}
-        {/*value={this.state.destination}*/}
-        {/*onChange={e => this.change(e)}*/}
-        {/*InputLabelProps={{*/}
-        {/*shrink: true*/}
-        {/*}}*/}
-        {/*/>*/}
         <PlacesAutocomplete
           highlightFirstSuggestion
           value={this.state.address}
@@ -180,10 +165,12 @@ class TripInfoModal extends React.Component {
             loading
           }) => (
             <div>
+              <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHERE</div>
               <TextField
                 {...getInputProps({ className: "location-search-input" })}
                 variant="outlined"
-                label="Where?"
+                fullWidth
+                placeholder="Anywhere"
                 id="suggestionsid"
               />
                 <div className="autocomplete-dropdown-container location_autofill" >
@@ -212,38 +199,13 @@ class TripInfoModal extends React.Component {
           )}
         </PlacesAutocomplete>
         <br />
-        {/*<TextField*/}
-        {/*name="start"*/}
-        {/*variant="outlined"*/}
-        {/*fullWidth*/}
-        {/*label="CHECK IN"*/}
-        {/*placeholder="mm/dd/yyyy"*/}
-        {/*margin="normal"*/}
-        {/*required*/}
-        {/*errrorText={this.state.startError}*/}
-        {/*value={this.state.start}*/}
-        {/*onChange={e => this.change(e)}*/}
-        {/*InputLabelProps={{*/}
-        {/*shrink: true*/}
-        {/*}}*/}
-        {/*/>*/}
-        {/*<TextField*/}
-        {/*name="end"*/}
-        {/*variant="outlined"*/}
-        {/*fullWidth*/}
-        {/*label="CHECK OUT"*/}
-        {/*placeholder="mm/dd/yyyy"*/}
-        {/*margin="normal"*/}
-        {/*required*/}
-        {/*value={this.state.end}*/}
-        {/*onChange={e => this.change(e)}*/}
-        {/*InputLabelProps={{*/}
-        {/*shrink: true*/}
-        {/*}}*/}
-        {/*/>*/}
-
+        <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHEN</div>
         <DateRangePicker
-          startDate={this.props.startDate} // momentPropTypes.momentObj or null,
+          block
+          startDatePlaceholderText="Check In"
+          endDatePlaceholderText='Check Out'
+          showClearDates
+        startDate={this.props.startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
           endDate={this.props.endDate} // momentPropTypes.momentObj or null,
           endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
@@ -255,21 +217,7 @@ class TripInfoModal extends React.Component {
         />
 
         <br />
-        {/*<TextField*/}
-        {/*select*/}
-        {/*name="numberofpeople"*/}
-        {/*variant="outlined"*/}
-        {/*fullWidth*/}
-        {/*label="GUESTS"*/}
-        {/*margin="normal"*/}
-        {/*required*/}
-        {/*value={2}*/}
-        {/*onChange={e => this.change(e)}*/}
-        {/*InputLabelProps={{*/}
-        {/*shrink: true*/}
-        {/*}}*/}
-        {/*/>*/}
-        <br />
+        <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHO</div>
         {guestsDropDown}
         <Popover
           anchorEl={document.getElementById("guestDropDownButton")}
