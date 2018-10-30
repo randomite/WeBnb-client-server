@@ -18,6 +18,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import Popover from "@material-ui/core/Popover/Popover";
 import Counters from "./searchBar/Counters";
+import {withRouter} from "react-router-dom";
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -100,6 +101,7 @@ class TripInfoModal extends React.Component {
     return isError;
   };
   onSubmit = e => {
+
     e.preventDefault();
     const err = this.validate();
     if (!err) {
@@ -120,6 +122,9 @@ class TripInfoModal extends React.Component {
         numberofpeople: ""
       });
     }
+
+    //Navigate to the search page
+    this.props.history.push('/search')
   };
 
   render() {
@@ -141,7 +146,7 @@ class TripInfoModal extends React.Component {
       </FormControl>
     );
     return (
-      <form>
+      <form onSubmit={(e)=>{this.onSubmit(e)}}>
         <p>Bookings catered for you</p>
         <PlacesAutocomplete
           highlightFirstSuggestion
@@ -160,6 +165,7 @@ class TripInfoModal extends React.Component {
               <TextField
                 {...getInputProps({ className: "location-search-input" })}
                 variant="outlined"
+                required
                 fullWidth
                 placeholder="Anywhere"
                 id="suggestionsid"
@@ -192,6 +198,7 @@ class TripInfoModal extends React.Component {
         <br />
         <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHEN</div>
         <DateRangePicker
+          required
           block
           startDatePlaceholderText="Check In"
           endDatePlaceholderText='Check Out'
@@ -229,7 +236,6 @@ class TripInfoModal extends React.Component {
           variant="contained"
           color="secondary"
           type='submit'
-          onClick={e => this.onSubmit(e)}
         >
           Search
         </Button>
@@ -238,4 +244,4 @@ class TripInfoModal extends React.Component {
   }
 }
 
-export default connect(state => state.search)(TripInfoModal);
+export default connect(state => state.search)(withRouter(TripInfoModal));
