@@ -83,6 +83,17 @@ class TripInfoModal extends React.Component {
     });
   };
 
+  handleDateChange=(startDate, endDate)=>{
+    console.log("DATES CHANGE", startDate , endDate)
+    this.props.dispatch({
+      type: "search/SET_DATES",
+      payload: {
+        startDate: startDate,
+        endDate: endDate
+      }
+    })
+  };
+
   validate = () => {
     let isError = false;
     const errors = {
@@ -237,7 +248,7 @@ class TripInfoModal extends React.Component {
           endDate={this.props.endDate} // momentPropTypes.momentObj or null,
           endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
           onDatesChange={({ startDate, endDate }) =>
-            this.setState({ startDate, endDate })
+            this.handleDateChange(startDate, endDate)
           } // PropTypes.func.isRequired,
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,

@@ -28,6 +28,12 @@ export default (state = initialState, action) => {
     case "search/SET_START_DATE": {
       return { ...state, startDate: action.payload.startDate };
     }
+    case "search/SET_DATES": {
+      return {...state,
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate
+      }
+    }
     default:
       return state;
   }
