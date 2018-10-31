@@ -141,9 +141,9 @@ class Header extends React.Component {
         type: "user/LOG_OUT"
       });
       console.log("log out Response", response);
-      localStorage.clear();
-      window.location.reload();
     });
+    localStorage.clear();
+    window.location.reload();
   };
 
   render() {
