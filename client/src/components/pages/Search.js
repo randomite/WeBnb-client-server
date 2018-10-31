@@ -16,8 +16,8 @@ export default class Search extends React.Component {
         key={hotel.id}
         name={hotel.name}
         rooms={Object.keys(hotel.rooms).length}
-        price={hotel.rooms[0].room_type_code.rate}
-        image={hotel.rooms[0].image_url[0]}
+        price={hotel.rooms[0].price}
+        image={hotel.rooms[0].images[0].src}
         id={hotel.id}
       />
     ));
