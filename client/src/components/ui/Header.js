@@ -32,6 +32,7 @@ import SvgIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import { path } from "../ui/Logo";
 import {withRouter} from "react-router-dom";
 import LogOutIcon from '@material-ui/icons/ExitToApp'
+import SearchBar from "./SearchBar";
 
 let buttonStyle = "header_button";
 
@@ -428,17 +429,7 @@ class Header extends React.Component {
 
     const renderSearch = (
       <div className="search">
-        <div className="searchIcon">
-          <SearchIcon />
-        </div>
-        <Input
-          placeholder="Search…"
-          disableUnderline
-          classes={{
-            root: "inputRoot",
-            input: "inputInput"
-          }}
-        />
+        <SearchBar/>
       </div>
     );
     const renderNoSearch = null;
