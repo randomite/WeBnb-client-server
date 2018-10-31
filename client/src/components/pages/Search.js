@@ -55,6 +55,12 @@ export default class Search extends React.Component {
 
         {/*Displays contents of the page */}
         <div className="page_content">
+          {/*Displays search results with Hotel Cards*/}
+          <div className="search_results">
+            <Grow in={true} timeout={{ enter: 1000, exit: 1000 }}>
+              <div className="hotels">{this.renderHotels()}</div>
+            </Grow>
+          </div>
           <Slide
             direction="left"
             timeout={{ enter: 1000, exit: 1000 }}
@@ -66,12 +72,6 @@ export default class Search extends React.Component {
               <HotelMap hotels={search_data} />
             </div>
           </Slide>
-          {/*Displays search results with Hotel Cards*/}
-          <div className="search_results">
-            <Grow in={true} timeout={{ enter: 1000, exit: 1000 }}>
-              <div className="hotels">{this.renderHotels()}</div>
-            </Grow>
-          </div>
           {/*Displays map of search results with slide effect*/}
         </div>
 

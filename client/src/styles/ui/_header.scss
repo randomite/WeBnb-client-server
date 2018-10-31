@@ -81,11 +81,11 @@
   border: 0.1rem $lightgrey solid;
   margin-left: $themePadding;
   width: 100%;
-  max-width: 500px;
 
   @media screen and (min-width: $sm) {
     margin-left: $themePadding * 3;
     width: auto;
+    max-width: 600px;
   }
 }
 .searchIcon {

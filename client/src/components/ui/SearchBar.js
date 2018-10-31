@@ -85,7 +85,7 @@ class SearchBar extends React.Component {
         </PlacesAutocomplete>
         <DateRangePicker
           noBorder
-          regular
+          small
           startDatePlaceholderText="Check In"
           endDatePlaceholderText="Check Out"
           startDate={this.props.startDate} // momentPropTypes.momentObj or null,
