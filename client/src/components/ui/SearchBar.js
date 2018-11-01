@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import { DateRangePicker } from "react-dates";
 import { FormControl, TextField } from "@material-ui/core";
 import PlacesAutocomplete from "react-places-autocomplete";
-import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import Counters from "./searchBar/Counters";
 import Popover from "@material-ui/core/Popover/Popover";
 import Input from "@material-ui/core/Input/Input";
+import Popper from "@material-ui/core/Popper/Popper";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex"}}>
         <PlacesAutocomplete
           highlightFirstSuggestion
           value={this.props.address}
@@ -46,6 +47,7 @@ class SearchBar extends React.Component {
           }) => (
             <div>
               <Input
+                id={'whereInput'}
                 style={{
                     height: 48,
                     padding: "0 15px",
@@ -56,30 +58,45 @@ class SearchBar extends React.Component {
                 margin="dense"
                 disableUnderline
                 placeholder="Anywhere"
-                id="suggestionsid"
+                onClick={placement => event =>{
+                  const { currentTarget } = event;
+                  this.setState(state => ({
+                    anchorEl: currentTarget,
+                    open: state.placement !== placement || !state.open,
+                    placement,
+                  }));
+                }}
               />
-              <div className="autocomplete-dropdown-container location_autofill">
-                {loading && <div>Loading...</div>}
-                {suggestions.map(suggestion => {
-                  const className = suggestion.active
-                    ? "suggestion-item--active"
-                    : "suggestion-item";
-                  // inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                    : { backgroundColor: "#ffffff", cursor: "pointer" };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
+              <Popper
+                open={suggestions.length > 0}
+                placement='bottom-start'
+                style={{zIndex: 1500, marginLeft: '-8px'}}
+                // open={true}
+                anchorEl={document.getElementById('whereInput')}
+              >
+                <div className="autocomplete-dropdown-container header_autofil_popper">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+                      ? "suggestion-item--active"
+                      : "suggestion-item";
+                    // inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                      : { backgroundColor: "#ffffff", cursor: "pointer" };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Popper>
             </div>
           )}
         </PlacesAutocomplete>
@@ -112,21 +129,19 @@ class SearchBar extends React.Component {
             value={`${this.props.guests.total} Guests`}
           />
         </FormControl>
-        <Popover
+        <Popper
+          placement='bottom-end'
+          style={{zIndex: 1500, marginLeft: '-8px'}}
           anchorEl={document.getElementById("guestDropDownButton")}
           open={this.state.guestsPopover}
-          onClose={() => this.setState({ guestsPopover: false })}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center"
-          }}
         >
-          <Counters />
-        </Popover>
+          <ClickAwayListener
+            onClickAway={() => {
+              this.setState({ guestsPopover: false })}}>
+            <Counters />
+          </ClickAwayListener>
+        </Popper>
+
       </div>
     );
   }

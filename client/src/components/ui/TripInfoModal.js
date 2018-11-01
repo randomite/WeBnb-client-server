@@ -87,7 +87,6 @@ class TripInfoModal extends React.Component {
       destinationError: "",
       startError: "",
       endError: "",
-      numberofpeopleError: ""
     };
     if (!this.state.destination) {
       isError = true;
@@ -112,14 +111,6 @@ class TripInfoModal extends React.Component {
         startError: "",
         end: "",
         endError: "",
-        numberofpeople: "",
-        numberofpeopleError: ""
-      });
-      this.props.onChange({
-        destination: "",
-        start: "",
-        end: "",
-        numberofpeople: ""
       });
     }
 
