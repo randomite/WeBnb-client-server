@@ -58,18 +58,10 @@ class SearchBar extends React.Component {
                 margin="dense"
                 disableUnderline
                 placeholder="Anywhere"
-                onClick={placement => event =>{
-                  const { currentTarget } = event;
-                  this.setState(state => ({
-                    anchorEl: currentTarget,
-                    open: state.placement !== placement || !state.open,
-                    placement,
-                  }));
-                }}
               />
               <Popper
                 open={suggestions.length > 0}
-                placement='bottom-start'
+                placement='bottom'
                 style={{zIndex: 1500, marginLeft: '-8px'}}
                 // open={true}
                 anchorEl={document.getElementById('whereInput')}
