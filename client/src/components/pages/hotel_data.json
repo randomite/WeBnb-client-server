@@ -20,6 +20,7 @@
   "rating": "5",
   "rooms": [
     {
+      "beds": "1 King",
       "bookings": [],
       "description": "Spanning the entire eighth floor of the historic Main Building of the Fairmont San Francisco boutique hotel, The Penthouse Suite offers 6,000 square feet of luxury. Created in the Roaring Twenties by famed American archaeologist and art historian, Arthur Upham Pope, this San Francisco Penthouse Suite epitomizes the opulence and distinctive design of this singular time period. After an exquisite restoration, The Penthouse Suite sets the standard for luxurious living and breathtaking event venues today. \n\nIn addition to offering one-of-a-kind accommodations, it provides an unforgettable setting for important occasions ranging from lavish San Francisco weddings to high-profile meetings. This landmark suite can beautifully accommodate seated dinners for up to 60 or receptions for up to 150 guests.",
       "hotel_id": "1",

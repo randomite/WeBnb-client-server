@@ -16,7 +16,7 @@ import {connect} from 'react-redux'
   };
 
   render() {
-    console.log("PROPS:", this.props)
+    console.log("ROOM CARD PROPS:", this.props)
     const noRoom = (
       <div className="room_card">
         <div>No Room Selected</div>
@@ -37,7 +37,7 @@ import {connect} from 'react-redux'
         <div className="room_type">
           {this.props.room ? this.props.room.room_type : null}
         </div>
-        <div>2 queen beds</div>
+        <div>{this.props.room.beds}</div>
       </div>
     );
     return this.props.room.id ? roomSelected : noRoom;
@@ -49,8 +49,3 @@ RoomCard.propTypes = {
 };
 
 export default connect(state => state.booking.room.id)(RoomCard)
-
-function mapStateToProps(state) {
-  console.log('STATE',state);        // state
-  console.log('ARGS',arguments[1]); // undefined
-}

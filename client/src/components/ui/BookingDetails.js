@@ -9,7 +9,7 @@ class BookingDetails extends React.Component {
 
     const rate = (
       <div className="price">
-        <h2>${this.props.room.room_type_code.rate}</h2>
+        <h2>${this.props.room.price}</h2>
         <h5>per night</h5>
       </div>
     );
@@ -31,9 +31,9 @@ class BookingDetails extends React.Component {
         <div>GUEST PICKER HERE</div>
         <div className="price_breakdown">
           <div>
-            ${this.props.room.room_type_code.rate} x 2 days
+            ${this.props.room.price} x 2 days
             <div >
-              ${this.props.room.room_type_code.rate * 2}
+              ${this.props.room.price * 2}
             </div>
           </div>
           <div>
@@ -45,7 +45,7 @@ class BookingDetails extends React.Component {
           <div>
             Total
             <div >
-              ${this.props.room.room_type_code.rate * 2 + 40}
+              ${this.props.room.price * 2 + 40}
             </div>
           </div>
         </div>

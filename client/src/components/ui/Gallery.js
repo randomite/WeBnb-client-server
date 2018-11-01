@@ -95,7 +95,7 @@ export default class Gallery extends React.Component {
           </div>
         </div>
         <div className="view_all">
-          <Button variant="contained" onClick={e => this.openLightbox(e, 0)}>
+          <Button variant="contained" onClick={e => this.openLightbox(2, 0)}>
             View all images
           </Button>
         </div>
