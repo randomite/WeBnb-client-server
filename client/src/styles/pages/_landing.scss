@@ -6,3 +6,19 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.landing_content{
+  background: $white;
+  position: relative;
+  top: 120px;
+  padding: 32px;
+  margin: auto;
+  max-width: 500px;
+  border-radius: 4px;
+  box-shadow: $defaultShadow;
+}
+.location_autofill{
+  padding: 12px;
+  background: white;
+  border: 1px solid $lightgrey;
+  border-radius: 4px;
+}

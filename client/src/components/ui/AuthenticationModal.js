@@ -30,7 +30,8 @@ class AuthenticationModal extends React.Component {
     password: "",
     passwordConfirm: "",
     verification: "",
-    submitButton: false
+    submitButton: false,
+    verifySubmitButton: false,
   };
 
   handlePasswordChange = prop => event => {
@@ -61,7 +62,7 @@ class AuthenticationModal extends React.Component {
 
   handleVerification = () => {
     let self = this;
-    this.setState({ submitButton: true });
+    this.setState({ verifySubmitButton: true });
     let endpoint = "confirmsignup";
     let data = {
       email: this.state.email,
@@ -74,7 +75,7 @@ class AuthenticationModal extends React.Component {
         this.handleLogIn();
       })
       .catch(function(error) {
-        self.setState({ submitButton: false });
+        self.setState({ verifySubmitButton: false });
         alert(error);
       });
   };
@@ -195,11 +196,11 @@ class AuthenticationModal extends React.Component {
                 variant="contained"
                 autoFocus
                 type="submit"
-                disabled={this.state.submitButton}
+                disabled={this.state.verifySubmitButton}
               >
                 Submit
               </Button>
-              {this.state.submitButton && (
+              {this.state.verifySubmitButton && (
                 <CircularProgress size={24} className="circular_progress" />
               )}
             </div>

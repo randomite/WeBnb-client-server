@@ -1,26 +1,31 @@
 // Imports
-@import '/variables.scss';
-@import './pages/landing';
-@import 'pages/aboutUs';
-@import './pages/privacy';
-@import './pages/footer';
-@import './pages/terms';
-@import './ui/header';
-@import 'ui/header_preview_menu';
-@import 'ui/circular_progress';
-@import 'pages/hotelView';
-@import 'ui/gallery';
-@import 'ui/roomCard';
+@import "./variables.scss";
+@import "./pages/landing";
+@import "./pages/aboutUs";
+@import "./pages/privacy";
+@import "./pages/footer";
+@import "./pages/terms";
+@import "./ui/header";
+@import "./ui/hotel_card";
+@import "./ui/hotel_map";
+@import "./ui/map_marker";
+@import "./ui/header_preview_menu";
+@import "./ui/circular_progress";
+@import "./pages/search";
+@import 'react_dates_overrides';
+@import "ui/searchBar";
 @import 'ui/booking_details';
-
+@import 'ui/roomCard';
+@import 'ui/gallery';
+@import 'pages/hotelView';
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    //font-size: 62.5%;
+  //font-size: 62.5%;
 }
 
 body {

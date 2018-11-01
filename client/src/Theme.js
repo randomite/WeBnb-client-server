@@ -19,7 +19,7 @@ export const Theme = createMuiTheme({
         boxShadow: "none"
       }
     },
-    MuiDialogContent:{
+    MuiDialogContent: {
       root: {
         padding: 24
       }
@@ -52,7 +52,7 @@ export const Theme = createMuiTheme({
         "&$disabled": {
           border: "#e0e0e0 1px solid"
         }
-      },
+      }
     },
     typography: {
       fontFamily: ["Cereal"]
