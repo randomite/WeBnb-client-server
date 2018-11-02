@@ -86,7 +86,7 @@ export default class Gallery extends React.Component {
                 style={{
                   backgroundImage: `url(${
                     this.state.photos[
-                      this.randomIntFromInterval(0, this.state.photos.length)
+                      this.randomIntFromInterval(0, this.state.photos.length-1)
                     ].src
                   }`
                 }}

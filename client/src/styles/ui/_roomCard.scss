@@ -1,7 +1,7 @@
 .room_card {
-  border-radius: 4px;
-  border: $lightgrey solid 1px;
-  padding: 15px;
+  //border-radius: 4px;
+  //border: $lightgrey solid 1px;
+  //padding: 15px;
   cursor: pointer;
 }
 .room_type {
@@ -11,23 +11,8 @@
 .active {
   border: $primary solid 1px;
 }
-.price_breakdown {
-  div {
-    display: flex;
-    line-height: 20px;
-    ::after {
-      content: " * ";
-      height: 1px;
-      width: 100%;
-      display: inline-block;
-      position: absolute;
-
-    }
-
-    div {
-      text-align: end;
-      margin-left: auto;
-      margin-right: 0;
-    }
-  }
+.room_card_price{
+  float: right;
+  top: -71px;
+  position: relative;
 }

@@ -17,5 +17,16 @@
   text-transform: none !important;
   padding-top: 15px !important;
   padding-bottom: 15px !important;
+}
+.price_breakdown {
+  div {
+    display: flex;
+    line-height: 20px;
 
+    div {
+      text-align: end;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
 }

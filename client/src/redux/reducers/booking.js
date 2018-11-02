@@ -7,7 +7,8 @@ const initialState = {
     image_url: null
   },
   guests: {},
-  dates: {}
+  startDate: null,
+  endDate: null,
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +20,8 @@ export default (state = initialState, action) => {
       };
     case "booking/SET_DATES":
       return {
-        ...state, dates: action.payload.dates
+        ...state, startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
       }
     default:
       return state;

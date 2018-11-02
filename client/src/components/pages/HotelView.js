@@ -21,7 +21,7 @@ export default class HotelView extends React.Component {
 
     //GET DATA FROM BACK END
   }
-
+  // Combine all the images from all the rooms into one large array
   combineRoomImages = () => {
     return hotel_data.rooms.reduce(function(accumulator, currentValue) {
       return accumulator.concat(currentValue.images);
@@ -29,7 +29,6 @@ export default class HotelView extends React.Component {
   };
 
   render() {
-    console.log("REDUCED ROOMS", this.combineRoomImages());
     return (
       <div>
         <Header />
@@ -44,6 +43,8 @@ export default class HotelView extends React.Component {
             <div className="details">
               <h1>{hotel_data.name}</h1>
               <h5>{hotel_data.address}</h5>
+              <h6>{hotel_data.city} {hotel_data["postal code"]}</h6>
+              <br/>
               <div>
                 <h3>Available Rooms</h3>
                 <div>
