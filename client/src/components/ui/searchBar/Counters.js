@@ -8,54 +8,52 @@ import {
 } from "../../../redux/actions";
 
 const Counters = props => {
-  var total = props.adults + props.children;
   return (
     <React.Fragment>
-      <div className="who">
-        <div className="adults">
-          <div className="form-inline">
-            <span className="counter_text">Adults</span>
-            <button
-              disabled={props.adults === 0}
-              className="counter_btn"
-              onClick={() => props.dispatch({ type: DECREMENT_ADULT })}
-            >
-              -
-            </button>
-            <span className="counter_text">{props.adults}</span>
-            <button
-              disabled={total === 2}
-              className="counter_btn"
-              onClick={() => props.dispatch({ type: INCREMENT_ADULT })}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div className="children">
-          <div className="form-inline">
-            <span className="counter_text">Children</span>
-            <div>
-              <button
-                disabled={props.children === 0}
-                className="counter_btn"
-                onClick={() => props.dispatch({ type: DECREMENT_CHILDREN })}
-              >
-                -
-              </button>
-              <span className="counter_text">{props.children}</span>
-              <button
-                disabled={total === 2}
-                className="counter_btn"
-                onClick={() => props.dispatch({ type: INCREMENT_CHILDREN })}
-              >
-                +
-              </button>
+            <div className='who'>
+                <div className='counters-container'> 
+                    <div className='counter-item'>
+                        <span className='text'>Adults</span>
+                    </div>
+                    <div className='counter-item'>
+                        <button 
+                            disabled={props.counters.adult === 0} 
+                            zclassName='counter_btn' onClick={() => props.dispatch({ type: DECREMENT_ADULT })}
+                        >
+                        -
+                        </button>
+                        <span className='text'>{props.counters.adult}</span>
+                        <button 
+                            className='counter_btn' 
+                            onClick={() => props.dispatch({ type: INCREMENT_ADULT })}
+                        >
+                        +
+                        </button>
+                    </div>
+                    <div className='counter-item'>
+                        <span className='text'>Children</span>
+                        <br/>
+                        <span>Ages 2-12</span>
+                    </div>
+                    <div className='counter-item'>
+                        <button 
+                            disabled={props.counters.children === 0} 
+                            className='counter_btn' 
+                            onClick={() => props.dispatch({ type: DECREMENT_CHILDREN })}
+                        >
+                        -
+                        </button>
+                        <span className='text'>{props.counters.children}</span>
+                        <button 
+                            className='counter_btn' 
+                            onClick={() => props.dispatch({ type: INCREMENT_CHILDREN })}
+                        >
+                        +z
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
+        </React.Fragment>
   );
 };
 
