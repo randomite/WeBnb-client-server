@@ -76,6 +76,12 @@ export default (state = initialState, action) => {
         endDate: action.payload.endDate
       };
     }
+    case "search/SET_ADDRESS": {
+      return {
+        ...state,
+        address: action.payload.address
+      }
+    }
     default:
       return state;
   }

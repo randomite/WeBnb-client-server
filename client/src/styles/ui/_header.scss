@@ -85,6 +85,7 @@
   @media screen and (min-width: $sm) {
     margin-left: $themePadding * 3;
     width: auto;
+    max-width: 600px;
   }
 }
 .searchIcon {

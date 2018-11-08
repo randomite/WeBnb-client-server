@@ -1,0 +1,54 @@
+//Smaller than 600px;
+@media screen and (max-width: $md) {
+  .map-container {
+    width: 100%;
+    height: 250px;
+    display: block;
+    position: sticky;
+    top: 58px;
+    z-index: 20;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .hotels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+  .map_switch {
+    margin-top: 70px;
+  }
+}
+
+//Bigger than 600px;
+@media screen and (min-width: $md) {
+  .page_content {
+    display: flex;
+    //flex-direction: row-reverse;
+  }
+  .search_results {
+    float: left;
+  }
+  .hotels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .map_switch {
+    margin-top: 70px;
+  }
+  .map-container {
+    float: right;
+    width: 100%;
+    margin-right: 10px;
+    margin-top: 10px;
+    position: sticky;
+    top: 100px;
+    height: 90vh;
+  }
+}

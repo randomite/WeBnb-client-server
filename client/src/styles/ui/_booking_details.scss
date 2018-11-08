@@ -1,0 +1,32 @@
+.booking{
+  width: 35%;
+  border: $lightgrey 1px solid;
+  padding: 20px;
+}
+.details{
+  width: 65%;
+}
+.price{
+  display: flex;
+  margin: 0 0 20px 0;
+}
+.book_button {
+  width: 100% !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+.price_breakdown {
+  div {
+    display: flex;
+    line-height: 20px;
+
+    div {
+      text-align: end;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+}

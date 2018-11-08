@@ -19,6 +19,7 @@ import PlacesAutocomplete, {
 import Popover from "@material-ui/core/Popover/Popover";
 import Counters from "./searchBar/Counters";
 import {withRouter} from "react-router-dom";
+import Popper from "@material-ui/core/Popper/Popper";
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -87,7 +88,6 @@ class TripInfoModal extends React.Component {
       destinationError: "",
       startError: "",
       endError: "",
-      numberofpeopleError: ""
     };
     if (!this.state.destination) {
       isError = true;
@@ -112,14 +112,6 @@ class TripInfoModal extends React.Component {
         startError: "",
         end: "",
         endError: "",
-        numberofpeople: "",
-        numberofpeopleError: ""
-      });
-      this.props.onChange({
-        destination: "",
-        start: "",
-        end: "",
-        numberofpeople: ""
       });
     }
 
@@ -170,6 +162,13 @@ class TripInfoModal extends React.Component {
                 placeholder="Anywhere"
                 id="suggestionsid"
               />
+              <Popper
+                open={suggestions.length > 0}
+                placement='bottom-start'
+                style={{zIndex: 1500, marginLeft: '-8px'}}
+                // open={true}
+                anchorEl={document.getElementById('suggestionsid')}
+              >
                 <div className="autocomplete-dropdown-container location_autofill" >
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
@@ -192,6 +191,7 @@ class TripInfoModal extends React.Component {
                     );
                   })}
                 </div>
+              </Popper>
             </div>
           )}
         </PlacesAutocomplete>

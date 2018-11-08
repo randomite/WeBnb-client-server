@@ -49,5 +49,25 @@ button[disabled]{
 .who {
 	display: block;
 	padding: 24px;
+	border-radius: 0 0 4px 4px;
 	background-color: white;
+	border: 1px solid $lightgrey
+}
+.counters-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	padding: 10px;
+	text-align: center;
+}
+
+.counter-item {
+	padding: 5px;
+	align-content: center;
+}
+.header_autofil_popper{
+	border: 1px $lightgrey solid;
+	padding: 12px;
+	margin-top: 10px;
+	background: $white;
+	border-radius: 0 0 4px 4px;
 }

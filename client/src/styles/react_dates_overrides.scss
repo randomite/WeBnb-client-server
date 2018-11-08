@@ -28,9 +28,16 @@
 .DateInput {
   width: 45% !important;
 }
+.DateInput_input{
+  background: none !important;
+  background-color: transparent;
+}
 .DateRangePickerInput__withBorder {
   border-radius: 4px !important;
   border: 1px solid rgba(0, 0, 0, 0.23) !important;
+  padding: 4px !important;
+}
+.DateRangePickerInput {
   padding: 4px !important;
 }
 .DateInput_input__focused{

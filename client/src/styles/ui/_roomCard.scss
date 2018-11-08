@@ -1,0 +1,18 @@
+.room_card {
+  //border-radius: 4px;
+  //border: $lightgrey solid 1px;
+  //padding: 15px;
+  cursor: pointer;
+}
+.room_type {
+  font-weight: 600;
+  font-size: 16px;
+}
+.active {
+  border: $primary solid 1px;
+}
+.room_card_price{
+  float: right;
+  top: -71px;
+  position: relative;
+}
