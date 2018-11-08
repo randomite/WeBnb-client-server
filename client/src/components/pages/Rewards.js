@@ -7,7 +7,7 @@ class Rewards extends React.Component {
   render() {
     return (
       <div>
-        <Header variant="secondary" />
+        <Header />
         <Footer />
       </div>
     );
