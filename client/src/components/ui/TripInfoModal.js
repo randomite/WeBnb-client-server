@@ -232,8 +232,13 @@ class TripInfoModal extends React.Component {
         >
           <Counters />
         </Popover>
+        <br/>
+        <br/>
+
         <Button
           variant="contained"
+          fullWidth
+          size='large'
           color="secondary"
           type='submit'
         >
