@@ -8,14 +8,16 @@ import Privacy from "./components/pages/Privacy";
 import Terms from "./components/pages/Terms";
 import Test from "./components/pages/Test";
 import Search from "./components/pages/Search";
+import Rewards from "./components/pages/Rewards";
 
 const Router = () => (
   <main>
     <Switch>
-      <Route path="/search" component={Search}/>
+      <Route path="/search" component={Search} />
       <Route path="/AboutUs" component={AboutUs} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
+      <Route path="/rewards" component={Rewards} />
       <Route path="/test" component={Test} />
       <Route path="/" component={Landing} />
     </Switch>
