@@ -200,6 +200,7 @@ class TripInfoModal extends React.Component {
         <DateRangePicker
           required
           block
+          numberOfMonths={window.innerWidth < 960 ? 1 : 2}
           startDatePlaceholderText="Check In"
           endDatePlaceholderText='Check Out'
         startDate={this.props.startDate} // momentPropTypes.momentObj or null,
