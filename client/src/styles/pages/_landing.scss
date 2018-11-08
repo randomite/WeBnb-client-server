@@ -11,10 +11,15 @@
   position: relative;
   top: 120px;
   padding: 32px;
-  margin: auto;
   max-width: 500px;
   border-radius: 4px;
   box-shadow: $defaultShadow;
+  margin:relative;
+  margin-left: 200px;
+  @media screen and (max-width: $sm) {
+    margin: relative !important;
+    margin-left: 0px !important;
+  }
 }
 .location_autofill{
   cursor: pointer;
@@ -24,6 +29,6 @@
   position: absolute;
   right: 0;
   top: 121px;
-  padding: 12px;
+  padding: 10px;
   background: white;
 }
