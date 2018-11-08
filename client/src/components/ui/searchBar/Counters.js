@@ -17,12 +17,12 @@ const Counters = props => {
                     </div>
                     <div className='counter-item'>
                         <button 
-                            disabled={props.counters.adult === 0} 
-                            zclassName='counter_btn' onClick={() => props.dispatch({ type: DECREMENT_ADULT })}
+                            disabled={props.adults === 0}
+                            className='counter_btn' onClick={() => props.dispatch({ type: DECREMENT_ADULT })}
                         >
                         -
                         </button>
-                        <span className='text'>{props.counters.adult}</span>
+                        <span className='text'>{props.adults}</span>
                         <button 
                             className='counter_btn' 
                             onClick={() => props.dispatch({ type: INCREMENT_ADULT })}
@@ -37,18 +37,18 @@ const Counters = props => {
                     </div>
                     <div className='counter-item'>
                         <button 
-                            disabled={props.counters.children === 0} 
+                            disabled={props.children === 0}
                             className='counter_btn' 
                             onClick={() => props.dispatch({ type: DECREMENT_CHILDREN })}
                         >
                         -
                         </button>
-                        <span className='text'>{props.counters.children}</span>
+                        <span className='text'>{props.children}</span>
                         <button 
                             className='counter_btn' 
                             onClick={() => props.dispatch({ type: INCREMENT_CHILDREN })}
                         >
-                        +z
+                        +
                         </button>
                     </div>
                 </div>
