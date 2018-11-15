@@ -12,8 +12,9 @@
 @import "./ui/header_preview_menu";
 @import "./ui/circular_progress";
 @import "./pages/search";
-@import 'react_dates_overrides';
+@import "react_dates_overrides";
 @import "ui/searchBar";
+@import "./pages/rewards";
 
 * {
   margin: 0;
