@@ -217,7 +217,7 @@ class TripInfoModal extends React.Component {
         <br />
         <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHO</div>
         {guestsDropDown}
-        <Popover
+        <Popper
           anchorEl={document.getElementById("guestDropDownButton")}
           open={this.state.guestsPopover}
           onClose={() => this.setState({ guestsPopover: false })}
@@ -231,7 +231,7 @@ class TripInfoModal extends React.Component {
           }}
         >
           <Counters />
-        </Popover>
+        </Popper>
         <br/>
         <br/>
 
