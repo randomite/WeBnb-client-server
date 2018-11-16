@@ -22,22 +22,28 @@ class Rewards extends React.Component {
         <center style={{ marginTop: "10px" }}>
           <h1>Rewards</h1>
           <p>Progress towards next free night</p>
-          <CircularProgress
-            className="progress2"
-            variant="static"
-            value={100}
-            size={300}
-          />
-          <CircularProgress
-            className="progress1"
-            variant="static"
-            value={rewards.progress}
-            size={300}
-          />
-          <p className="percentage">
-            <b>{percentage}%</b>
-          </p>
+          <div className="Progress-container">
+            <CircularProgress
+              className="progress2"
+              variant="static"
+              value={100}
+              size={300}
+            />
+            <CircularProgress
+              className="progress1"
+              variant="static"
+              value={rewards.progress}
+              size={300}
+            />
+            <p className="percentage">
+              <b>{percentage}%</b>
+            </p>
+          </div>
         </center>
+        <div className="information">
+          <h2>FREE Nights</h2>
+          <p>You currently have {rewards.freeNights} free night(s)</p>
+        </div>
         <div className="information">
           <h2>How it works?</h2>
           <p className="emphasis">10 nights = 1 free night</p>

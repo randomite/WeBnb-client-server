@@ -11,6 +11,12 @@
   color: $primary;
 }
 
+.Progress-container {
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
 .progress1 {
   color: $primary !important;
   margin: auto !important;
@@ -23,12 +29,10 @@
 
 .percentage {
   z-index: 20;
+  top: 120px;
   width: 100%;
-  margin: auto;
-  text-align: center;
   font-size: 48px;
   position: absolute;
-  top: 68vh;
   color: $primary;
 }
 
