@@ -12,11 +12,14 @@
     margin-left: 5px;
     margin-right: 5px;
   }
+  .search_results {
+    padding: 5px;
+  }
   .hotels {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-left: 10px;
+    //margin-left: 10px;
     overflow-y: auto;
     z-index: 10;
   }
@@ -28,11 +31,13 @@
 //Bigger than 600px;
 @media screen and (min-width: $md) {
   .page_content {
+    padding: 5px;
     display: flex;
     //flex-direction: row-reverse;
   }
   .search_results {
-    float: left;
+    //float: left;
+    width: 100%;
   }
   .hotels {
     display: flex;

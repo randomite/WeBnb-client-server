@@ -7,6 +7,7 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Slide from "@material-ui/core/Slide";
 import Grow from "@material-ui/core/Grow";
+import Grid from "@material-ui/core/Grid/Grid";
 const search_data = require("./search_data");
 
 export default class Search extends React.Component {
@@ -58,7 +59,7 @@ export default class Search extends React.Component {
           {/*Displays search results with Hotel Cards*/}
           <div className="search_results">
             <Grow in={true} timeout={{ enter: 1000, exit: 1000 }}>
-              <div className="hotels">{this.renderHotels()}</div>
+              <Grid container className="hotels" spacing={8} >{this.renderHotels()}</Grid>
             </Grow>
           </div>
           <Slide
