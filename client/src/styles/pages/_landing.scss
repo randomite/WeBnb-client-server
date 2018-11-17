@@ -9,7 +9,7 @@
 .landing_content{
   background: $white;
   position: relative;
-  top: 120px;
+  top: 10%;
   padding: 32px;
   max-width: 418px;
   border-radius: 4px;
@@ -26,11 +26,12 @@
   display: block;
   float: right;
   z-index: 3;
-  position: absolute;
-  right: 0;
-  top: 121px;
   padding: 10px;
   background: white;
   border: 1px solid $lightgrey;
+  max-width: 434px;
   border-radius: 4px;
+  @media screen and (max-width: $sm) {
+    max-width: 300px;
+  }
 }
