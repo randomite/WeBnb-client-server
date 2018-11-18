@@ -53,6 +53,17 @@ button[disabled]{
 	background-color: white;
 	border: 1px solid $lightgrey
 }
+.counters-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	padding: 10px;
+	text-align: center;
+}
+
+.counter-item {
+	padding: 5px;
+	align-content: center;
+}
 .header_autofil_popper{
 	border: 1px $lightgrey solid;
 	padding: 12px;

@@ -30,6 +30,17 @@ class SearchBar extends React.Component {
     this.setState({ guestsPopover: true });
   };
 
+  handleDateChange=(startDate, endDate)=>{
+    console.log("DATES CHANGE", startDate , endDate)
+    this.props.dispatch({
+      type: "search/SET_DATES",
+      payload: {
+        startDate: startDate,
+        endDate: endDate
+      }
+    })
+  };
+
   render() {
     return (
       <div style={{ display: "flex"}}>

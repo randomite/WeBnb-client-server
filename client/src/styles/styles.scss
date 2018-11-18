@@ -14,6 +14,10 @@
 @import "./pages/search";
 @import 'react_dates_overrides';
 @import "ui/searchBar";
+@import 'ui/booking_details';
+@import 'ui/roomCard';
+@import 'ui/gallery';
+@import 'pages/hotelView';
 
 * {
   margin: 0;
@@ -25,6 +29,7 @@ html {
 }
 
 body {
-  color: $black;
-  font-family: $font-main;
-}
+    color: $black;
+    font-family: $font-main;
+  -webkit-font-smoothing: antialiased;
+  }
