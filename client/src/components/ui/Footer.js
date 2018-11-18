@@ -54,9 +54,7 @@ class Footer extends React.Component {
           variant="contained"
           color="primary"
         >
-          <span>
-            <Icon className="material-icons md-18">help</Icon>
-          </span>
+          <Icon className="material-icons md-18 footer_icon">help</Icon>
           <span className="footer_button_text">
             Terms, Privacy, Currency & More
           </span>

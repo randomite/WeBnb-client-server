@@ -7,8 +7,13 @@
 @import "./pages/terms";
 @import "./ui/header";
 @import "./ui/hotel_card";
+@import "./ui/hotel_map";
+@import "./ui/map_marker";
 @import "./ui/header_preview_menu";
 @import "./ui/circular_progress";
+@import "./pages/search";
+@import 'react_dates_overrides';
+@import "ui/searchBar";
 
 * {
   margin: 0;

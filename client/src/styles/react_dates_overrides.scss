@@ -1,0 +1,41 @@
+// NOTE: the order of these styles DO matter
+
+// Will edit everything selected including everything between a range of dates
+.CalendarDay__selected_span {
+  background: #82e0aa; //background
+  color: white; //text
+  border: 1px solid $primary; //default styles include a border
+}
+
+// Will edit selected date or the endpoints of a range of dates
+.CalendarDay__selected {
+  background: $primary;
+  color: white;
+}
+
+// Will edit when hovered over. _span style also has this property
+.CalendarDay__selected:hover {
+  background: orange;
+  color: white;
+}
+
+// Will edit when the second date (end date) in a range of dates
+// is not yet selected. Edits the dates between your mouse and said date
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+  background: brown;
+}
+.DateInput {
+  width: 45% !important;
+}
+.DateRangePickerInput__withBorder {
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 0, 0, 0.23) !important;
+  padding: 4px !important;
+}
+.DateRangePickerInput {
+  padding: 4px !important;
+}
+.DateInput_input__focused{
+  border-bottom: none !important;
+}

@@ -1,14 +1,14 @@
 //$xs: 0px;
 @media screen and (min-width: $xs) {
   .hotel-card {
-    max-width: 200px !important;
+    margin: auto;
+    width: 100%;
   }
   .hotel-card-media {
     height: 150px !important;
-    width: 200px !important;
   }
   .hotel-card-text {
-    width: 200px !important;
+    width: 100% !important;
     position: absolute !important;
     bottom: 0px !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
@@ -26,99 +26,103 @@
 //$sm: 600px;
 @media screen and (min-width: $sm) {
   .hotel-card {
-    max-width: 200px !important;
-  }
-  .hotel-card-media {
-    height: 150px !important;
-    width: 200px !important;
-  }
-  .hotel-card-text {
-    width: 200px !important;
-    position: absolute !important;
-    bottom: 0px !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    padding: 5px 0px 5px 5px !important;
-  }
-  #reviews {
-    display: none;
-  }
-  #rooms {
-    display: none;
-  }
-}
-
-//$md: 960px;
-@media screen and (min-width: $md) {
-  .hotel-card {
-    max-width: 250px !important;
+    margin: auto;
+    width: 100%;
   }
   .hotel-card-media {
     height: 200px !important;
-    width: 250px !important;
   }
   .hotel-card-text {
-    width: 250px !important;
+    width: 100% !important;
     position: absolute !important;
     bottom: 0px !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
     color: white !important;
     padding: 5px 0px 5px 5px !important;
-  }
-  #rooms {
-    display: inline;
   }
   #reviews {
     display: none;
+    @media screen and (min-width: $sm){
+      display: inline;
+    }
+  }
+  #rooms {
+    display: none;
+    @media screen and (min-width: $sm){
+      display: inline;
+    }
   }
 }
+
+////$md: 960px;
+//@media screen and (min-width: $md) {
+//  .hotel-card {
+//    max-width: 300px !important;
+//  }
+//  .hotel-card-media {
+//    //height: 200px !important;
+//  }
+//  .hotel-card-text {
+//    width: 100% !important;
+//    position: absolute !important;
+//    bottom: 0px !important;
+//    background-color: rgba(0, 0, 0, 0.6) !important;
+//    color: white !important;
+//    padding: 5px 0px 5px 5px !important;
+//  }
+//  #rooms {
+//    display: none;
+//  }
+//  #reviews {
+//    display: none;
+//  }
+//}
 
 //$lg: 1280px;
-@media screen and (min-width: $lg) {
-  .hotel-card {
-    max-width: 300px !important;
-  }
-  .hotel-card-media {
-    height: 250px !important;
-    width: 300px !important;
-  }
-  .hotel-card-text {
-    width: 300px !important;
-    position: absolute !important;
-    bottom: 0px !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    padding: 5px 0px 5px 5px !important;
-  }
-  #rooms {
-    display: inline;
-  }
-  #reviews {
-    display: inline;
-  }
-}
+//@media screen and (min-width: $lg) {
+//  .hotel-card {
+//    max-width: 300px !important;
+//  }
+//  .hotel-card-media {
+//    height: 250px !important;
+//  }
+//  .hotel-card-text {
+//    width: 100% !important;
+//    position: absolute !important;
+//    bottom: 0px !important;
+//    background-color: rgba(0, 0, 0, 0.6) !important;
+//    color: white !important;
+//    padding: 5px 0px 5px 5px !important;
+//  }
+//  #rooms {
+//    display: inline;
+//  }
+//  #reviews {
+//    display: inline;
+//  }
+//}
 
-//$xl: 1920px;
-@media screen and (min-width: $xl) {
-  .hotel-card {
-    max-width: 300px !important;
-  }
-  .hotel-card-media {
-    height: 250px !important;
-    width: 300px !important;
-  }
-  .hotel-card-text {
-    width: 300px !important;
-    position: absolute !important;
-    bottom: 0px !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    color: white !important;
-    padding: 5px 0px 5px 5px !important;
-  }
-  #rooms {
-    display: inline;
-  }
-  #reviews {
-    display: inline;
-  }
-}
+////$xl: 1920px;
+//@media screen and (min-width: $xl) {
+//  .hotel-card {
+//    //max-width: 300px !important;
+//    margin: 10px;
+//  }
+//  .hotel-card-media {
+//    height: 250px !important;
+//  }
+//  .hotel-card-text {
+//    width: 100% !important;
+//    position: absolute !important;
+//    bottom: 0px !important;
+//    background-color: rgba(0, 0, 0, 0.6) !important;
+//    color: white !important;
+//    padding: 5px 0px 5px 5px !important;
+//  }
+//  #rooms {
+//    display: inline;
+//  }
+//  #reviews {
+//    display: inline;
+//  }
+//}
