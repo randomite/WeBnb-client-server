@@ -73,7 +73,8 @@ class AuthenticationModal extends React.Component {
       .post(endpoint, data)
       .then(response => {
         console.log("Verification", response);
-        this.verifyToken();
+          this.handleLogIn()
+          // this.verifyToken();
       })
       .catch(function(error) {
         self.setState({ verifySubmitButton: false });
