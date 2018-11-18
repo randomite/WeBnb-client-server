@@ -5,7 +5,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/es/Button/Button";
 import Popper from "@material-ui/core/es/Popper/Popper";
@@ -32,6 +31,8 @@ import { path } from "../ui/Logo";
 import {withRouter} from "react-router-dom";
 import LogOutIcon from '@material-ui/icons/ExitToApp'
 import SearchBar from "./SearchBar";
+import Grid from "@material-ui/core/Grid/Grid";
+import FilterBar from "./FilterBar";
 
 let buttonStyle = "header_button";
 
@@ -500,21 +501,38 @@ class Header extends React.Component {
           color={this.props.variant}
         >
           <Toolbar>
-            {renderMobileMenuButton}
-              <SvgIcon
-                className='logo'
-                viewBox="0 0 355.5 281.42"
-                fontSize="large"
-                onClick={this.toggleDrawer}
-                color={
-                  this.props.variant === "secondary" ? "primary" : "secondary"
-                }
-              >
-                {path}
-              </SvgIcon>
-            {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
-            <div className="grow" />
-            {this.props.isLoggedIn ? renderDesktopUserHeader : renderLogInHeader}
+              <Grid container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="center">
+                  <Grid  xs={3} container sm={1}
+                        direction="row"
+                         justify="space-evenly"
+                         alignItems="center">
+                          <Grid item>{renderMobileMenuButton}</Grid>
+                          <Grid item>
+                          <SvgIcon
+                              className='logo'
+                              viewBox="0 0 355.5 281.42"
+                              fontSize="large"
+                              onClick={this.toggleDrawer}
+                              color={
+                                  this.props.variant === "secondary" ? "primary" : "secondary"
+                              }
+                          >
+                              {path}
+                          </SvgIcon>
+                      </Grid>
+
+                  </Grid>
+                  <Grid item xs={9} sm={7}>
+                  {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
+                  </Grid>
+                  <Grid item sm={4}>
+                  {this.props.isLoggedIn ? renderDesktopUserHeader : renderLogInHeader}
+                  </Grid>
+                  {window.innerWidth <600 ? <Grid xs={12}><FilterBar/></Grid> : null}
+              </Grid>
           </Toolbar>
         </AppBar>
         <Drawer

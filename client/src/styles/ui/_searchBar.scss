@@ -73,3 +73,8 @@ button[disabled]{
 	background: $white;
 	border-radius: 0 0 4px 4px;
 }
+.hide_mobile{
+	@media screen and (max-width: $sm) {
+		display: none;
+	}
+}

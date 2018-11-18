@@ -77,9 +77,8 @@
 .search {
   position: relative;
   border-radius: $borderradius;
-  margin-right: $themePadding * 2;
   border: 0.1rem $lightgrey solid;
-  margin-left: $themePadding;
+  margin-top: 5px;
   width: 100%;
 
   @media screen and (min-width: $sm) {
