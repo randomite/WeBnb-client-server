@@ -99,7 +99,7 @@ export default class Gallery extends React.Component {
   }
 }
 
-Gallery.PropTypes = {
+Gallery.propTypes = {
   hotelImages: PropTypes.array,
   roomImages: PropTypes.array
 };

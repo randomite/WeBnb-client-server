@@ -7,8 +7,14 @@ import RoomGrid from "../ui/RoomGrid";
 import BookingDetails from "../ui/BookingDetails";
 import instance from "../../Axios";
 import {Grid} from '@material-ui/core'
+import GoogleMapReact from 'google-map-react';
+import HotelMap from "../ui/HotelMap";
+import MapMarker from "../ui/MapMarker";
 
 const hotel_data = require("./hotel_data");
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
 
 export default class HotelView extends React.Component {
   constructor() {
@@ -30,18 +36,30 @@ export default class HotelView extends React.Component {
   };
 
   render() {
+
+    const hotelMarker=(<MapMarker
+        key={hotel_data.id}
+        price={hotel_data.rooms[0].price}
+        lat={hotel_data.latitude}
+        lng={hotel_data.longitude}
+        id={hotel_data.id}
+    />);
+
+    console.log("HOTEL DATA", hotel_data.latitude)
     return (
       <div>
         <Header />
         <div className="hotel">
-          <div className="gallery">
+          <div>
             <Gallery
               hotelImages={hotel_data.images}
               roomImages={this.combineRoomImages()}
             />
           </div>
-          <Grid container className="hotel_details">
-            <Grid item xs={12} sm={7}>
+          <Grid container className="hotel_details" spacing={8}
+                justify="center"
+                alignItems="center">
+            <Grid item xs={12} sm={12} md={8}>
               <h1>{hotel_data.name}</h1>
               <h5>{hotel_data.address}</h5>
               <h6>{hotel_data.city} {hotel_data["postal code"]}</h6>
@@ -53,8 +71,24 @@ export default class HotelView extends React.Component {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={12} md={4}>
                 <BookingDetails />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+                <h1>Location</h1>
+                <div style={{ height: '50vh', width: '100%' }}>
+                    <GoogleMapReact
+                        defaultCenter={{ lat: hotel_data.latitude, lng: hotel_data.longitude}}
+                        defaultZoom={14}
+                        // zoom={15}
+                        bootstrapURLKeys={{
+                            key: process.env.REACT_APP_MAPS_API_KEY,
+                            language: "en"
+                        }}
+                    >
+                        {hotelMarker}
+                    </GoogleMapReact>
+                </div>
             </Grid>
           </Grid>
         </div>

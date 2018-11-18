@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 import MapMarker from "../ui/MapMarker";
 import {connect} from 'react-redux';
+import {PropTypes} from 'prop-types'
 
 class HotelMap extends React.Component {
   renderHotelMarkers = () => {
@@ -18,7 +19,7 @@ class HotelMap extends React.Component {
   };
 
   static defaultProps = {
-    zoom: 5
+    zoom: 10
   };
 
   render() {
