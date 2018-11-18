@@ -43,13 +43,6 @@ export default class Gallery extends React.Component {
     });
   }
 
-  randomIntFromInterval = (
-    min,
-    max // min and max included
-  ) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
   render() {
     return (
       <div className="gallery">
@@ -83,13 +76,7 @@ export default class Gallery extends React.Component {
             <div>
               <div
                 onClick={e => this.openLightbox(e, 4)}
-                style={{
-                  backgroundImage: `url(${
-                    this.state.photos[
-                      this.randomIntFromInterval(0, this.state.photos.length-1)
-                    ].src
-                  }`
-                }}
+                style={{ backgroundImage: `url(${this.state.photos[4].src}` }}
               />
             </div>
           </div>
