@@ -27,8 +27,9 @@ class RoomCard extends React.Component {
     const roomSelected = (
       <Grid item>
         <Paper
+            elevation={0}
           onClick={this.handelRoomSelected}
-          style={{ padding: "10px" }}
+          style={{ padding: "10px" , border: '1px solid rgba(0, 0, 0, 0.23)'}}
           className={
             this.props.id === this.props.room.id
               ? "room_card active"

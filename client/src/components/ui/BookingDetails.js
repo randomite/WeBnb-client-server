@@ -1,9 +1,12 @@
 import React from "react";
 import RoomCard from "./RoomCard";
-import { Button } from "@material-ui/core";
+import {Button, FormControl} from "@material-ui/core";
 import { connect } from "react-redux";
 import {DateRangePicker} from "react-dates";
 import moment from 'moment'
+import Counters from "./searchBar/Counters";
+import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
+import Popover from "@material-ui/core/Popover/Popover";
 
 class BookingDetails extends React.Component {
 
@@ -11,10 +14,14 @@ class BookingDetails extends React.Component {
     super();
 
     this.state = {
-      focusedInput: null
-
+      focusedInput: null,
+        guestsPopover: false,
     }
   }
+
+    handleGuestPopoverOpen = () => {
+        this.setState({ guestsPopover: true });
+    };
 
   handleDateChange=(startDate, endDate)=>{
     console.log("DATES CHANGE", startDate , endDate)
@@ -43,6 +50,31 @@ class BookingDetails extends React.Component {
       </div>
     );
 
+    const priceBreakdown = (
+        <div className="price_breakdown">
+            <div>
+                ${this.props.room.price} x {moment(this.props.endDate).diff(this.props.startDate, 'days')} days
+                <div >
+                    ${this.props.room.price * 2}
+                </div>
+            </div>
+            <br/>
+            <div>
+                Service fee
+                <div >
+                    $40
+                </div>
+            </div>
+            <br/>
+            <div>
+                Total
+                <div >
+                    ${this.props.room.price * 2 + 40}
+                </div>
+            </div>
+        </div>
+    )
+
     return (
       <div className="booking">
         {this.props.room.id ? rate : noRate}
@@ -68,33 +100,42 @@ class BookingDetails extends React.Component {
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
         />
         <br/>
-        <div>GUEST PICKER HERE</div>
+          <FormControl
+              id="guest_button"
+              variant="outlined"
+              fullWidth
+              onClick={this.handleGuestPopoverOpen}
+          >
+              <OutlinedInput
+                  labelWidth={0}
+                  value={`${this.props.guests.total} Guests`}
+              >
+
+              </OutlinedInput>
+          </FormControl>
+          <Popover
+              anchorEl={document.getElementById("guest_button")}
+              open={this.state.guestsPopover}
+              onClose={() => this.setState({ guestsPopover: false })}
+              anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center"
+              }}
+              transformOrigin={{
+                  vertical: "top",
+                  horizontal: "center"
+              }}
+          >
+              <Counters />
+          </Popover>
         <br/>
-        <div className="price_breakdown">
-          <div>
-            ${this.props.room.price} x {moment(this.props.endDate).diff(this.props.startDate, 'days')} days
-            <div >
-              ${this.props.room.price * 2}
-            </div>
-          </div>
           <br/>
-          <div>
-            Service fee
-            <div >
-              $40
-            </div>
-          </div>
-          <br/>
-          <div>
-            Total
-            <div >
-              ${this.props.room.price * 2 + 40}
-            </div>
-          </div>
-        </div>
+          {this.props.room.id ? priceBreakdown : null}
         <br/>
         <div>
-          <Button variant="contained" className={"book_button"}>
+          <Button variant="contained" className={"book_button"}
+                  disabled={!this.props.room.id}
+          >
             Book
           </Button>
         </div>

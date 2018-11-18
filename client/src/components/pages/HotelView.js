@@ -10,15 +10,15 @@ import {Grid} from '@material-ui/core'
 import GoogleMapReact from 'google-map-react';
 import HotelMap from "../ui/HotelMap";
 import MapMarker from "../ui/MapMarker";
+import store from '../../redux/store'
+import moment from 'moment'
 
 const hotel_data = require("./hotel_data");
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 
 export default class HotelView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       startDate: null,
@@ -28,6 +28,27 @@ export default class HotelView extends React.Component {
 
     //GET DATA FROM BACK END
   }
+  componentWillMount(){
+      // If there is no search then set the dates to be now and tomorrow
+      if (! (store.getState().search.endDate && store.getState().search.startDate))
+          store.dispatch({
+              type: "booking/SET_DATES",
+              payload: {
+                  startDate: moment(),
+                  endDate: moment().add(1, 'days')
+              }
+          })
+      if (! (store.getState().booking.guests.total))
+          store.dispatch({
+              type: "booking/SET_GUESTS",
+              payload: {
+                  adults: 1,
+                  children: 0,
+                  total: 1
+              }
+          })
+  }
+
   // Combine all the images from all the rooms into one large array
   combineRoomImages = () => {
     return hotel_data.rooms.reduce(function(accumulator, currentValue) {
@@ -44,8 +65,6 @@ export default class HotelView extends React.Component {
         lng={hotel_data.longitude}
         id={hotel_data.id}
     />);
-
-    console.log("HOTEL DATA", hotel_data.latitude)
     return (
       <div>
         <Header />
@@ -58,7 +77,7 @@ export default class HotelView extends React.Component {
           </div>
           <Grid container className="hotel_details" spacing={8}
                 justify="center"
-                alignItems="center">
+                alignItems="flex-start">
             <Grid item xs={12} sm={12} md={8}>
               <h1>{hotel_data.name}</h1>
               <h5>{hotel_data.address}</h5>
