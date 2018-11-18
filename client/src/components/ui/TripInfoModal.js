@@ -20,6 +20,7 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Counters from "./searchBar/Counters";
 import {withRouter} from "react-router-dom";
 import Popper from "@material-ui/core/Popper/Popper";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -200,6 +201,7 @@ class TripInfoModal extends React.Component {
         <DateRangePicker
           required
           block
+          numberOfMonths={window.innerWidth < 960 ? 1 : 2}
           startDatePlaceholderText="Check In"
           endDatePlaceholderText='Check Out'
         startDate={this.props.startDate} // momentPropTypes.momentObj or null,
@@ -216,23 +218,24 @@ class TripInfoModal extends React.Component {
         <br />
         <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHO</div>
         {guestsDropDown}
-        <Popover
+        <Popper
           anchorEl={document.getElementById("guestDropDownButton")}
           open={this.state.guestsPopover}
-          onClose={() => this.setState({ guestsPopover: false })}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center"
-          }}
+          onClose={() =>{ console.log('closed')}}
         >
-          <Counters />
-        </Popover>
+            <ClickAwayListener
+                onClickAway={() => {
+                    this.setState({ guestsPopover: false })}}>
+                <Counters />
+            </ClickAwayListener>
+        </Popper>
+        <br/>
+        <br/>
+
         <Button
           variant="contained"
+          fullWidth
+          size='large'
           color="secondary"
           type='submit'
         >

@@ -132,44 +132,12 @@
 .menu_icon {
   display: inline-block;
   cursor: pointer;
-
-  .bar {
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    margin: 7px 0;
-    transition: 0.4s;
-  }
-
-  .bar1 {
-    @extend .bar;
-  }
-  .bar2 {
-    @extend .bar;
-  }
-  .bar3 {
-    @extend .bar;
-  }
+  transition-property: -ms-transform, -webkit-transform, transform !important;
+  transition-duration: 250ms !important;
+  transition-timing-function: ease-in-out !important;
 }
-
 .change {
-  .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-8px, 5px);
-    transform: rotate(-45deg) translate(-8px, 5px);
-  }
-}
-
-.change {
-  .bar2 {
-    opacity: 0;
-  }
-}
-
-.change {
-  .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -5px);
-    transform: rotate(45deg) translate(-8px, -5px);
-  }
+  transform: rotate(180deg);
 }
 .log_out{
   color: $primary !important;

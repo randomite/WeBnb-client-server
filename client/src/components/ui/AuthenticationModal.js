@@ -19,6 +19,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
 import { instance } from "../../Axios";
+import store from "../../redux/store";
 
 const minPasswordLength = 6;
 
@@ -72,13 +73,34 @@ class AuthenticationModal extends React.Component {
       .post(endpoint, data)
       .then(response => {
         console.log("Verification", response);
-        this.handleLogIn();
+          this.handleLogIn()
+          // this.verifyToken();
       })
       .catch(function(error) {
         self.setState({ verifySubmitButton: false });
         alert(error);
       });
   };
+
+  verifyToken = () =>{
+    const endpoint = "verifytoken"
+    let config = {
+      headers: { 'Access-Control-Allow-Origin': '*',access_token: localStorage.getItem("access_token") }
+    };
+    instance.post(endpoint, null ,config).then(response => {
+      console.log("Verification Response", response);
+      store.dispatch({
+        type: "user/LOG_IN",
+        payload: {
+          email: localStorage.getItem("username"),
+          access_token: localStorage.getItem("access_token"),
+          id_token: localStorage.getItem("id_token"),
+          refresh_token: localStorage.getItem("refresh_token"),
+          username: localStorage.getItem("username")
+        }
+      });
+    })
+  }
 
   handleSignUp = () => {
     let self = this;
