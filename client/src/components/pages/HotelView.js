@@ -6,6 +6,7 @@ import "react-dates/initialize";
 import RoomGrid from "../ui/RoomGrid";
 import BookingDetails from "../ui/BookingDetails";
 import instance from "../../Axios";
+import {Grid} from '@material-ui/core'
 
 const hotel_data = require("./hotel_data");
 
@@ -39,8 +40,8 @@ export default class HotelView extends React.Component {
               roomImages={this.combineRoomImages()}
             />
           </div>
-          <div className="hotel_details">
-            <div className="details">
+          <Grid container className="hotel_details">
+            <Grid item xs={12} sm={7}>
               <h1>{hotel_data.name}</h1>
               <h5>{hotel_data.address}</h5>
               <h6>{hotel_data.city} {hotel_data["postal code"]}</h6>
@@ -51,9 +52,11 @@ export default class HotelView extends React.Component {
                   <RoomGrid rooms={hotel_data.rooms} />
                 </div>
               </div>
-            </div>
-            <BookingDetails />
-          </div>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+                <BookingDetails />
+            </Grid>
+          </Grid>
         </div>
       </div>
     );
