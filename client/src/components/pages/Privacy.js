@@ -3,12 +3,11 @@ import { withRouter } from "react-router-dom";
 import Footer from "../ui/Footer";
 import Header from "../ui/Header";
 
-
 class Privacy extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
         <div className="privacy">
           <body>
             <div className="body">
@@ -16,7 +15,7 @@ class Privacy extends React.Component {
                 <h1>WeBnb Privacy Policy</h1>
               </div>
 
-              <p>Last Updated: March 17,2018!</p>
+              <p>Last Updated: October 1, 2018!</p>
               <p>Thank you for using WeBnb!</p>
               <p>
                 This Privacy Policy describes how we collect, use, process, and
@@ -111,7 +110,7 @@ class Privacy extends React.Component {
             </div>
           </body>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
