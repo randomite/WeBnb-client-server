@@ -3,11 +3,11 @@ import { withRouter } from "react-router-dom";
 import imgurl from "../../img/Rewards.jpg";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
+import RewardsTab from "../ui/RewardsTab";
 import CircularProgress from "@material-ui/core/CircularProgress";
 const rewards = require("./rewards_data");
 
 const backgroundStyle = {
-  // backgroundImage: "url(http://i.imgur.com/Kp076D5.jpg)"
   backgroundImage: `url( ${imgurl} )`
 };
 
@@ -40,15 +40,22 @@ class Rewards extends React.Component {
             </p>
           </div>
         </center>
+
         <div className="information">
           <h2>FREE Nights</h2>
-          <p>You currently have {rewards.freeNights} free night(s)</p>
+          <p>You currently have {rewards.freeNights.length} free night(s)</p>
+
+          <RewardsTab data={rewards} />
         </div>
+
         <div className="information">
           <h2>How it works?</h2>
-          <p className="emphasis">10 nights = 1 free night</p>
+          <p className="emphasis">
+            <h3>10 nights = 1 free night</h3>
+          </p>
           <p>
-            The value of a single free night is the average cost of the 10 night
+            The value of a single free night is the average cost of the 10
+            nights accumulated to obtain the free night.
           </p>
         </div>
         <Footer />
