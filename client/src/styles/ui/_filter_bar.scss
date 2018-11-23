@@ -4,3 +4,12 @@
   padding-right: 16px;
   padding-bottom: 16px;
 }
+
+.modal {
+  position: absolute !important;
+}
+
+.pricePopper {
+  z-index: 1500 !important;
+  position: absolute;
+}

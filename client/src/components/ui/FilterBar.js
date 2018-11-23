@@ -1,19 +1,32 @@
-import React from "react";
 import "rheostat/initialize";
+import React from "react";
 import Rheostat from "rheostat";
 import { Grid, Button } from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Popper from "@material-ui/core/Popper/Popper";
+import Fade from "@material-ui/core/Fade";
+import Paper from "@material-ui/core/Paper";
 
 export default class FilterBar extends React.Component {
-  state = { drawer: false };
+  state = {
+    drawer: false,
+    price: false
+  };
 
   toggleDrawer = (drawer, open) => () => {
     this.setState({
-      [drawer]: open
+      [drawer]: open,
+      price: false
     });
   };
 
+  handleOpen = () => {
+    this.setState({ price: !this.state.price });
+  };
+
   render() {
+    const { popper } = this.state;
+    const id = popper ? "simple-popper" : null;
     return (
       <div style={{ width: "100%", height: "46px", paddingTop: "10px" }}>
         <Grid
@@ -60,9 +73,24 @@ export default class FilterBar extends React.Component {
               alignItems="center"
             >
               <Grid item>
-                <Button size="small" variant="outlined">
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={this.handleOpen}
+                  id="wherePrice"
+                >
                   Price
                 </Button>
+                <Popper
+                  id={id}
+                  open={this.state.price}
+                  placement="bottom-end"
+                  anchorEl={document.getElementById("wherePrice")}
+                  className="pricePopper"
+                >
+                  <Paper>The content of the Popper.</Paper>
+                  <Rheostat min={1} max={100} values={[1, 100]} />
+                </Popper>
               </Grid>
             </Grid>
           </div>
