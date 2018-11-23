@@ -1,0 +1,12 @@
+@media screen and (max-width: $sm) {
+  .RewardsappBarSize {
+    width: 80% !important;
+    margin: auto !important;
+  }
+}
+@media screen and (min-width: $sm) {
+  .RewardsappBarSize {
+    width: 60% !important;
+    margin: auto !important;
+  }
+}

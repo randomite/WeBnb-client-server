@@ -14,6 +14,20 @@ const backgroundStyle = {
 const percentage = rewards.progress;
 
 class Rewards extends React.Component {
+  progress = () => {
+    let len = rewards.freeNights.length;
+    let last = rewards.freeNights[len - 1];
+    let nights = rewards.freeNights.length;
+    if (len === 0) {
+      nights = 0;
+    } else if (last.includes(0)) {
+      nights = nights - 1;
+      rewards.freeNights.pop();
+    }
+    console.log(nights);
+    return nights;
+  };
+
   render() {
     return (
       <div>
@@ -32,7 +46,7 @@ class Rewards extends React.Component {
             <CircularProgress
               className="progress1"
               variant="static"
-              value={rewards.progress}
+              value={percentage}
               size={300}
             />
             <p className="percentage">
@@ -43,7 +57,7 @@ class Rewards extends React.Component {
 
         <div className="information">
           <h2>FREE Nights</h2>
-          <p>You currently have {rewards.freeNights.length} free night(s)</p>
+          <p>You currently have {this.progress()} free night(s)</p>
 
           <RewardsTab data={rewards} />
         </div>
@@ -53,7 +67,7 @@ class Rewards extends React.Component {
           <p className="emphasis">
             <h3>10 nights = 1 free night</h3>
           </p>
-          <p>
+          <p style={{ marginBottom: "50px" }}>
             The value of a single free night is the average cost of the 10
             nights accumulated to obtain the free night.
           </p>

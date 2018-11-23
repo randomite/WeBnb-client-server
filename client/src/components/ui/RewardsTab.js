@@ -33,7 +33,7 @@ class RewardsTab extends React.Component {
 
     return (
       <div>
-        <AppBar position="static" style={{ width: "60%", margin: "auto" }}>
+        <AppBar position="static" className="RewardsappBarSize">
           <Tabs value={value} onChange={this.handleChange}>
             {this.renderTabContainer()}
           </Tabs>

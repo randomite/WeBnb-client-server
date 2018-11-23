@@ -6,13 +6,12 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import outline from "../../img/Outline.png";
 import moon from "../../img/Moon.png";
+import coin from "../../img/coinBadge.png";
 
 class RewardsTable extends React.Component {
   hasFreeNight = () => {
     var len = this.props.nights.length;
     let nights = this.props.nights;
-    console.log("length1:" + len);
-    console.log("nights:" + nights);
     if (len === 10) {
       return true;
     } else {
@@ -22,61 +21,40 @@ class RewardsTable extends React.Component {
 
   calculateAverage = () => {
     let len = this.props.nights.length;
-    console.log("length2:" + len);
     if (this.hasFreeNight()) {
       let sum = this.props.nights.reduce(
         (previous, current) => (current += previous)
       );
       let avg = sum / len;
-      console.log("average:" + avg);
       return avg;
     }
   };
 
-  renderTableCells1 = () => {
+  renderTableCells = value => {
     let nights = this.props.nights;
     let Table = [];
+    var expression = false;
 
     nights.map((night, index) => {
-      if (index < 5) {
-        if (night === 0) {
-          Table.push(
-            <TableCell>
-              <img src={outline} style={{ width: "50px", height: "50px" }} />
-              <p>${night}</p>
-            </TableCell>
-          );
-        } else {
-          Table.push(
-            <TableCell>
-              <img src={moon} style={{ width: "50px", height: "50px" }} />
-              <p>${night}</p>
-            </TableCell>
-          );
-        }
+      if (value === 1) {
+        expression = index < 5;
+      } else if (value === 2) {
+        expression = index >= 5;
       }
-    });
-    return Table;
-  };
 
-  renderTableCells2 = () => {
-    let nights = this.props.nights;
-    let Table = [];
-
-    nights.map((night, index) => {
-      if (index >= 5) {
+      if (expression) {
         if (night === 0) {
           Table.push(
-            <TableCell>
-              <img src={outline} style={{ width: "50px", height: "50px" }} />
-              <p>$ {night}</p>
+            <TableCell className="cell">
+              <img src={outline} className="imgSize" alt={"$" + { night }} />
+              <p>${night}</p>
             </TableCell>
           );
         } else {
           Table.push(
-            <TableCell>
-              <img src={moon} style={{ width: "50px", height: "50px" }} />
-              <p>$ {night}</p>
+            <TableCell className="cell">
+              <img src={moon} className="imgSize" alt={"$" + { night }} />
+              <p>${night}</p>
             </TableCell>
           );
         }
@@ -88,12 +66,25 @@ class RewardsTable extends React.Component {
   render() {
     return (
       <div>
-        <Paper style={{ width: "60%", margin: "auto" }}>
-          <Table style={{ width: "100%", margin: "auto" }}>
-            <TableBody>
-              <TableRow>{this.renderTableCells1()}</TableRow>
-              <TableRow>{this.renderTableCells2()}</TableRow>
-              <TableCell>FREE NIGHT Cost: {this.calculateAverage()}</TableCell>
+        <Paper className="format">
+          <Table className="format">
+            <TableBody className="format2">
+              <TableRow className="format2">
+                {this.renderTableCells(1)}
+              </TableRow>
+              <TableRow className="format2">
+                {this.renderTableCells(2)}
+              </TableRow>
+
+              <TableRow className="format2">
+                <TableCell colSpan={5} numeric>
+                  <center>
+                    <img src={coin} className="imgSize" alt={""} />
+
+                    <p>FREE NIGHT Cost: {this.calculateAverage()}</p>
+                  </center>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </Paper>
