@@ -71,6 +71,15 @@ class Rewards extends React.Component {
             The value of a single free night is the average cost of the 10
             nights accumulated to obtain the free night.
           </p>
+
+          <h2>How do I redeem my Free Night?</h2>
+          <p className="emphasis">
+            <h3>10 nights = 1 free night</h3>
+          </p>
+          <p style={{ marginBottom: "50px" }}>
+            To redeem your free night, upon checking out select Apply Free
+            Night.
+          </p>
         </div>
         <Footer />
       </div>
