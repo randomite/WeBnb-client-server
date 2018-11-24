@@ -26,7 +26,8 @@ export default class Search extends React.Component {
   };
 
   state = {
-    checked: false
+    checked: false,
+    filteredData: { search_data }
   };
 
   //Function to display/hide map

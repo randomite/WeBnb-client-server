@@ -11,5 +11,14 @@
 
 .pricePopper {
   z-index: 1500 !important;
-  position: absolute;
+}
+
+.sliderContainer {
+  height: 100px;
+  width: 300px;
+  margin-top: 5px;
+  padding-bottom: 0;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 16px;
 }
