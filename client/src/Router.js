@@ -9,10 +9,12 @@ import Terms from "./components/pages/Terms";
 import Test from "./components/pages/Test";
 import Search from "./components/pages/Search";
 import HotelView from './components/pages/HotelView'
+import Checkout from './components/pages/Checkout';
 
 const Router = () => (
   <main>
     <Switch>
+      <Route path="/payment" component={Checkout} />
       <Route path="/search" component={Search}/>
       <Route path="/AboutUs" component={AboutUs} />
       <Route path="/privacy" component={Privacy} />
