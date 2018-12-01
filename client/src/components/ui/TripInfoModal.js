@@ -22,6 +22,7 @@ import {withRouter} from "react-router-dom";
 import Popper from "@material-ui/core/Popper/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
 import {search} from "../../redux/actions";
+import {geo2zip} from 'geo2zip'
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -55,15 +56,18 @@ class TripInfoModal extends React.Component {
         return getLatLng(results[0])}
       )
       .then(latLng => {
-        console.log("Success", latLng);
-        this.props.dispatch({
+        geo2zip({
+          latitude: latLng.lat,
+          longitude: latLng.lng
+        }).then(zip=>        this.props.dispatch({
           type: "search/SET_LOCATION",
           payload: {
             latitude: latLng.lat,
             longitude: latLng.lng,
-            address: address
+            address: address,
+            zipcode: zip
           }
-        });
+        }))
       })
       .catch(error => console.error("Error", error));
     this.setState({ address: address });
@@ -123,7 +127,7 @@ class TripInfoModal extends React.Component {
       this.props.startDate.format("YYYY-DD-MM"),
       this.props.endDate.format("YYYY-DD-MM"),
       this.props.guests.total,
-      94103
+      this.props.zipcode
     )).then(()=>this.props.history.push('/search'))
 
   };

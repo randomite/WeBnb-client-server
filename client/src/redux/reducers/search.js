@@ -16,7 +16,8 @@ const initialState = {
   },
   startDate: null,
   endDate: null,
-  searchData: null
+  searchData: null,
+  zipcode: null
 };
 
 export default (state = initialState, action) => {
@@ -62,7 +63,8 @@ export default (state = initialState, action) => {
         ...state,
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,
-        address: action.payload.address
+        address: action.payload.address,
+        zipcode: action.payload.zipcode,
       };
     case "search/SET_END_DATE": {
       return { ...state, endDate: action.payload.endDate };
