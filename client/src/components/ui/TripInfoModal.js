@@ -21,6 +21,7 @@ import Counters from "./searchBar/Counters";
 import {withRouter} from "react-router-dom";
 import Popper from "@material-ui/core/Popper/Popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
+import {search} from "../../redux/actions";
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -49,7 +50,10 @@ class TripInfoModal extends React.Component {
 
   handleSelect = address => {
     geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
+      .then(results => {
+        console.log('results', results)
+        return getLatLng(results[0])}
+      )
       .then(latLng => {
         console.log("Success", latLng);
         this.props.dispatch({
@@ -73,7 +77,6 @@ class TripInfoModal extends React.Component {
   };
 
   handleDateChange=(startDate, endDate)=>{
-    console.log("DATES CHANGE", startDate , endDate)
     this.props.dispatch({
       type: "search/SET_DATES",
       payload: {
@@ -116,8 +119,13 @@ class TripInfoModal extends React.Component {
       });
     }
 
-    //Navigate to the search page
-    this.props.history.push('/search')
+    this.props.dispatch(search(
+      this.props.startDate.format("YYYY-DD-MM"),
+      this.props.endDate.format("YYYY-DD-MM"),
+      this.props.guests.total,
+      94103
+    )).then(()=>this.props.history.push('/search'))
+
   };
 
   render() {

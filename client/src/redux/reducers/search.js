@@ -15,7 +15,8 @@ const initialState = {
     total: 1
   },
   startDate: null,
-  endDate: null
+  endDate: null,
+  searchData: null
 };
 
 export default (state = initialState, action) => {
@@ -80,6 +81,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         address: action.payload.address
+      }
+    }
+    case 'SEARCH': {
+      return {
+        ...state,
+        searchData: action.payload
       }
     }
     default:

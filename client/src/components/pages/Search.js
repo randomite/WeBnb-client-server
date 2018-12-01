@@ -8,20 +8,28 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Slide from "@material-ui/core/Slide";
 import Grow from "@material-ui/core/Grow";
 import Grid from "@material-ui/core/Grid/Grid";
+import {connect} from 'react-redux'
 const search_data = require("./search_data");
 
-export default class Search extends React.Component {
+
+class Search extends React.Component {
   renderHotels = () => {
-    return search_data.map(hotel => (
-      <HotelCard
-        key={hotel.id}
-        name={hotel.name}
-        rooms={Object.keys(hotel.rooms).length}
-        price={hotel.rooms[0].price}
-        image={hotel.rooms[0].images[0].src}
-        id={hotel.id}
-      />
-    ));
+    if (this.props.searchData){
+
+      return this.props.searchData.map(hotel => (
+        <HotelCard
+          key={hotel.id}
+          name={hotel.name}
+          rooms={Object.keys(hotel.rooms).length}
+          price={hotel.rooms[0].price}
+          image={hotel.images[0].M.src.S}
+          id={hotel.id}
+        />
+      ));
+    } else {
+      return <div>No Data</div>
+    }
+
   };
 
   state = {
@@ -93,3 +101,5 @@ export default class Search extends React.Component {
     );
   }
 }
+
+export default connect(state=>state.search)(Search)
