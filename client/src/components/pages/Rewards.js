@@ -20,7 +20,7 @@ class Rewards extends React.Component {
     let nights = rewards.freeNights.length;
     if (len === 0) {
       nights = 0;
-    } else if (last.includes(0)) {
+    } else if (last[0] === 0) {
       nights = nights - 1;
       rewards.freeNights.pop();
     }
