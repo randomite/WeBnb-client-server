@@ -24,6 +24,13 @@ export const Theme = createMuiTheme({
         padding: 24
       }
     },
+    MuiOutlinedInput: {
+      root: {
+        "&:hover:not($disabled):not($focused):not($error) $notchedOutline": {
+          borderColor: '#BE1E2D'
+        },
+      },
+    },
     MuiButton: {
       root: {
         fontSize: "14px",
