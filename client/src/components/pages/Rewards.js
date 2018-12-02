@@ -1,31 +1,62 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import imgurl from "../../img/Rewards.jpg";
 import Header from "../ui/Header";
 import Footer from "../ui/Footer";
 import RewardsTab from "../ui/RewardsTab";
+import { instance } from "../../Axios";
+import store from "../../redux/store";
 import CircularProgress from "@material-ui/core/CircularProgress";
-const rewards = require("./rewards_data");
-
+const rewards = {};
 const backgroundStyle = {
   backgroundImage: `url( ${imgurl} )`
 };
 
-const percentage = rewards.progress;
-
 class Rewards extends React.Component {
+  state = {
+    rewards: [],
+    days: 0
+  };
+
+  componentWillMount() {
+    setTimeout(
+      function() {
+        instance("/rewards?email=" + store.getState().user.email).then(res => {
+          console.log("Resource:" + res);
+          this.setState({ rewards: res.data.data });
+        });
+      }.bind(this),
+      4000
+    );
+
+    setTimeout(
+      function() {
+        this.setState({ days: this.progress() });
+      }.bind(this),
+      6000
+    );
+  }
+
   progress = () => {
-    let len = rewards.freeNights.length;
-    let last = rewards.freeNights[len - 1];
-    let nights = rewards.freeNights.length;
+    let len = this.state.rewards.freeNights.length;
+    let lastLen = this.state.rewards.freeNights[len - 1].length;
+    let nights = this.state.rewards.freeNights.length;
     if (len === 0) {
       nights = 0;
-    } else if (last[0] === 0) {
+    } else if (lastLen < 10) {
       nights = nights - 1;
-      rewards.freeNights.pop();
     }
     console.log(nights);
     return nights;
+  };
+
+  renderRewards = () => {
+    if (this.state.rewards.length != 0) {
+      {
+        return <RewardsTab data={this.state.rewards} />;
+      }
+    }
   };
 
   render() {
@@ -46,20 +77,19 @@ class Rewards extends React.Component {
             <CircularProgress
               className="progress1"
               variant="static"
-              value={percentage}
+              value={this.state.rewards.progress}
               size={300}
             />
             <p className="percentage">
-              <b>{percentage}%</b>
+              <b>{this.state.rewards.progress}%</b>
             </p>
           </div>
         </center>
 
         <div className="information">
           <h2>FREE Nights</h2>
-          <p>You currently have {this.progress()} free night(s)</p>
-
-          <RewardsTab data={rewards} />
+          <p>You currently have {this.state.days} free night(s)</p>
+          {this.renderRewards()}
         </div>
 
         <div className="information">

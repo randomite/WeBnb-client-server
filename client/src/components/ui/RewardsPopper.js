@@ -17,13 +17,12 @@ class RewardsPopper extends React.Component {
 
   componentWillMount() {
     instance("/rewards?email=" + store.getState().user.email).then(res => {
-      console.log(res.data.data.average);
+      console.log("Popper:" + res.data.data.average);
       this.setState({ rewards: res.data.data.average });
     });
   }
 
   renderRewards = () => {
-    console.log("Second " + JSON.stringify(this.state.rewards));
     let nights = this.state.rewards;
     let Table = [];
     nights.map((night, index) => {
@@ -51,7 +50,8 @@ class RewardsPopper extends React.Component {
       infinite: true,
       speed: 250,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      dotsClass: "dot"
     };
     return (
       <div style={{ margin: "auto", width: "100px", paddingTop: "10px" }}>

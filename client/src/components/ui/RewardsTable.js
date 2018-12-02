@@ -9,10 +9,25 @@ import moon from "../../img/Moon.png";
 import coin from "../../img/coinBadge.png";
 
 class RewardsTable extends React.Component {
+  state = {
+    rewards: this.props.nights
+  };
+
+  componentWillMount() {
+    let len = this.state.rewards.length;
+    let nights = this.state.rewards;
+    console.log(len);
+    while (nights.length < 10) {
+      nights.push(0);
+      console.log(nights);
+      this.setState({ rewards: [...nights] });
+    }
+    console.log("more than 10");
+  }
+
   hasFreeNight = () => {
-    var len = this.props.nights.length;
-    let nights = this.props.nights;
-    if (len === 10) {
+    let nights = this.state.rewards;
+    if (nights.includes(0)) {
       return true;
     } else {
       return false;
@@ -20,9 +35,9 @@ class RewardsTable extends React.Component {
   };
 
   calculateAverage = () => {
-    let len = this.props.nights.length;
-    if (this.hasFreeNight()) {
-      let sum = this.props.nights.reduce(
+    let len = this.state.rewards.length;
+    if (!this.hasFreeNight()) {
+      let sum = this.state.rewards.reduce(
         (previous, current) => (current += previous)
       );
       let avg = sum / len;
@@ -31,7 +46,7 @@ class RewardsTable extends React.Component {
   };
 
   renderTableCells = value => {
-    let nights = this.props.nights;
+    let nights = this.state.rewards;
     let Table = [];
     var expression = false;
 
@@ -63,6 +78,26 @@ class RewardsTable extends React.Component {
     return Table;
   };
 
+  renderWeCoin = () => {
+    if (this.hasFreeNight()) {
+      return (
+        <center>
+          <img src={outline} className="imgSize" alt={""} />
+
+          <p>You need more bookings</p>
+        </center>
+      );
+    } else {
+      return (
+        <center>
+          <img src={coin} className="imgSize" alt={""} />
+
+          <p>FREE NIGHT Cost: ${this.calculateAverage()}</p>
+        </center>
+      );
+    }
+  };
+
   render() {
     return (
       <div>
@@ -78,11 +113,7 @@ class RewardsTable extends React.Component {
 
               <TableRow className="format2">
                 <TableCell colSpan={5} numeric>
-                  <center>
-                    <img src={coin} className="imgSize" alt={""} />
-
-                    <p>FREE NIGHT Cost: {this.calculateAverage()}</p>
-                  </center>
+                  {this.renderWeCoin()}
                 </TableCell>
               </TableRow>
             </TableBody>
