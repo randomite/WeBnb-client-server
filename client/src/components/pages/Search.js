@@ -9,13 +9,28 @@ import Slide from "@material-ui/core/Slide";
 import Grow from "@material-ui/core/Grow";
 import Grid from "@material-ui/core/Grid/Grid";
 import {connect} from 'react-redux'
-const search_data = require("./search_data");
-
+import {search} from "../../redux/actions";
+import qs from 'qs'
 
 class Search extends React.Component {
+
+  componentWillMount(){
+    this.getQuerry()
+  }
+
+  getQuerry() {
+    const queryParams = new URLSearchParams(this.props.location.search.toString());
+    let checkIn = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).checkIn
+    let checkOut = queryParams.get('checkOut');
+    let numberOfGuests = queryParams.get('numberOfGuests');
+    let zipCode = queryParams.get('zipcode');
+
+    console.log('querry params', numberOfGuests)
+    this.props.dispatch(search(checkIn, checkOut, numberOfGuests, zipCode))
+  }
+
   renderHotels = () => {
     if (this.props.searchData){
-
       return this.props.searchData.map(hotel => (
         <HotelCard
           key={hotel.id}
@@ -54,7 +69,7 @@ class Search extends React.Component {
                 unmountOnExit
             >
                 <div className="map-container">
-                    <HotelMap hotels={search_data} />
+                    <HotelMap hotels={this.props.searchData} />
                 </div>
             </Slide>
             {/*Displays map of search results with slide effect*/}
@@ -75,7 +90,10 @@ class Search extends React.Component {
           </div>
           {/*Displays # of searche results*/}
           <div>
-            <h2>{Object.keys(search_data).length} Hotels</h2>
+            {this.props.searchData ? <h2>{Object.keys(this.props.searchData).length} Hotels</h2> :
+              <h2>Nothing Found</h2>
+            }
+
           </div>
         </div>
         {/*Displays contents of the page */}

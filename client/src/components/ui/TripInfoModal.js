@@ -123,18 +123,30 @@ class TripInfoModal extends React.Component {
       });
     }
 
-    this.props.dispatch(search(
-      this.props.startDate.format("YYYY-DD-MM"),
-      this.props.endDate.format("YYYY-DD-MM"),
-      this.props.guests.total,
-      this.props.zipcode
-    )).then(()=>this.props.history.push('/search'))
+    let checkIn = this.props.startDate.format("YYYY-DD-MM")
+    let checkOut = this.props.endDate.format("YYYY-DD-MM")
+    let numberOfGuests = this.props.guests.total
+    let zipcode = this.props.zipcode;
+    this.props.dispatch(search(checkIn, checkOut, numberOfGuests, zipcode
+    )).then(()=>this.props.history.push({
+      pathname: '/search',
+      search: new URLSearchParams({
+        'checkIn': checkIn,
+        'checkOut': checkOut,
+        'numberOfGuests': numberOfGuests,
+        'zipcode': zipcode
+        }).toString()
+      }, ))
 
   };
 
-  render() {
-    console.log("TRIP MODAL PROPS", this.props);
 
+  // search: '?checkIn='+this.props.startDate +
+  //     '?checkOut='+ this.props.endDate+
+  //     '?numberOfGuests='+ this.props.guests.total+
+  //     '?zipcode='+this.props.zipcode
+
+  render() {
     const guestsDropDown = (
       <FormControl
         id="guestDropDownButton"

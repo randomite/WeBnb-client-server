@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types'
 
 class HotelMap extends React.Component {
+
+
   renderHotelMarkers = () => {
     return this.props.hotels.map(hotel => (
       <MapMarker
