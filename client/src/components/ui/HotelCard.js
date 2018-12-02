@@ -6,18 +6,24 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";
+import Grid from "@material-ui/core/Grid/Grid";
 
 class HotelCard extends React.Component {
   //handles the navigation to the hotel view page
   handleNavigate = () => {
-    this.props.history.push("hotel/" + this.props.id);
+    this.props.history.push({pathname: '/hotel',
+    search: new URLSearchParams({id: this.props.id }).toString()});
   };
 
   render() {
     return (
+        <Grid item xs={12} sm={6} md={3}>
       <Card className="hotel-card">
-        <CardActionArea onClick={this.handleNavigate}>
-          <CardMedia className="hotel-card-media" image={this.props.image}>
+        <CardActionArea style={{width:'100%'}} onClick={this.handleNavigate}>
+          <CardMedia image={this.props.image}
+                     className={"hotel-card-media"}
+                     height={155}
+          >
             <CardContent className="hotel-card-text">
               {/*# of rooms available*/}
               <Typography component="p" color="inherit" id="rooms">
@@ -39,6 +45,7 @@ class HotelCard extends React.Component {
           </CardMedia>
         </CardActionArea>
       </Card>
+        </Grid>
     );
   }
 }

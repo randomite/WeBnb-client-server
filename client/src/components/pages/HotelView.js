@@ -26,8 +26,14 @@ export default class HotelView extends React.Component {
       focusedInput: null
     };
 
-    //GET DATA FROM BACK END
+    this.getHotelData()
   }
+
+
+  getHotelData = () => {
+
+  }
+
   componentWillMount(){
       // If there is no search then set the dates to be now and tomorrow
       if (! (store.getState().search.endDate && store.getState().search.startDate))

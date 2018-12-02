@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types'
 
 class HotelMap extends React.Component {
+
+
   renderHotelMarkers = () => {
     return this.props.hotels.map(hotel => (
       <MapMarker
@@ -30,7 +32,7 @@ class HotelMap extends React.Component {
           defaultZoom={this.props.zoom}
           // zoom={15}
           bootstrapURLKeys={{
-            key: "AIzaSyBTL4nCbx4tgui_HLQZMK-t2Olm8cRHZIw",
+            key: process.env.REACT_APP_MAPS_API_KEY,
             language: "en"
           }}
         >

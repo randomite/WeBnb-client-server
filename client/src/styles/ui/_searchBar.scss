@@ -25,6 +25,8 @@
 	  font-size: 20px;
 	  color: #BE1E2D;
 	  cursor: pointer;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 button:disabled,
@@ -70,4 +72,9 @@ button[disabled]{
 	margin-top: 10px;
 	background: $white;
 	border-radius: 0 0 4px 4px;
+}
+.hide_mobile{
+	@media screen and (max-width: $sm) {
+		display: none;
+	}
 }

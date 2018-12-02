@@ -20,6 +20,9 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Counters from "./searchBar/Counters";
 import {withRouter} from "react-router-dom";
 import Popper from "@material-ui/core/Popper/Popper";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener/ClickAwayListener";
+import {search} from "../../redux/actions";
+import {geo2zip} from 'geo2zip'
 
 class TripInfoModal extends React.Component {
   constructor(props) {
@@ -48,17 +51,23 @@ class TripInfoModal extends React.Component {
 
   handleSelect = address => {
     geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
+      .then(results => {
+        console.log('results', results)
+        return getLatLng(results[0])}
+      )
       .then(latLng => {
-        console.log("Success", latLng);
-        this.props.dispatch({
+        geo2zip({
+          latitude: latLng.lat,
+          longitude: latLng.lng
+        }).then(zip=>        this.props.dispatch({
           type: "search/SET_LOCATION",
           payload: {
             latitude: latLng.lat,
             longitude: latLng.lng,
-            address: address
+            address: address,
+            zipcode: zip
           }
-        });
+        }))
       })
       .catch(error => console.error("Error", error));
     this.setState({ address: address });
@@ -72,7 +81,6 @@ class TripInfoModal extends React.Component {
   };
 
   handleDateChange=(startDate, endDate)=>{
-    console.log("DATES CHANGE", startDate , endDate)
     this.props.dispatch({
       type: "search/SET_DATES",
       payload: {
@@ -115,13 +123,30 @@ class TripInfoModal extends React.Component {
       });
     }
 
-    //Navigate to the search page
-    this.props.history.push('/search')
+    let checkIn = this.props.startDate.format("YYYY-DD-MM")
+    let checkOut = this.props.endDate.format("YYYY-DD-MM")
+    let numberOfGuests = this.props.guests.total
+    let zipcode = this.props.zipcode;
+    this.props.dispatch(search(checkIn, checkOut, numberOfGuests, zipcode
+    )).then(()=>this.props.history.push({
+      pathname: '/search',
+      search: new URLSearchParams({
+        'checkIn': checkIn,
+        'checkOut': checkOut,
+        'numberOfGuests': numberOfGuests,
+        'zipcode': zipcode
+        }).toString()
+      }, ))
+
   };
 
-  render() {
-    console.log("TRIP MODAL PROPS", this.props);
 
+  // search: '?checkIn='+this.props.startDate +
+  //     '?checkOut='+ this.props.endDate+
+  //     '?numberOfGuests='+ this.props.guests.total+
+  //     '?zipcode='+this.props.zipcode
+
+  render() {
     const guestsDropDown = (
       <FormControl
         id="guestDropDownButton"
@@ -200,6 +225,7 @@ class TripInfoModal extends React.Component {
         <DateRangePicker
           required
           block
+          numberOfMonths={window.innerWidth < 960 ? 1 : 2}
           startDatePlaceholderText="Check In"
           endDatePlaceholderText='Check Out'
         startDate={this.props.startDate} // momentPropTypes.momentObj or null,
@@ -216,23 +242,24 @@ class TripInfoModal extends React.Component {
         <br />
         <div style={{fontWeight: '600', fontSize: '12px', marginBottom: '10px'}}>WHO</div>
         {guestsDropDown}
-        <Popover
+        <Popper
           anchorEl={document.getElementById("guestDropDownButton")}
           open={this.state.guestsPopover}
-          onClose={() => this.setState({ guestsPopover: false })}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center"
-          }}
+          onClose={() =>{ console.log('closed')}}
         >
-          <Counters />
-        </Popover>
+            <ClickAwayListener
+                onClickAway={() => {
+                    this.setState({ guestsPopover: false })}}>
+                <Counters />
+            </ClickAwayListener>
+        </Popper>
+        <br/>
+        <br/>
+
         <Button
           variant="contained"
+          fullWidth
+          size='large'
           color="secondary"
           type='submit'
         >

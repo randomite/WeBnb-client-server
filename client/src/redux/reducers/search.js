@@ -15,7 +15,10 @@ const initialState = {
     total: 1
   },
   startDate: null,
-  endDate: null
+  endDate: null,
+  searchData: null,
+  zipcode: null,
+  hotelData: null,
 };
 
 export default (state = initialState, action) => {
@@ -61,7 +64,8 @@ export default (state = initialState, action) => {
         ...state,
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,
-        address: action.payload.address
+        address: action.payload.address,
+        zipcode: action.payload.zipcode,
       };
     case "search/SET_END_DATE": {
       return { ...state, endDate: action.payload.endDate };
@@ -82,6 +86,13 @@ export default (state = initialState, action) => {
         address: action.payload.address
       }
     }
+    case 'SEARCH': {
+      return {
+        ...state,
+        searchData: action.payload
+      }
+    }
+
     default:
       return state;
   }
