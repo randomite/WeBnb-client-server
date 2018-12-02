@@ -1,0 +1,339 @@
+[
+  {
+    "address": "950 Mason St",
+    "city": "San Francisco",
+    "id": "1",
+    "images": [
+      {
+        "src": "https://exp.cdn-hotels.com/hotels/1000000/20000/18200/18200/9919e91e_z.jpg"
+      },
+      {
+        "src": "https://images.trvl-media.com/hotels/1000000/20000/18200/18200/8534cf10_z.jpg"
+      },
+      {
+        "src": "https://t-ec.bstatic.com/images/hotel/max1024x768/996/99646629.jpg"
+      }
+    ],
+    "latitude": "37.7924187",
+    "longitude": "-122.41067580000004",
+    "name": "Fairmont San Francisco",
+    "postal code": "94108",
+    "rating": "5",
+    "rooms": [
+      {
+        "bookings": [],
+        "description": "Spanning the entire eighth floor of the historic Main Building of the Fairmont San Francisco boutique hotel, The Penthouse Suite offers 6,000 square feet of luxury. Created in the Roaring Twenties by famed American archaeologist and art historian, Arthur Upham Pope, this San Francisco Penthouse Suite epitomizes the opulence and distinctive design of this singular time period. After an exquisite restoration, The Penthouse Suite sets the standard for luxurious living and breathtaking event venues today. \n\nIn addition to offering one-of-a-kind accommodations, it provides an unforgettable setting for important occasions ranging from lavish San Francisco weddings to high-profile meetings. This landmark suite can beautifully accommodate seated dinners for up to 60 or receptions for up to 150 guests.",
+        "hotel_id": "1",
+        "id": "11",
+        "images": [
+          {
+            "src": "http://www.fairmont.com/suites/images/gallery/expensive/san-francisco/desktop/Suties-Gallery_Images_Desktop_SF_4.jpg"
+          },
+          {
+            "src": "https://c1.staticflickr.com/4/3449/3910859406_6d48c1daca.jpg"
+          }
+        ],
+        "price": "699",
+        "room_number": "2201",
+        "room_type": "Presidential Suite"
+      },
+      {
+        "beds": "1 King",
+        "bookings": [],
+        "description": "Signature rooms are located in the Tower facing the San Francisco bay. The Tower is a more contemporary building, and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths and glass-enclosed showers and tubs, as well as large desks and sitting areas. These stylish San Francisco hotel rooms have also been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers.  These spacious San Francisco hotel rooms also feature picture windows with unparalleled views of the Bay.",
+        "hotel_id": "1",
+        "id": "12",
+        "images": [
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a1e567f3-ed3e-44fa-805f-044e38dc7fad.jpg"
+          },
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a4771b6b-9689-40ca-ad4f-76fa25c715d4.jpg"
+          }
+        ],
+        "price": "399",
+        "room_number": "801",
+        "room_type": "Signature Room"
+      },
+      {
+        "beds": "2 Queen",
+        "bookings": [],
+        "description": "Deluxe rooms are located in the Tower building. The Tower is a more contemporary building and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths with glass-enclosed showers, as well large desks and sitting areas. These stylish San Francisco hotel rooms have also have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers. They also feature picture windows with unrivalled skyline views.",
+        "hotel_id": "1",
+        "id": "13",
+        "images": [
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/6ba7b95d-32dd-4a86-aa06-47e3ef8fa43d.jpg"
+          },
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1b63e260-3f12-4ebc-84d0-c6df14f01738.jpg"
+          }
+        ],
+        "price": "199",
+        "room_number": "601",
+        "room_type": "Deluxe Room"
+      },
+      {
+        "beds": "1 King",
+        "bookings": [],
+        "description": "Signature Golden Gate Suites offer spectacular panoramic views of the City and Bay including landmarks like the Golden Gate Bridge, Alcatraz, Coit Tower and the Transamerica Pyramid. All are equipped with telescopes in the living room which is separated from the bedroom by double doors.  Situated on the corner of the Tower Building, these suites are located on floors 12-23 and offer an abundance of natural light. Luxuriously appointed, our Signature Golden Gate Suites features spectacular marble bathroom with separate bath and shower, sofa bed in the living room, flat-panel TVs, pillow top beds, Nespresso coffee machines and Bose sound systems. These suites can connect to Signature King or Signature Queen/Queen Rooms, based on availability.",
+        "hotel_id": "1",
+        "id": "14",
+        "images": [
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1c9fef59-203c-47e8-a2d7-5824bd1fbe48.jpg"
+          },
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/31067817-3f40-4d06-a99b-7029ef42e17b.jpg"
+          }
+        ],
+        "price": "499",
+        "room_number": "2205",
+        "room_type": "Signature Golden Gate Suite"
+      },
+      {
+        "beds": "1 King and 1 Double Size Sofa",
+        "bookings": [],
+        "description": "Tower Suites at Fairmont San Francisco afford the most breathtaking views of San Francisco. Contemporary in design, Tower Suites are bordered by large picture windows and equipped with telescopes to capture views from the bedroom and living room. These luxurious San Francisco suites can easily accommodate 12 people for entertaining. Tower Suites have a spectacular marble bathroom with separate bath and shower. All suites have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds, Nespresso coffee machines and a Bose sound system in the living room. Tower Suites may connect to Deluxe King or Deluxe Queen/Queen Rooms, based on availability.",
+        "hotel_id": "1",
+        "id": "15",
+        "images": [
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/741bbe39-cc0b-4896-95a2-c5111aa3d749.jpg"
+          },
+          {
+            "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/bd7a997d-cf77-4fff-82f2-6450f223a394.jpg"
+          }
+        ],
+        "price": "379",
+        "room_number": "1603",
+        "room_type": "Tower Suite"
+      }
+    ],
+    "state": "California"
+  },{
+  "address": "950 Mason St",
+  "city": "San Francisco",
+  "id": "1",
+  "images": [
+    {
+      "src": "https://exp.cdn-hotels.com/hotels/1000000/20000/18200/18200/9919e91e_z.jpg"
+    },
+    {
+      "src": "https://images.trvl-media.com/hotels/1000000/20000/18200/18200/8534cf10_z.jpg"
+    },
+    {
+      "src": "https://t-ec.bstatic.com/images/hotel/max1024x768/996/99646629.jpg"
+    }
+  ],
+  "latitude": "37.7924187",
+  "longitude": "-122.41067580000004",
+  "name": "Fairmont San Francisco",
+  "postal code": "94108",
+  "rating": "5",
+  "rooms": [
+    {
+      "bookings": [],
+      "description": "Spanning the entire eighth floor of the historic Main Building of the Fairmont San Francisco boutique hotel, The Penthouse Suite offers 6,000 square feet of luxury. Created in the Roaring Twenties by famed American archaeologist and art historian, Arthur Upham Pope, this San Francisco Penthouse Suite epitomizes the opulence and distinctive design of this singular time period. After an exquisite restoration, The Penthouse Suite sets the standard for luxurious living and breathtaking event venues today. \n\nIn addition to offering one-of-a-kind accommodations, it provides an unforgettable setting for important occasions ranging from lavish San Francisco weddings to high-profile meetings. This landmark suite can beautifully accommodate seated dinners for up to 60 or receptions for up to 150 guests.",
+      "hotel_id": "1",
+      "id": "11",
+      "images": [
+        {
+          "src": "http://www.fairmont.com/suites/images/gallery/expensive/san-francisco/desktop/Suties-Gallery_Images_Desktop_SF_4.jpg"
+        },
+        {
+          "src": "https://c1.staticflickr.com/4/3449/3910859406_6d48c1daca.jpg"
+        }
+      ],
+      "price": "699",
+      "room_number": "2201",
+      "room_type": "Presidential Suite"
+    },
+    {
+      "beds": "1 King",
+      "bookings": [],
+      "description": "Signature rooms are located in the Tower facing the San Francisco bay. The Tower is a more contemporary building, and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths and glass-enclosed showers and tubs, as well as large desks and sitting areas. These stylish San Francisco hotel rooms have also been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers.  These spacious San Francisco hotel rooms also feature picture windows with unparalleled views of the Bay.",
+      "hotel_id": "1",
+      "id": "12",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a1e567f3-ed3e-44fa-805f-044e38dc7fad.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a4771b6b-9689-40ca-ad4f-76fa25c715d4.jpg"
+        }
+      ],
+      "price": "399",
+      "room_number": "801",
+      "room_type": "Signature Room"
+    },
+    {
+      "beds": "2 Queen",
+      "bookings": [],
+      "description": "Deluxe rooms are located in the Tower building. The Tower is a more contemporary building and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths with glass-enclosed showers, as well large desks and sitting areas. These stylish San Francisco hotel rooms have also have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers. They also feature picture windows with unrivalled skyline views.",
+      "hotel_id": "1",
+      "id": "13",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/6ba7b95d-32dd-4a86-aa06-47e3ef8fa43d.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1b63e260-3f12-4ebc-84d0-c6df14f01738.jpg"
+        }
+      ],
+      "price": "199",
+      "room_number": "601",
+      "room_type": "Deluxe Room"
+    },
+    {
+      "beds": "1 King",
+      "bookings": [],
+      "description": "Signature Golden Gate Suites offer spectacular panoramic views of the City and Bay including landmarks like the Golden Gate Bridge, Alcatraz, Coit Tower and the Transamerica Pyramid. All are equipped with telescopes in the living room which is separated from the bedroom by double doors.  Situated on the corner of the Tower Building, these suites are located on floors 12-23 and offer an abundance of natural light. Luxuriously appointed, our Signature Golden Gate Suites features spectacular marble bathroom with separate bath and shower, sofa bed in the living room, flat-panel TVs, pillow top beds, Nespresso coffee machines and Bose sound systems. These suites can connect to Signature King or Signature Queen/Queen Rooms, based on availability.",
+      "hotel_id": "1",
+      "id": "14",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1c9fef59-203c-47e8-a2d7-5824bd1fbe48.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/31067817-3f40-4d06-a99b-7029ef42e17b.jpg"
+        }
+      ],
+      "price": "499",
+      "room_number": "2205",
+      "room_type": "Signature Golden Gate Suite"
+    },
+    {
+      "beds": "1 King and 1 Double Size Sofa",
+      "bookings": [],
+      "description": "Tower Suites at Fairmont San Francisco afford the most breathtaking views of San Francisco. Contemporary in design, Tower Suites are bordered by large picture windows and equipped with telescopes to capture views from the bedroom and living room. These luxurious San Francisco suites can easily accommodate 12 people for entertaining. Tower Suites have a spectacular marble bathroom with separate bath and shower. All suites have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds, Nespresso coffee machines and a Bose sound system in the living room. Tower Suites may connect to Deluxe King or Deluxe Queen/Queen Rooms, based on availability.",
+      "hotel_id": "1",
+      "id": "15",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/741bbe39-cc0b-4896-95a2-c5111aa3d749.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/bd7a997d-cf77-4fff-82f2-6450f223a394.jpg"
+        }
+      ],
+      "price": "379",
+      "room_number": "1603",
+      "room_type": "Tower Suite"
+    }
+  ],
+  "state": "California"
+},{
+  "address": "950 Mason St",
+  "city": "San Francisco",
+  "id": "1",
+  "images": [
+    {
+      "src": "https://exp.cdn-hotels.com/hotels/1000000/20000/18200/18200/9919e91e_z.jpg"
+    },
+    {
+      "src": "https://images.trvl-media.com/hotels/1000000/20000/18200/18200/8534cf10_z.jpg"
+    },
+    {
+      "src": "https://t-ec.bstatic.com/images/hotel/max1024x768/996/99646629.jpg"
+    }
+  ],
+  "latitude": "37.7924187",
+  "longitude": "-122.41067580000004",
+  "name": "Fairmont San Francisco",
+  "postal code": "94108",
+  "rating": "5",
+  "rooms": [
+    {
+      "bookings": [],
+      "description": "Spanning the entire eighth floor of the historic Main Building of the Fairmont San Francisco boutique hotel, The Penthouse Suite offers 6,000 square feet of luxury. Created in the Roaring Twenties by famed American archaeologist and art historian, Arthur Upham Pope, this San Francisco Penthouse Suite epitomizes the opulence and distinctive design of this singular time period. After an exquisite restoration, The Penthouse Suite sets the standard for luxurious living and breathtaking event venues today. \n\nIn addition to offering one-of-a-kind accommodations, it provides an unforgettable setting for important occasions ranging from lavish San Francisco weddings to high-profile meetings. This landmark suite can beautifully accommodate seated dinners for up to 60 or receptions for up to 150 guests.",
+      "hotel_id": "1",
+      "id": "11",
+      "images": [
+        {
+          "src": "http://www.fairmont.com/suites/images/gallery/expensive/san-francisco/desktop/Suties-Gallery_Images_Desktop_SF_4.jpg"
+        },
+        {
+          "src": "https://c1.staticflickr.com/4/3449/3910859406_6d48c1daca.jpg"
+        }
+      ],
+      "price": "699",
+      "room_number": "2201",
+      "room_type": "Presidential Suite"
+    },
+    {
+      "beds": "1 King",
+      "bookings": [],
+      "description": "Signature rooms are located in the Tower facing the San Francisco bay. The Tower is a more contemporary building, and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths and glass-enclosed showers and tubs, as well as large desks and sitting areas. These stylish San Francisco hotel rooms have also been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers.  These spacious San Francisco hotel rooms also feature picture windows with unparalleled views of the Bay.",
+      "hotel_id": "1",
+      "id": "12",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a1e567f3-ed3e-44fa-805f-044e38dc7fad.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/a4771b6b-9689-40ca-ad4f-76fa25c715d4.jpg"
+        }
+      ],
+      "price": "399",
+      "room_number": "801",
+      "room_type": "Signature Room"
+    },
+    {
+      "beds": "2 Queen",
+      "bookings": [],
+      "description": "Deluxe rooms are located in the Tower building. The Tower is a more contemporary building and was built to take advantage of the stunning views atop Nob Hill. All rooms have been completely renovated, and include marble baths with glass-enclosed showers, as well large desks and sitting areas. These stylish San Francisco hotel rooms have also have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds and Keurig coffee makers. They also feature picture windows with unrivalled skyline views.",
+      "hotel_id": "1",
+      "id": "13",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/6ba7b95d-32dd-4a86-aa06-47e3ef8fa43d.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1b63e260-3f12-4ebc-84d0-c6df14f01738.jpg"
+        }
+      ],
+      "price": "199",
+      "room_number": "601",
+      "room_type": "Deluxe Room"
+    },
+    {
+      "beds": "1 King",
+      "bookings": [],
+      "description": "Signature Golden Gate Suites offer spectacular panoramic views of the City and Bay including landmarks like the Golden Gate Bridge, Alcatraz, Coit Tower and the Transamerica Pyramid. All are equipped with telescopes in the living room which is separated from the bedroom by double doors.  Situated on the corner of the Tower Building, these suites are located on floors 12-23 and offer an abundance of natural light. Luxuriously appointed, our Signature Golden Gate Suites features spectacular marble bathroom with separate bath and shower, sofa bed in the living room, flat-panel TVs, pillow top beds, Nespresso coffee machines and Bose sound systems. These suites can connect to Signature King or Signature Queen/Queen Rooms, based on availability.",
+      "hotel_id": "1",
+      "id": "14",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/1c9fef59-203c-47e8-a2d7-5824bd1fbe48.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/31067817-3f40-4d06-a99b-7029ef42e17b.jpg"
+        }
+      ],
+      "price": "499",
+      "room_number": "2205",
+      "room_type": "Signature Golden Gate Suite"
+    },
+    {
+      "beds": "1 King and 1 Double Size Sofa",
+      "bookings": [],
+      "description": "Tower Suites at Fairmont San Francisco afford the most breathtaking views of San Francisco. Contemporary in design, Tower Suites are bordered by large picture windows and equipped with telescopes to capture views from the bedroom and living room. These luxurious San Francisco suites can easily accommodate 12 people for entertaining. Tower Suites have a spectacular marble bathroom with separate bath and shower. All suites have been updated with flat-panel TVs, luxury linen ensembles, pillow top beds, Nespresso coffee machines and a Bose sound system in the living room. Tower Suites may connect to Deluxe King or Deluxe Queen/Queen Rooms, based on availability.",
+      "hotel_id": "1",
+      "id": "15",
+      "images": [
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/741bbe39-cc0b-4896-95a2-c5111aa3d749.jpg"
+        },
+        {
+          "src": "https://www.fairmont.com/assets/0/137/12603/12662/12664/14270/bd7a997d-cf77-4fff-82f2-6450f223a394.jpg"
+        }
+      ],
+      "price": "379",
+      "room_number": "1603",
+      "room_type": "Tower Suite"
+    }
+  ],
+  "state": "California"
+}
+]

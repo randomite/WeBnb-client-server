@@ -1,0 +1,14 @@
+.marker {
+  display: flex;
+  height: 20px;
+  width: 50px;
+  background-color: $grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.marker-text {
+  color: white;
+  text-align: center;
+  margin: auto;
+}

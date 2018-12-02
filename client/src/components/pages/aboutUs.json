@@ -1,0 +1,101 @@
+[
+	{
+		"id": 1,
+		"name": "Daanyaal Ahad Saeed",
+		"picture": [
+			"https://i.imgur.com/CTdWU22.jpg"
+		],
+		"role": "Project Manager/Scrum Master",
+		"link": [
+			"https://github.com/Delta09"
+		]
+	},
+	{
+		"id": 2,
+		"name": "Juan Castillo",
+		"picture": [
+			"https://i.imgur.com/MnDzkjw.jpg"
+		],
+		"role": "Developer/Front-End Lead",
+		"link": [
+			"https://github.com/juancstlm"
+		]
+	},
+	{
+		"id": 3,
+		"name": "Ravin Sardal",
+		"picture": [
+			"https://i.imgur.com/x9cWg0c.jpg"
+		],
+		"role": "Architect/Technical Lead",
+		"link": [
+			"https://github.com/randomite"
+		]
+	},
+	{
+		"id": 4,
+		"name": "Derian Lemus",
+		"picture": [
+			"https://i.imgur.com/yw7OY7U.jpg"
+		],
+		"role": "Tester/Documentation",
+		"link": [
+			"https://github.com/derianlemus95"
+		]
+	},
+	{
+		"id": 5,
+		"name": "Raj Makda",
+		"picture": [
+			"https://i.imgur.com/KEtAxrc.png?1"
+		],
+		"role": "Developer/Back-End Lead",
+		"link": [
+			"https://github.com/rajmakda"
+		]
+	},
+	{
+		"id": 6,
+		"name": "Steven Louie",
+		"picture": [
+			"https://i.imgur.com/VD4d75z.jpg"
+		],
+		"role": "Developer/Documentation",
+		"link": [
+			"https://github.com/louievuitton"
+		]
+	},
+	{
+		"id": 7,
+		"name": "Aayush Dixit",
+		"picture": [
+			"https://i.imgur.com/rOrxosL.jpg"
+		],
+		"role": "Developer/Tester",
+		"link": [
+			"https://github.com/dixitaayush8"
+		]
+	},
+	{
+		"id": 8,
+		"name": "Jonathan Wong",
+		"picture": [
+			"https://i.imgur.com/avgchZw.jpg"
+		],
+		"role": "Developer/Tester",
+		"link": [
+			"https://github.com/jonlikesapples"
+		]
+	},
+	{
+		"id": 9,
+		"name": "Ian Duron",
+		"picture": [
+			"https://i.imgur.com/FQ1bbd8.jpg"
+		],
+		"role": "Product Owner",
+		"link": [
+			"https://github.com/ianduron"
+		]
+	}
+]

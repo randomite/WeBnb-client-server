@@ -6,3 +6,32 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.landing_content{
+  background: $white;
+  position: relative;
+  top: 10%;
+  padding: 32px;
+  max-width: 418px;
+  border-radius: 4px;
+  box-shadow: $defaultShadow;
+  margin: relative;
+  margin-left: 200px;
+  @media screen and (max-width: $sm) {
+    margin: relative !important;
+    margin-left: 0px !important;
+  }
+}
+.location_autofill{
+  cursor: pointer;
+  display: block;
+  float: right;
+  z-index: 3;
+  padding: 10px;
+  background: white;
+  border: 1px solid $lightgrey;
+  max-width: 434px;
+  border-radius: 4px;
+  @media screen and (max-width: $sm) {
+    max-width: 300px;
+  }
+}
