@@ -15,6 +15,11 @@ import qs from 'qs'
 
 class Search extends React.Component {
 
+  state = {
+    checked: false,
+    filteredData: this.props.searchData
+  };
+
   componentWillMount(){
     this.getQuerry()
   }
@@ -48,10 +53,6 @@ class Search extends React.Component {
 
   };
 
-  state = {
-    checked: false,
-    filteredData: { search_data }
-  };
 
   //Function to display/hide map
   handleChange = () => {
