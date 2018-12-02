@@ -21,15 +21,15 @@ import HomeIcon from "@material-ui/icons/Home";
 import SaveIcon from "@material-ui/icons/Favorite";
 import TripsIcon from "@material-ui/icons/CardTravel";
 import RewardIcon from "@material-ui/icons/Loyalty";
-import SavedMenu from "./HeaderPreviewMenu";
+import HeaderPreviewMenu from "./HeaderPreviewMenu";
 import AuthenticationModal from "./AuthenticationModal";
 import { connect } from "react-redux";
 import store from "../../redux/store";
 import { instance } from "../../Axios";
 import SvgIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import { path } from "../ui/Logo";
-import {withRouter} from "react-router-dom";
-import LogOutIcon from '@material-ui/icons/ExitToApp'
+import { withRouter } from "react-router-dom";
+import LogOutIcon from "@material-ui/icons/ExitToApp";
 import SearchBar from "./SearchBar";
 import Grid from "@material-ui/core/Grid/Grid";
 import FilterBar from "./FilterBar";
@@ -38,14 +38,12 @@ let buttonStyle = "header_button";
 
 class Header extends React.Component {
   state = {
-    savedMenuAnchorEl: null,
     tripsMenuAnchorEl: null,
     rewardsMenuAnchorEl: null,
     mobileMoreAnchorEl: null,
-    savedMenu: false,
     tripsMenu: false,
     rewardsMenu: false,
-    mobileDrawer: false,
+    mobileDrawer: false
   };
 
   componentWillMount() {
@@ -91,21 +89,12 @@ class Header extends React.Component {
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
-    this.handleSavedMenuClose();
     this.handleTripsMenuClose();
     this.handleRewardsMenuClose();
   };
 
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
-  };
-
-  handleSavedMenuOpen = () => {
-    this.setState({ savedMenu: true });
-  };
-
-  handleSavedMenuClose = () => {
-    this.setState({ savedMenu: false });
   };
 
   handleTripsMenuOpen = () => {
@@ -167,26 +156,13 @@ class Header extends React.Component {
           <ListItemIcon className="Icon">
             <LogOutIcon />
           </ListItemIcon>
-          <ListItemText
-            inset
-            primary="Log Out"
-          />
+          <ListItemText inset primary="Log Out" />
         </MenuItem>
       </MenuList>
     );
 
     const navigationList = (
       <MenuList>
-        <MenuItem className="menuItem">
-          <ListItemIcon className="icon">
-            <SaveIcon />
-          </ListItemIcon>
-          <ListItemText
-            classes={{ primary: "primary" }}
-            inset
-            primary="Saved"
-          />
-        </MenuItem>
         <MenuItem className="menuItem">
           <ListItemIcon className="icon">
             <TripsIcon />
@@ -280,32 +256,6 @@ class Header extends React.Component {
       </Menu>
     );
 
-    const renderSavedMenu = (
-      <Popper
-        open={this.state.savedMenu}
-        anchorEl={this.state.savedMenuAnchorEl}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            id="menu-list-grow"
-            style={{
-              transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom"
-            }}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu />
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
-    );
-
     const renderTripsMenu = (
       <Popper
         open={this.state.tripsMenu}
@@ -324,7 +274,7 @@ class Header extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu />
+                <HeaderPreviewMenu />
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -337,7 +287,7 @@ class Header extends React.Component {
         open={this.state.rewardsMenu}
         anchorEl={this.state.rewardsMenuAnchorEl}
         transition
-        disablePortal
+        disablePortalSavedM
       >
         {({ TransitionProps, placement }) => (
           <Grow
@@ -350,7 +300,7 @@ class Header extends React.Component {
           >
             <Paper>
               <ClickAwayListener onClickAway={this.handleMenuClose}>
-                <SavedMenu />
+                <HeaderPreviewMenu content="rewards" />
               </ClickAwayListener>
             </Paper>
           </Grow>
@@ -360,17 +310,6 @@ class Header extends React.Component {
 
     const renderDesktopUserHeader = (
       <div className="sectionDesktop">
-        <Button
-          className={buttonStyle}
-          buttonRef={node => {
-            this.state.savedMenuAnchorEl = node;
-          }}
-          disableRipple
-          onClick={this.handleSavedMenuOpen}
-        >
-          Saved
-        </Button>
-        {renderSavedMenu}
         <Button
           className={buttonStyle}
           disableRipple
@@ -409,7 +348,6 @@ class Header extends React.Component {
 
     const renderLogInHeader = (
       <div className="sectionDesktop">
-        {renderSavedMenu}
         <Button
           className={buttonStyle}
           disableRipple
@@ -429,7 +367,7 @@ class Header extends React.Component {
 
     const renderSearch = (
       <div className="search">
-        <SearchBar/>
+        <SearchBar />
       </div>
     );
     const renderNoSearch = null;
@@ -439,14 +377,13 @@ class Header extends React.Component {
         className="menuButton"
         color="inherit"
         aria-label="Open drawer"
-        style={{padding: 0}}
+        style={{ padding: 0 }}
         onClick={this.toggleDrawer}
       >
-          <div id="menu_icon" className="menu_icon">
-              <svg viewBox="0 0 18 18" height={10}>
-                  <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z">
-                  </path>
-              </svg>
+        <div id="menu_icon" className="menu_icon">
+          <svg viewBox="0 0 18 18" height={10}>
+            <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" />
+          </svg>
         </div>
       </IconButton>
     );
@@ -495,44 +432,55 @@ class Header extends React.Component {
 
     return (
       <div className="header">
-        <AppBar
-          position="fixed"
-          className="appbar"
-          color={this.props.variant}
-        >
+        <AppBar position="fixed" className="appbar" color={this.props.variant}>
           <Toolbar>
-              <Grid container
-                    direction="row"
-                    justify="space-between"
-                    alignItems="center">
-                  <Grid  xs={3} container sm={1}
-                        direction="row"
-                         justify="space-evenly"
-                         alignItems="center">
-                          <Grid item>{renderMobileMenuButton}</Grid>
-                          <Grid item>
-                          <SvgIcon
-                              className='logo'
-                              viewBox="0 0 355.5 281.42"
-                              fontSize="large"
-                              onClick={this.toggleDrawer}
-                              color={
-                                  this.props.variant === "secondary" ? "primary" : "secondary"
-                              }
-                          >
-                              {path}
-                          </SvgIcon>
-                      </Grid>
-
-                  </Grid>
-                  <Grid item xs={9} sm={7}>
-                  {this.props.variant === "secondary" ? renderNoSearch : renderSearch}
-                  </Grid>
-                  <Grid item sm={4}>
-                  {this.props.isLoggedIn ? renderDesktopUserHeader : renderLogInHeader}
-                  </Grid>
-                  {window.innerWidth <600 ? <Grid xs={12}><FilterBar/></Grid> : null}
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid
+                xs={3}
+                container
+                sm={1}
+                direction="row"
+                justify="space-evenly"
+                alignItems="center"
+              >
+                <Grid item>{renderMobileMenuButton}</Grid>
+                <Grid item>
+                  <SvgIcon
+                    className="logo"
+                    viewBox="0 0 355.5 281.42"
+                    fontSize="large"
+                    onClick={this.toggleDrawer}
+                    color={
+                      this.props.variant === "secondary"
+                        ? "primary"
+                        : "secondary"
+                    }
+                  >
+                    {path}
+                  </SvgIcon>
+                </Grid>
               </Grid>
+              <Grid item xs={9} sm={7}>
+                {this.props.variant === "secondary"
+                  ? renderNoSearch
+                  : renderSearch}
+              </Grid>
+              <Grid item sm={4}>
+                {this.props.isLoggedIn
+                  ? renderDesktopUserHeader
+                  : renderLogInHeader}
+              </Grid>
+              {window.innerWidth < 600 ? (
+                <Grid xs={12}>
+                  <FilterBar />
+                </Grid>
+              ) : null}
+            </Grid>
           </Toolbar>
         </AppBar>
         <Drawer

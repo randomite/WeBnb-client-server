@@ -8,7 +8,7 @@ const initialState = {
   access_token: null,
   isLoggedIn: false,
   id_token: null,
-  refresh_token: null,
+  refresh_token: null
 };
 
 export default (state = initialState, action) => {
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
         access_token: null,
         isLoggedIn: false,
         id_token: null,
-        refresh_token: null,
+        refresh_token: null
       };
     default:
       return state;
