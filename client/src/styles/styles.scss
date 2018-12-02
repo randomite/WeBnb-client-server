@@ -12,12 +12,13 @@
 @import "./ui/header_preview_menu";
 @import "./ui/circular_progress";
 @import "./pages/search";
-@import 'react_dates_overrides';
+@import "react_dates_overrides";
 @import "ui/searchBar";
-@import 'ui/booking_details';
-@import 'ui/roomCard';
-@import 'ui/gallery';
-@import 'pages/hotelView';
+@import "ui/booking_details";
+@import "ui/roomCard";
+@import "ui/gallery";
+@import "ui/rewards_popper";
+@import "pages/hotelView";
 
 * {
   margin: 0;
@@ -29,7 +30,7 @@ html {
 }
 
 body {
-    color: $black;
-    font-family: $font-main;
+  color: $black;
+  font-family: $font-main;
   -webkit-font-smoothing: antialiased;
-  }
+}
