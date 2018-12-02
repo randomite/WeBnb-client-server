@@ -11,7 +11,8 @@ import Grid from "@material-ui/core/Grid/Grid";
 class HotelCard extends React.Component {
   //handles the navigation to the hotel view page
   handleNavigate = () => {
-    this.props.history.push("hotel/" + this.props.id);
+    this.props.history.push({pathname: '/hotel',
+    search: new URLSearchParams({id: this.props.id }).toString()});
   };
 
   render() {

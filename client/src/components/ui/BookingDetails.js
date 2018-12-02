@@ -55,7 +55,7 @@ class BookingDetails extends React.Component {
             <div>
                 ${this.props.room.price} x {moment(this.props.endDate).diff(this.props.startDate, 'days')} days
                 <div >
-                    ${this.props.room.price * 2}
+                    ${this.props.room.price *  moment(this.props.endDate).diff(this.props.startDate, 'days')}
                 </div>
             </div>
             <br/>
@@ -69,7 +69,7 @@ class BookingDetails extends React.Component {
             <div>
                 Total
                 <div >
-                    ${this.props.room.price * 2 + 40}
+                    ${this.props.room.price *  moment(this.props.endDate).diff(this.props.startDate, 'days') + 40}
                 </div>
             </div>
         </div>

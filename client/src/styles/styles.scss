@@ -11,14 +11,17 @@
 @import "./ui/map_marker";
 @import "./ui/header_preview_menu";
 @import "./ui/circular_progress";
+@import "./ui/rewards_table";
+@import "./ui/rewards_tab";
 @import "./pages/search";
+@import "./ui/filter_bar";
 @import "react_dates_overrides";
 @import "ui/searchBar";
 @import "ui/booking_details";
 @import "ui/roomCard";
 @import "ui/gallery";
 @import "ui/rewards_popper";
-@import "pages/hotelView";
+@import "./pages/rewards";
 
 * {
   margin: 0;
