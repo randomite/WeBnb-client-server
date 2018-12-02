@@ -42,7 +42,7 @@ export const getBookingData =()=>{
     }).then(response => {
       dispatch({
         type: 'user/GET_BOOKING_DATA',
-        payload: response.data
+        payload: response.data.data
       })
     }).catch(e=>console.log(e))
   }
