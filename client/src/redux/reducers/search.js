@@ -17,7 +17,8 @@ const initialState = {
   startDate: null,
   endDate: null,
   searchData: null,
-  zipcode: null
+  zipcode: null,
+  hotelData: null,
 };
 
 export default (state = initialState, action) => {
@@ -91,6 +92,7 @@ export default (state = initialState, action) => {
         searchData: action.payload
       }
     }
+
     default:
       return state;
   }

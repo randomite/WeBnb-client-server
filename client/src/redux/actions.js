@@ -20,3 +20,16 @@ export const search = (checkIn, checkOut, numberOfGuests, postalCode) => {
     })
   }
 }
+
+export const getHotelData = (id) => {
+  return async (dispatch) => {
+    await instance.get('hotel', {
+      params: {id: id}
+    }).then(response => {
+      dispatch({
+        type: 'search/GET_HOTEL_DATA',
+        payload: response.data
+      })
+    })
+  }
+}
