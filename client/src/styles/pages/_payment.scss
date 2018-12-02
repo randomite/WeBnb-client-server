@@ -1,0 +1,39 @@
+.payment {
+    align-content: center;
+    width: 320px;
+    padding: 5px;
+}
+  
+.checkout {
+    padding-top: 8rem;
+    padding-left: 24rem;
+    padding-bottom: 8rem;
+    float: left;
+}
+  
+.billing-container {
+      display: grid;
+      grid-template-columns: auto;
+      padding: 10px;
+    width: 100px;
+}
+  
+.billing-item {
+      padding: 5px;
+      background-color: #fff;
+}
+  
+.billing-input {
+    height: 30px;
+    width: 300px;
+    border-radius: 5%;
+    border: 1px solid lightgray;  
+}
+
+.payment_details {
+      float: left;
+      width: 50%;
+      padding-top: 8rem;
+      padding-left: 2rem;
+}
+  
