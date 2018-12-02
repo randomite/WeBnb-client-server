@@ -1,43 +1,52 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import PostData from '../data/booking_data.json';
-import HotelData from '../data/hotel_1_data.json';
 import BookingCard from '../ui/BookingCard';
+import {connect} from 'react-redux'
+import {getBookingData} from "../../redux/actions";
 
-function hotelName(){
-  var name = "";
-  {HotelData.map((hotelDetail, index)=>{
-    name = hotelDetail.name
-  })}
-  return name;
+// function hotelName(){
+//   var name = "";
+//   {HotelData.map((hotelDetail, index)=>{
+//     name = hotelDetail.name
+//   })}
+//   return name;
+//
+// }
+// function hotelImage(){
+//   var imageName ="";
+//   {HotelData.map((hotelDetail, index)=>{
+//     imageName = hotelDetail.images[0].src
+//   })}
+//   return imageName;
+// }
 
-}
-function hotelImage(){
-  var imageName ="";
-  {HotelData.map((hotelDetail, index)=>{
-    imageName = hotelDetail.images[0].src
-  })}
-  return imageName;
-}
+class PastBookings extends React.Component {
 
-const PastBookings = (props) => {
-    const element = hotelName()
-    const image = hotelImage()
-    return(
+    componentWillMount(){
+      this.props.dispatch(getBookingData())
+    }
 
-         <div className="list">
-              {
-                PostData.map((postDetail, index)=>{
-                  return <BookingCard
-                          key = {postDetail.id}
-                          startDate={postDetail.date_booking_from}
-                          endDate={postDetail.date_booking_to}
-                          nameOfHotel = {element}
-                          imageOfHotel = {image}
-                          />
-                  })
-              }
-          </div>
-        )
+    render(){
+      // const element = hotelName()
+      // const image = hotelImage()
+      return(
+
+      <div className="list">
+        {this.props.bookings.length > 0 ?
+          this.props.bookings.map((postDetail, index)=>{
+            return <BookingCard
+              key = {postDetail.id}
+              startDate={postDetail.date_booking_from}
+              endDate={postDetail.date_booking_to}
+              nameOfHotel = 'noname'
+              imageOfHotel = ''
+
+            />
+          }) :
+          <div> No bookings</div>
+        }
+      </div>
+    )}
+
   }
-export default PastBookings;
+export default connect(state=>state.user)(PastBookings);

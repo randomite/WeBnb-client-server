@@ -9,9 +9,10 @@ import { Theme } from "./Theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "react-dates/lib/css/_datepicker.css";
+import {loadDataFromLocalStorage} from "./redux/actions";
 
+store.dispatch(loadDataFromLocalStorage())
 
-// console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
