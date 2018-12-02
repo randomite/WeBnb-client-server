@@ -7,6 +7,7 @@ import moment from 'moment'
 import Counters from "./searchBar/Counters";
 import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import Popover from "@material-ui/core/Popover/Popover";
+import {withRouter} from 'react-router-dom'
 
 class BookingDetails extends React.Component {
 
@@ -134,7 +135,7 @@ class BookingDetails extends React.Component {
         <br/>
         <div>
           <Button variant="contained" className={"book_button"}
-                  disabled={!this.props.room.id}
+                  disabled={!this.props.room.id} onClick={()=>this.props.history.push('payment')}
           >
             Book
           </Button>
@@ -144,4 +145,4 @@ class BookingDetails extends React.Component {
   }
 }
 
-export default connect(state => state.booking)(BookingDetails);
+export default connect(state => state.booking)(withRouter(BookingDetails));
