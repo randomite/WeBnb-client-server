@@ -15,7 +15,6 @@ export default class Gallery extends React.Component {
 
     this.state = {
       currentImage: 0,
-      photos: props.hotelImages.concat(props.roomImages)
     };
   }
   openLightbox(event, obj) {
@@ -49,20 +48,20 @@ export default class Gallery extends React.Component {
         <div
           className="gallery_main"
           onClick={e => this.openLightbox(e, 0)}
-          style={{ backgroundImage: `url(${this.state.photos[0].src}` }}
+          style={{ backgroundImage: `url(${this.props.hotelImages[0].src}` }}
         />
         <div className="gallery_extra">
           <div className="col2">
             <div>
               <div
                 onClick={e => this.openLightbox(e, 1)}
-                style={{ backgroundImage: `url(${this.state.photos[1].src}` }}
+                style={{ backgroundImage: `url(${this.props.hotelImages[1].src}` }}
               />
             </div>
             <div>
               <div
                 onClick={e => this.openLightbox(e, 2)}
-                style={{ backgroundImage: `url(${this.state.photos[2].src}` }}
+                style={{ backgroundImage: `url(${this.props.hotelImages[2].src}` }}
               />
             </div>
           </div>
@@ -70,13 +69,13 @@ export default class Gallery extends React.Component {
             <div>
               <div
                 onClick={e => this.openLightbox(e, 3)}
-                style={{ backgroundImage: `url(${this.state.photos[3].src}` }}
+                style={{ backgroundImage: `url(${this.props.hotelImages[3].src}` }}
               />
             </div>
             <div>
               <div
                 onClick={e => this.openLightbox(e, 4)}
-                style={{ backgroundImage: `url(${this.state.photos[4].src}` }}
+                style={{ backgroundImage: `url(${this.props.hotelImages[4].src}` }}
               />
             </div>
           </div>
@@ -101,5 +100,4 @@ export default class Gallery extends React.Component {
 
 Gallery.propTypes = {
   hotelImages: PropTypes.array,
-  roomImages: PropTypes.array
 };

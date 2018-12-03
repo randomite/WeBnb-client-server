@@ -11,7 +11,8 @@ export const search = (checkIn, checkOut, numberOfGuests, postalCode) => {
       checkIn: checkIn,
       checkOut: checkOut,
       numberOfGuest: numberOfGuests,
-      postalCode: postalCode
+      postalCode: postalCode,
+        isHackySearch: 'true',
     } }).then(response => {
       dispatch({
         type: 'SEARCH',
@@ -28,7 +29,20 @@ export const getHotelData = (id) => {
     }).then(response => {
       dispatch({
         type: 'search/GET_HOTEL_DATA',
-        payload: response.data
+        payload: response.data.data
+      })
+    })
+  }
+}
+
+export const getRoomData = (id, hotel_id) =>{
+  return async (dispatch) => {
+    await instance.get('room',{
+      params: {id: id, hotel_id: hotel_id}
+    }).then(response=>{
+      dispatch({
+        type: 'search/GET_ROOM_DATA',
+        payload: response.data.data
       })
     })
   }
