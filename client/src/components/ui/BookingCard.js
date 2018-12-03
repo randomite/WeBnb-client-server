@@ -1,76 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Moment from 'react-moment';
 
 const styles = theme => ({
-  card: {
-    display: 'flex',
+  root: {
+    flexGrow: 1,
+    maxWidth: 1000,
+    padding: theme.spacing.unit * 2,
   },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
+  image: {
+    width: 320,
+    height: 150,
   },
-  content: {
-    flex: '1 0 auto',
-  },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
 });
+//this function changes the format to display the date to MM DD YYYY
+function convertDateToMonth(date){
+  return <Moment format="MMM DD YYYY">{date}</Moment>
 
-const BookingCard = (props) => {
-  return(
-    <div className="card-container">
-
-      <div className="description">
-        <p>{props.startDate}</p>
-        <p>{props.endDate}</p>
-      </div>
-    </div>
-  )
 }
-//export default BookingCard;
-
-function MediaControlCard(props) {
-  const { classes, theme } = props;
-
+function ComplexGrid(props) {
+  const { classes } = props;
   return (
-    <Card className={classes.card}>
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            <p>{props.nameOfHotel}</p>
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            <p>{props.startDate}</p>
-            <p>{props.endDate}</p>
-          </Typography>
+    <Paper className={classes.root}>
+      <Grid container spacing={16}>
+        <Grid item>
+          <ButtonBase className={classes.image}>
+            <img className={classes.img} alt="complex" src={props.imageOfHotel} />
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={16}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1">
+                <b>{props.nameOfHotel}</b>
+              </Typography>
+              <Typography gutterBottom>{props.number}</Typography>
 
-        </CardContent>
+              <Typography color="textSecondary"> From: {convertDateToMonth(props.startDate)}</Typography>
+              <Typography color="textSecondary">To: {convertDateToMonth(props.endDate)}</Typography>
+            </Grid>
 
-      </div>
-      <CardMedia
-        className={classes.cover}
-        image={props.imageOfHotel}
-        title="Live from space album cover"
-      />
-    </Card>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle2">${props.price}</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 }
 
-MediaControlCard.propTypes = {
+ComplexGrid.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(MediaControlCard);
+export default withStyles(styles, { withTheme: true })(ComplexGrid);
