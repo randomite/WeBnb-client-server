@@ -503,7 +503,9 @@ class Header extends React.Component {
           </Toolbar>
         </AppBar>
         <Drawer
-          classes={{
+          classes={window.location.pathname === '/search' ? {
+            paper: "drawer_mobile_search"
+          } : {
             paper: "drawer_mobile"
           }}
           anchor="top"
