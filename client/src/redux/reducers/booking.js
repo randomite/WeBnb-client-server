@@ -13,6 +13,7 @@ const initialState = {
   },
   startDate: null,
   endDate: null,
+  hotel_id: 1
 };
 
 export default (state = initialState, action) => {
@@ -29,6 +30,11 @@ export default (state = initialState, action) => {
       }
       case "booking/SET_GUESTS":
         return {...state, guests: action.payload}
+      case "booking/SET_HOTEL":
+        return {
+          ...state,
+          hotel_id: action.payload
+        };
     default:
       return state;
   }
