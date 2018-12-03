@@ -18,6 +18,7 @@ import {getHotelData} from "../../redux/actions";
 window.onbeforeunload = closingCode;
 function closingCode(){
   store.dispatch({type: 'search/CLEAR_HOTEL_DATA'})
+  store.dispatch({type: 'search/CLEAR_ROOM_DATA'})
 }
 
 class HotelView extends React.Component {
@@ -72,14 +73,6 @@ class HotelView extends React.Component {
 
     const hotel_data = this.props.hotelData
 
-    const hotelMarker=(this.props.hotelData ? <MapMarker
-      key={hotel_data.id}
-      price={99}
-      lat={hotel_data.latitude}
-      lng={hotel_data.longitude}
-      id={hotel_data.id}
-    /> : null);
-
     return (
       <div>
         <Header />
@@ -115,15 +108,21 @@ class HotelView extends React.Component {
                   <h1>Location</h1>
                   <div style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
-                      defaultCenter={{ lat: hotel_data.latitude, lng: hotel_data.longitude}}
-                      defaultZoom={18}
+                      defaultCenter={{ lat: Number(this.props.hotelData.latitude), lng: Number(this.props.hotelData.longitude)}}
+                      defaultZoom={16}
                       // zoom={15}
                       bootstrapURLKeys={{
                         key: process.env.REACT_APP_MAPS_API_KEY,
                         language: "en"
                       }}
                     >
-                      {hotelMarker}
+                      <MapMarker
+                        key={this.props.hotelData.id}
+                        price={99}
+                        lat={this.props.hotelData.latitude}
+                        lng={this.props.hotelData.longitude}
+                        id={this.props.hotelData.id}
+                      />
                     </GoogleMapReact>
                   </div>
                 </Grid>

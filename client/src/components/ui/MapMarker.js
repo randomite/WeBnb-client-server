@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 
 class MapMarker extends React.Component {
   handleNavigate = () => {
-    this.props.history.push("hotel/" + this.props.id);
+    this.props.history.push({pathname: '/hotel', search: new URLSearchParams({id: this.props.id }).toString()});
+
   };
 
   render() {
