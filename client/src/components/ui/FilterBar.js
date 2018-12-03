@@ -1,16 +1,10 @@
 import React from "react";
-import Rheostat from "rheostat";
 import { Grid, Button } from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Popper from "@material-ui/core/Popper/Popper";
 import Fade from "@material-ui/core/Fade";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
-import ThemedStyleSheet from "react-with-styles/lib/ThemedStyleSheet";
-import aphroditeInterface from "react-with-styles-interface-aphrodite";
-import { StyleSheet, css } from "aphrodite";
-
-ThemedStyleSheet.registerInterface(aphroditeInterface);
 
 export default class FilterBar extends React.Component {
   constructor(props) {
@@ -132,16 +126,6 @@ export default class FilterBar extends React.Component {
                 >
                   {/*pitpoints are the intervals where lines are drawn*/}
                   <Paper className="sliderContainer">
-                    <Rheostat
-                      min={1}
-                      max={100}
-                      pitComponent={this.PitComponent}
-                      pitPoints={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
-                      snap
-                      snapPoints={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
-                      values={this.state.values}
-                      onValuesUpdated={this.updateValue}
-                    />
                     {/*displays values under slider*/}
                     {values.map((value, index) => {
                       if (index === 0) {
