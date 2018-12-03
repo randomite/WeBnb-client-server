@@ -7,13 +7,13 @@ const initialState = {
     image_url: null
   },
   guests: {
-      adults: 1,
-      children: 0,
-      total: 1
+    adults: 1,
+    children: 0,
+    total: 1
   },
   startDate: null,
   endDate: null,
-  hotel_id: 1
+  hotel_id: null
 };
 
 export default (state = initialState, action) => {
@@ -25,16 +25,17 @@ export default (state = initialState, action) => {
       };
     case "booking/SET_DATES":
       return {
-        ...state, startDate: action.payload.startDate,
-        endDate: action.payload.endDate,
-      }
-      case "booking/SET_GUESTS":
-        return {...state, guests: action.payload}
-      case "booking/SET_HOTEL":
-        return {
-          ...state,
-          hotel_id: action.payload
-        };
+        ...state,
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate
+      };
+    case "booking/SET_GUESTS":
+      return { ...state, guests: action.payload };
+    case "booking/SET_HOTEL":
+      return {
+        ...state,
+        hotel_id: action.payload
+      };
     default:
       return state;
   }

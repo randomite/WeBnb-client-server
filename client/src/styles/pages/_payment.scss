@@ -5,10 +5,9 @@
 }
 
 .checkout {
-  padding-top: 8rem;
-  padding-left: 24rem;
-  padding-bottom: 8rem;
-  float: left;
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
 }
 
 .billing-container {
@@ -31,10 +30,7 @@
 }
 
 .payment_details {
-  float: left;
   width: 50%;
-  padding-top: 8rem;
-  padding-left: 2rem;
 }
 
 .p_1 {

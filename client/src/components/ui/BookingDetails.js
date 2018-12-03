@@ -45,7 +45,7 @@ class BookingDetails extends React.Component {
     if (diff < 0) {
       return 0;
     } else {
-      return diff;
+      return Math.floor(diff);
     }
   };
 
