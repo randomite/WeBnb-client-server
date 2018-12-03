@@ -175,7 +175,9 @@ class Header extends React.Component {
             primary="Trips"
           />
         </MenuItem>
-        <MenuItem className="menuItem">
+        <MenuItem className="menuItem" onClick={()=>{
+          this.props.history.push('/rewards')
+        }}>
           <ListItemIcon className="Icon">
             <RewardIcon />
           </ListItemIcon>
