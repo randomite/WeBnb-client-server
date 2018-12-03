@@ -44,18 +44,36 @@ class Payment extends Component {
     this.submit = this.submit.bind(this);
   }
 
-  async submit(ev) {
+  calculateDiscount = () => {
     const amount = store.getState().booking.room.price;
     const startDate = store.getState().booking.startDate;
     const endDate = store.getState().booking.endDate;
     const total = amount * moment(endDate).diff(startDate, "days") + 40;
+    let diff = total - this.state.selectedDiscount;
+    console.log("Sending discounted price: " + diff);
+    if (diff === total) {
+      console.log("No discounted price");
+      return total;
+    } else if (diff < 0) {
+      console.log("discount final sending price: " + 0);
+      return 0;
+    } else {
+      console.log("discount final sending price: " + diff);
+      return Math.floor(diff);
+    }
+  };
+
+  async submit(ev) {
+    const amount = store.getState().booking.room.price;
+    const startDate = store.getState().booking.startDate;
+    const endDate = store.getState().booking.endDate;
 
     const user_id = store.getState().user.email;
     const room_id = store.getState().booking.room.id;
     const hotel_id = store.getState().booking.hotel_id;
 
     const payment_data = {
-      amount: total
+      amount: this.calculateDiscount()
     };
 
     const booking_data = {
@@ -63,7 +81,8 @@ class Payment extends Component {
       hotel_id: hotel_id,
       room_id: room_id,
       date_checkin: startDate.format("YYYY-MM-DD"),
-      date_checkout: endDate.format("YYYY-MM-DD")
+      date_checkout: endDate.format("YYYY-MM-DD"),
+      total_price: this.calculateDiscount()
     };
 
     const rewards_data = {
@@ -82,7 +101,10 @@ class Payment extends Component {
             console.log(response);
             instance
               .post("rewards/", rewards_data)
-              .then(response => console.log(response))
+              .then(response => {
+                console.log(response);
+                this.props.history.push("/bookings");
+              })
               .catch(error => alert(error));
           })
           .catch(error => alert(error));
@@ -121,100 +143,104 @@ class Payment extends Component {
     return (
       <React.Fragment>
         <Header />
-        <div className="checkout">
+        <div style={{ width: "100%" }}>
           <h2>Confirm and Pay</h2> <br />
-          <br />
-          <h4>BILLING INFORMATION</h4>
-          <div className="billing-container">
-            <div className="billing-item">
-              <span className="text">Name</span>
+          <div className="checkout">
+            <div>
+              <br />
+              <h4>BILLING INFORMATION</h4>
+              <div className="billing-container">
+                <div className="billing-item">
+                  <span className="text">Name</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput
+                    id="name"
+                    className="billing-input"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div className="billing-item">
+                  <span className="text">Email</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput className="billing-input" placeholder="@" />
+                </div>
+                <div className="billing-item">
+                  <span className="text">Address</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput
+                    id="address_line1"
+                    className="billing-input"
+                    placeholder="111"
+                  />
+                </div>
+                <div className="billing-item">
+                  <span className="text">City</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput
+                    id="address_city"
+                    className="billing-input"
+                    placeholder="City"
+                  />
+                </div>
+                <div className="billing-item">
+                  <span className="text">State</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput
+                    id="address_state"
+                    className="billing-input"
+                    placeholder="CA"
+                  />
+                </div>
+                <div className="billing-item">
+                  <span className="text">Country</span>
+                </div>
+                <div className="billing-item">
+                  <OutlinedInput
+                    id="address_country"
+                    className="billing-input"
+                    placeholder="USA"
+                  />
+                </div>
+              </div>{" "}
+              <br />
+              <h4>PAYMENT INFORMATION</h4>
+              <div className="payment">
+                <CardElement style={style} />
+              </div>{" "}
+              <br />
+              <div className="rewards_switch">
+                {/*Form Control Label allows you to add text tot the Switch*/}
+                <FormControlLabel
+                  control={
+                    <Switch checked={checked} onChange={this.handleChange} />
+                  }
+                  label="Apply Rewards?"
+                />
+              </div>
+              <Slide
+                direction="up"
+                timeout={{ enter: 1000, exit: 1000 }}
+                in={checked}
+                mountOnEnter
+                unmountOnExit
+              >
+                {this.renderNumOfNightsInfo()}
+              </Slide>
+              <br />
             </div>
-            <div className="billing-item">
-              <OutlinedInput
-                id="name"
-                className="billing-input"
-                placeholder="John Doe"
+            <div className="payment_details">
+              <BookingDetails
+                discount={this.state.selectedDiscount}
+                label="Checkout"
+                onButtonClick={this.submit}
               />
             </div>
-            <div className="billing-item">
-              <span className="text">Email</span>
-            </div>
-            <div className="billing-item">
-              <OutlinedInput className="billing-input" placeholder="@" />
-            </div>
-            <div className="billing-item">
-              <span className="text">Address</span>
-            </div>
-            <div className="billing-item">
-              <OutlinedInput
-                id="address_line1"
-                className="billing-input"
-                placeholder="111"
-              />
-            </div>
-            <div className="billing-item">
-              <span className="text">City</span>
-            </div>
-            <div className="billing-item">
-              <OutlinedInput
-                id="address_city"
-                className="billing-input"
-                placeholder="City"
-              />
-            </div>
-            <div className="billing-item">
-              <span className="text">State</span>
-            </div>
-            <div className="billing-item">
-              <OutlinedInput
-                id="address_state"
-                className="billing-input"
-                placeholder="CA"
-              />
-            </div>
-            <div className="billing-item">
-              <span className="text">Country</span>
-            </div>
-            <div className="billing-item">
-              <OutlinedInput
-                id="address_country"
-                className="billing-input"
-                placeholder="USA"
-              />
-            </div>
-          </div>{" "}
-          <br />
-          <h4>PAYMENT INFORMATION</h4>
-          <div className="payment">
-            <CardElement style={style} />
-          </div>{" "}
-          <br />
-          <div className="rewards_switch">
-            {/*Form Control Label allows you to add text tot the Switch*/}
-            <FormControlLabel
-              control={
-                <Switch checked={checked} onChange={this.handleChange} />
-              }
-              label="Apply Rewards?"
-            />
           </div>
-          <Slide
-            direction="up"
-            timeout={{ enter: 1000, exit: 1000 }}
-            in={checked}
-            mountOnEnter
-            unmountOnExit
-          >
-            {this.renderNumOfNightsInfo()}
-          </Slide>
-          <br />
-        </div>
-        <div className="payment_details">
-          <BookingDetails
-            discount={this.state.selectedDiscount}
-            label="Checkout"
-            onButtonClick={this.submit}
-          />
         </div>
       </React.Fragment>
     );

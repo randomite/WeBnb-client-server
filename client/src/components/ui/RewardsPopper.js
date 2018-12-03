@@ -73,7 +73,6 @@ class RewardsPopper extends React.Component {
     };
     return (
       <div style={{ margin: "auto", width: "150px", userSelect: "none" }}>
-
         <Slider {...settings}>{this.renderRewards()}</Slider>
       </div>
     );

@@ -39,6 +39,7 @@ class HotelView extends React.Component {
     );
     let hotel_id = querryParams.get("id");
     this.props.dispatch(getHotelData(hotel_id));
+    this.props.dispatch({ type: "booking/SET_HOTEL", payload: hotel_id });
   }
 
   componentWillMount() {
@@ -53,6 +54,15 @@ class HotelView extends React.Component {
           endDate: moment().add(1, "days")
         }
       });
+    else {
+      store.dispatch({
+        type: "booking/SET_DATES",
+        payload: {
+          startDate: this.props.startDate,
+          endDate: this.props.endDate
+        }
+      });
+    }
     if (!store.getState().booking.guests.total)
       store.dispatch({
         type: "booking/SET_GUESTS",
