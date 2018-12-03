@@ -58,6 +58,7 @@ class BookingCard extends React.Component{
     this.setState({
       startDate: startDate,
       endDate: endDate,
+      dayPrice: 0,
     })
   };
 
@@ -67,8 +68,16 @@ class BookingCard extends React.Component{
           params: {id: this.props.hotel_id}
         }).then(response=>{
           if(response.status === 200){
-            console.log(response)
             this.setState({imageOfHotel: response.data.data.images[0].M.src.S, nameOfHotel: response.data.data.name})
+          }
+        })
+
+        instance.get('room', {
+          params: {id: this.props.room_id, hotel_id: this.props.hotel_id }
+        }).then(response=>{
+          if(response.status === 200){
+            console.log('ROOMMM',response.data.data.price)
+            this.setState({dayPrice: response.data.data.price})
           }
         })
   }
@@ -85,16 +94,18 @@ class BookingCard extends React.Component{
       hotel_id: this.props.hotel_id,
       room_id: this.props.room_id,
       date_checkin: this.state.startDate.format('YYYY-MM-DD'),
-      date_checkout: this.state.endDate.format('YYYY-MM-DD'),}
+      date_checkout: this.state.endDate.format('YYYY-MM-DD'),
+      total_price: this.state.dayPrice * this.state.endDate.diff(this.state.startDate, 'days') + 40
+    }
 
-      console.log(data)
+    console.log('New Price', this.state.dayPrice * this.state.endDate.diff(this.state.startDate, 'days'))
     instance.put('/booking/?booking_id=' + this.props.id, {
       ...data,
       headers: {"Content-Type": "multipart/form-data", "cache-control": "no-cache",
         "Postman-Token": "8bf5c341-bad1-4592-ab87-1d9b818f1f0f"}
     },).then(response=>{
       this.handleClose()
-      window.location.reload();
+      // window.location.reload();
       console.log('Edit Booking',response)});
   }
 
@@ -102,7 +113,7 @@ class BookingCard extends React.Component{
     instance.delete(`booking/?booking_id=${this.props.id}&user_id=${store.getState().user.email}`).then(response=>{
       console.log(response)
       this.handleClose()
-      window.location.reload();
+      // window.location.reload();
     })
   }
 
@@ -140,8 +151,8 @@ class BookingCard extends React.Component{
 
             </Grid>
             <Grid item>
-              {props.number >0 ? <Button variant='outlined' onClick={this.handleClickOpen}>Edit</Button> : <Typography variant="subtitle2">${props.price}</Typography>}
-
+              <Typography variant="subtitle2">${props.price}</Typography>
+              {props.number >0 ? <Button variant='outlined' onClick={this.handleClickOpen}>Edit</Button> : null}
             </Grid>
           </Grid>
         </Grid>
@@ -172,6 +183,7 @@ class BookingCard extends React.Component{
               onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
             />
             <Button variant='outlined' style={{marginTop: '25px'}} onClick={this.handleCancelBooking}>Cancel Booking</Button>
+            <div>New Price {this.state.dayPrice * this.state.endDate.diff(this.state.startDate, 'days')}</div>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose}>
