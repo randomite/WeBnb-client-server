@@ -1,11 +1,23 @@
-.booking{
+.discountedPrice {
+  text-decoration: line-through;
+  margin-left: 0 !important;
+}
+
+.discount {
+  color: $primary;
+  margin-right: 3px !important;
+  margin-bottom: 0 !important;
+  font-size: 20px;
+}
+
+.booking {
   border: $lightgrey 1px solid;
   padding: 20px;
 }
-.details{
+.details {
   width: 65%;
 }
-.price{
+.price {
   display: flex;
   margin: 0 0 20px 0;
 }
