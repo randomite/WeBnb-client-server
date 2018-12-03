@@ -40,7 +40,6 @@ class HotelView extends React.Component {
 
   componentWillMount(){
       this.getQuery()
-
       // If there is no search then set the dates to be now and tomorrow
       if (! (store.getState().search.endDate && store.getState().search.startDate))
           store.dispatch({
