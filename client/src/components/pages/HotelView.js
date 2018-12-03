@@ -13,10 +13,11 @@ import HotelMap from "../ui/HotelMap";
 import MapMarker from "../ui/MapMarker";
 import store from "../../redux/store";
 import moment from "moment";
+import {withRouter} from 'react-router-dom';
 
 const hotel_data = require("./hotel_data");
 
-export default class HotelView extends React.Component {
+class HotelView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -135,3 +136,5 @@ export default class HotelView extends React.Component {
     );
   }
 }
+
+export default withRouter(HotelView);
