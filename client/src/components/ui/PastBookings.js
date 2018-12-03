@@ -37,10 +37,11 @@ class PastBookings extends React.Component {
           this.props.bookings.map((postDetail, index)=>{
             return <BookingCard
               key = {postDetail.id}
+              id={postDetail.id}
+              hotel_id={postDetail.hotel_id}
+              room_id={postDetail.room_id}
               startDate={postDetail.date_checkin}
               endDate={postDetail.date_checkout}
-              nameOfHotel = {postDetail.name}
-              imageOfHotel = {postDetail.img}
               number = {moment(postDetail.date_checkin).diff(moment(), 'days')}
               // number = {numberOfDaysLeft(postDetail.date_checkin)}
               price = {postDetail.price}
