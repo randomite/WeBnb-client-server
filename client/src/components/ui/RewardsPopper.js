@@ -22,22 +22,22 @@ class RewardsPopper extends React.Component {
   }
 
   renderRewards = () => {
-    let nights = this.state.freeNight;
+    let averages = this.state.freeNight;
     let Table = [];
-    nights.map((night, index) => {
-      if (night != 0) {
+    averages.map((average, index) => {
+      if (average != 0) {
         Table.push(
           <div>
             <center style={{ width: "150px" }}>
-              <Link to="/freeNight">
+              <Link to="/rewards">
                 <img
                   src={moon}
-                  alt={"$" + night[index]}
+                  alt={"$" + average[index]}
                   style={{ width: "50px", margin: 0 }}
                 />
               </Link>
               <p style={{ width: "50%", margin: "auto", padding: 0 }}>
-                ${night}
+                ${average}
               </p>
             </center>
           </div>

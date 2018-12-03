@@ -34,17 +34,6 @@ class RewardsTable extends React.Component {
     }
   };
 
-  calculateAverage = () => {
-    let len = this.state.rewards.length;
-    if (!this.hasFreeNight()) {
-      let sum = this.state.rewards.reduce(
-        (previous, current) => (current += previous)
-      );
-      let avg = sum / len;
-      return avg;
-    }
-  };
-
   renderTableCells = value => {
     let nights = this.state.rewards;
     let Table = [];
@@ -92,7 +81,7 @@ class RewardsTable extends React.Component {
         <center>
           <img src={coin} className="imgSize" alt={""} />
 
-          <p>FREE NIGHT Cost: ${this.calculateAverage()}</p>
+          <p>FREE NIGHT Cost: ${this.props.average}</p>
         </center>
       );
     }
