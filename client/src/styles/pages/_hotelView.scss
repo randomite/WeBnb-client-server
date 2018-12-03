@@ -3,6 +3,9 @@
 }
 .hotel{
   padding-top: 64px;
+  @media screen and(min-width: $xs) {
+    padding-top: 60px;
+  }
 }
 .hotel_details{
   display: flex;
