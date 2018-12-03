@@ -165,7 +165,9 @@ class Header extends React.Component {
 
     const navigationList = (
       <MenuList>
-        <MenuItem className="menuItem">
+        <MenuItem className="menuItem" onClick={()=>{
+          this.props.history.push('/bookings')
+        }}>
           <ListItemIcon className="icon">
             <TripsIcon />
           </ListItemIcon>
