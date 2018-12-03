@@ -10,9 +10,8 @@ class Bookings extends React.Component {
       <div className="bookings" >
         <Header />
           <div className="bookings_content">
-            <h1>My Bookings</h1>
-
             <PastBookings />
+
           </div>
         <Footer />
       </div>
