@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 import BookingCard from '../ui/BookingCard';
 import {connect} from 'react-redux'
 import {getBookingData} from "../../redux/actions";
-import Moment from 'react-moment';
+import moment from 'moment'
+
 //function hotelName(){
 //   var name = "";
 //   {getBookingData().map((hotelDetail, index)=>{
@@ -19,10 +20,7 @@ function hotelImage(){
    })}
    return imageName;
  }
-//this function changes the format to display the date to MM DD YYYY
-function numberOfDaysLeft(date){
-  return <Moment fromNow>{date}</Moment>
-}
+
 class PastBookings extends React.Component {
 
     componentWillMount(){
@@ -43,7 +41,8 @@ class PastBookings extends React.Component {
               endDate={postDetail.date_checkout}
               nameOfHotel = {postDetail.name}
               imageOfHotel = {postDetail.img}
-              number = {numberOfDaysLeft(postDetail.date_checkin)}
+              number = {moment(postDetail.date_checkin).diff(moment(), 'days')}
+              // number = {numberOfDaysLeft(postDetail.date_checkin)}
               price = {postDetail.price}
             />
           }) :

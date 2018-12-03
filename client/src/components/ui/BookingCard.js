@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Moment from 'react-moment';
+import moment from 'moment'
 
 const styles = theme => ({
   root: {
@@ -24,11 +24,6 @@ const styles = theme => ({
     maxHeight: '100%',
   },
 });
-//this function changes the format to display the date to MM DD YYYY
-function convertDateToMonth(date){
-  return <Moment format="MMM DD YYYY">{date}</Moment>
-
-}
 function ComplexGrid(props) {
   const { classes } = props;
   return (
@@ -45,10 +40,10 @@ function ComplexGrid(props) {
               <Typography gutterBottom variant="subtitle1">
                 <b>{props.nameOfHotel}</b>
               </Typography>
-              <Typography gutterBottom>{props.number}</Typography>
+              <Typography gutterBottom>{props.number >= 0 ? `${props.number} Days unitl check in` : `${Math.abs(props.number)} Days ago`} </Typography>
 
-              <Typography color="textSecondary"> From: {convertDateToMonth(props.startDate)}</Typography>
-              <Typography color="textSecondary">To: {convertDateToMonth(props.endDate)}</Typography>
+              <Typography color="textSecondary"> From: {moment(props.startDate).format("MMM DD YYYY")}</Typography>
+              <Typography color="textSecondary">To: {moment(props.endDate).format("MMM DD YYYY")}</Typography>
             </Grid>
 
           </Grid>

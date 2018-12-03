@@ -48,6 +48,8 @@ export const getBookingData =()=>{
   }
 }
 
+
+
 export const loadDataFromLocalStorage =() =>{
   return (dispatch) =>{if (localStorage.getItem("username")) {
     dispatch({
