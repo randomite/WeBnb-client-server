@@ -105,7 +105,7 @@ class BookingCard extends React.Component{
         "Postman-Token": "8bf5c341-bad1-4592-ab87-1d9b818f1f0f"}
     },).then(response=>{
       this.handleClose()
-      // window.location.reload();
+      window.location.reload();
       console.log('Edit Booking',response)});
   }
 
@@ -113,7 +113,7 @@ class BookingCard extends React.Component{
     instance.delete(`booking/?booking_id=${this.props.id}&user_id=${store.getState().user.email}`).then(response=>{
       console.log(response)
       this.handleClose()
-      // window.location.reload();
+      window.location.reload();
     })
   }
 
