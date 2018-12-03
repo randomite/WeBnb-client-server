@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "../ui/Header";
+import Footer from "../ui/Footer";
 import Gallery from "../ui/Gallery";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import RoomGrid from "../ui/RoomGrid";
 import BookingDetails from "../ui/BookingDetails";
+
 import {instance} from "../../Axios";
 import {Grid} from '@material-ui/core'
 import GoogleMapReact from 'google-map-react';
@@ -27,7 +29,6 @@ class HotelView extends React.Component {
     this.state = {
       focusedInput: null,
     };
-  }
 
   getQuery(){
     const querryParams = new URLSearchParams(this.props.location.search.toString())
@@ -35,6 +36,7 @@ class HotelView extends React.Component {
     this.props.dispatch(getHotelData(hotel_id))
   }
 
+  getHotelData = () => {};
 
 
 
@@ -69,7 +71,10 @@ class HotelView extends React.Component {
       }, []);
   };
 
-  render() {
+ handleBooking() {
+    this.props.history.push('/payment');
+  }
+
 
     const hotel_data = this.props.hotelData
 
@@ -86,6 +91,7 @@ class HotelView extends React.Component {
                   })}
                 />
               </div>
+
               <Grid container className="hotel_details" spacing={8}
                     justify="center"
                     alignItems="flex-start">
@@ -130,9 +136,11 @@ class HotelView extends React.Component {
             </div>
             : <div>LOADING</div>}
         </div>
+        <Footer />
       </div>
     );
   }
 }
 
-export default connect(state=>state.search)(HotelView)
+export default connect(state=>state.search)(HotelView);
+
