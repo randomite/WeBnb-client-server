@@ -75,6 +75,7 @@ class BookingDetails extends React.Component {
             </div>
         </div>
     )
+    
 
     return (
       <div className="booking">
@@ -135,9 +136,9 @@ class BookingDetails extends React.Component {
         <br/>
         <div>
           <Button variant="contained" className={"book_button"}
-                  disabled={!this.props.room.id} onClick={()=>this.props.history.push('payment')}
+                  disabled={!this.props.room.id} onClick={() => this.props.onButtonClick()}
           >
-            Book
+            {this.props.label}
           </Button>
         </div>
       </div>
