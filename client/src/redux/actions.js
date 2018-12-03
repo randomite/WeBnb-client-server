@@ -52,3 +52,34 @@ export const getRoomData = (id, hotel_id) =>{
     })
   }
 }
+
+
+export const getBookingData =()=>{
+  return async (dispatch, getState) => {
+    await instance.get('booking', {
+      params: { user_id: getState().user.email}
+    }).then(response => {
+      dispatch({
+        type: 'user/GET_BOOKING_DATA',
+        payload: response.data.data
+      })
+    }).catch(e=>console.log(e))
+  }
+}
+
+
+
+export const loadDataFromLocalStorage =() =>{
+  return (dispatch) =>{if (localStorage.getItem("username")) {
+    dispatch({
+      type: "user/LOG_IN",
+      payload: {
+        email: localStorage.getItem("username"),
+        access_token: localStorage.getItem("access_token"),
+        id_token: localStorage.getItem("id_token"),
+        refresh_token: localStorage.getItem("refresh_token"),
+        username: localStorage.getItem("username")
+      }
+    })
+  }}
+};

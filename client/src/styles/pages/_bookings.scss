@@ -1,0 +1,25 @@
+.bookings {
+  font-family: $font-main;
+  font-size: 1.6rem;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bookings_content{
+  background: $white;
+  position: relative;
+  top: 120px;
+  max-width: 100%;
+  @media screen and (min-width: 600px) {
+    justify-content: center !important;
+    align-items: center !important;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+
+  .booking_list{
+    width: 800px;
+  }
+}

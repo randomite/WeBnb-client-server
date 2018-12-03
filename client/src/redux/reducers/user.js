@@ -8,7 +8,7 @@ const initialState = {
   access_token: null,
   isLoggedIn: false,
   id_token: null,
-  refresh_token: null
+  refresh_token: null,
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +35,11 @@ export default (state = initialState, action) => {
         isLoggedIn: false,
         id_token: null,
         refresh_token: null
+      };
+    case "user/GET_BOOKING_DATA":
+      return {
+        ...state,
+        bookings: action.payload
       };
     default:
       return state;

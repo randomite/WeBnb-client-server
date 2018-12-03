@@ -11,11 +11,13 @@ import HotelView from "./components/pages/HotelView";
 
 import Rewards from "./components/pages/Rewards";
 import Checkout from './components/pages/Checkout';
+import Bookings from './components/pages/Bookings'
 
 
 const Router = () => (
   <main>
     <Switch>
+      <Route path='/bookings' component={Bookings}/>
       <Route path="/payment" component={Checkout} />
       <Route path="/search" component={Search} />
       <Route path="/AboutUs" component={AboutUs} />
