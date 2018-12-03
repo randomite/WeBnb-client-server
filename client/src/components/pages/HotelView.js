@@ -25,7 +25,8 @@ export default class HotelView extends React.Component {
       endDate: null,
       focusedInput: null
     };
-
+    this.handleBooking = this.handleBooking.bind(this);
+  
     this.getHotelData();
   }
 
@@ -58,6 +59,11 @@ export default class HotelView extends React.Component {
       return accumulator.concat(currentValue.images);
     }, []);
   };
+
+ handleBooking() {
+    this.props.history.push('/payment');
+  }
+
 
   render() {
     const hotelMarker = (
@@ -101,7 +107,7 @@ export default class HotelView extends React.Component {
               </div>
             </Grid>
             <Grid item xs={12} sm={12} md={4}>
-              <BookingDetails />
+              <BookingDetails label="Book" onButtonClick={this.handleBooking}/>
             </Grid>
             <Grid item xs={12} sm={12}>
               <h1>Location</h1>
