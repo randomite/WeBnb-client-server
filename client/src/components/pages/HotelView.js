@@ -62,12 +62,12 @@ class HotelView extends React.Component {
   }
 
   // Combine all the images from all the rooms into one large array
-  // combineRoomImages = () => {
-  //     return this.props.hotelData.rooms.reduce(function(accumulator, currentValue) {
-  //       console.log('Current Value',currentValue)
-  //       return accumulator.concat(currentValue.images);
-  //     }, []);
-  // };
+  combineRoomImages = () => {
+      return this.props.hotelData.rooms.reduce(function(accumulator, currentValue) {
+        console.log('Current Value',currentValue)
+        return accumulator.concat(currentValue.images);
+      }, []);
+  };
 
   render() {
 
