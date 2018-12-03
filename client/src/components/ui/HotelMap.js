@@ -9,6 +9,8 @@ class HotelMap extends React.Component {
 
 
   renderHotelMarkers = () => {
+
+    console.log('this', this.props)
     return this.props.hotels.map(hotel => (
       <MapMarker
         key={hotel.id}
@@ -28,7 +30,8 @@ class HotelMap extends React.Component {
     return (
       <div className="google-map">
         <GoogleMapReact
-          defaultCenter={{ lat: this.props.latitude, lng: this.props.longitude}}
+          defaultCenter={this.props.latitude ? { lat: Number(this.props.latitude), lng: Number(this.props.longitude)} :
+            { lat: Number(this.props.searchData[0].latitude), lng: Number(this.props.searchData[0].longitude)}}
           defaultZoom={this.props.zoom}
           // zoom={15}
           bootstrapURLKeys={{

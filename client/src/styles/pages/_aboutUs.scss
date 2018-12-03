@@ -1,28 +1,72 @@
-.aboutUs {
-    font-family: $font-main;
-    color: $black;
-    margin-top: 86px;
-    font-size: 16px;
-    text-align: center;
+.eachProfile {
+  width: 20em;
+  display: inline-block;
+  margin-bottom: 40px;
 }
 
-.p1 {
-    margin-top: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
+.profileHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    padding : 10px;
+.profile {
+  width: 224px;
+  height: 224px;
+  clip-path: circle(48%);
+  display: block;
+  margin: auto;
+  filter: grayscale(100%);
 }
 
-.grid-item {
-    padding: 20px;
+.profile:hover {
+  filter: none;
 }
 
-.name {
-    padding: 10px;
-    font-size: 23px;
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: $primary;
+}
+
+.imageHolder {
+  overflow: hidden;
+  height: 30em;
+}
+
+.image {
+  display: block;
+  width: 50vh;
+  margin: auto;
+  margin-top: 70px;
+}
+
+.text {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.textHolder {
+  width: 90%;
+  margin: auto;
+}
+
+.imageHeader {
+  width: 100%;
+}
+
+.job {
+  text-align: center;
 }

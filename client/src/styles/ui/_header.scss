@@ -79,6 +79,7 @@
   border-radius: $borderradius;
   border: 0.1rem $lightgrey solid;
   margin-top: 5px;
+  margin-bottom: 5px;
   width: 100%;
 
   @media screen and (min-width: $sm) {
@@ -116,6 +117,10 @@
 .drawer_mobile {
   position: relative !important;
   top: 56px !important;
+}
+.drawer_mobile_search {
+  position: relative !important;
+  top: 116px !important;
 }
 .appbar {
   z-index: 1400 !important;

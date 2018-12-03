@@ -33,6 +33,8 @@ import LogOutIcon from "@material-ui/icons/ExitToApp";
 import SearchBar from "./SearchBar";
 import Grid from "@material-ui/core/Grid/Grid";
 import FilterBar from "./FilterBar";
+import SignUpIcon from '@material-ui/icons/PersonAdd'
+import LogInIcon from '@material-ui/icons/Person'
 
 let buttonStyle = "header_button";
 
@@ -163,7 +165,9 @@ class Header extends React.Component {
 
     const navigationList = (
       <MenuList>
-        <MenuItem className="menuItem">
+        <MenuItem className="menuItem" onClick={()=>{
+          this.props.history.push('/bookings')
+        }}>
           <ListItemIcon className="icon">
             <TripsIcon />
           </ListItemIcon>
@@ -173,7 +177,9 @@ class Header extends React.Component {
             primary="Trips"
           />
         </MenuItem>
-        <MenuItem className="menuItem">
+        <MenuItem className="menuItem" onClick={()=>{
+          this.props.history.push('/rewards')
+        }}>
           <ListItemIcon className="Icon">
             <RewardIcon />
           </ListItemIcon>
@@ -189,7 +195,9 @@ class Header extends React.Component {
     const mobileMenuList = (
       <div className="list">
         <MenuList>
-          <MenuItem className="menuItem">
+          <MenuItem className="menuItem" onClick={()=>{
+            this.props.history.push('/')
+          }}>
             <ListItemIcon className="icon">
               <HomeIcon />
             </ListItemIcon>
@@ -375,13 +383,17 @@ class Header extends React.Component {
     const renderMobileMenuButton = (
       <IconButton
         className="menuButton"
-        color="inherit"
+        color={this.props.variant === "secondary"
+          ? "primary"
+          : "secondary"}
         aria-label="Open drawer"
         style={{ padding: 0 }}
         onClick={this.toggleDrawer}
       >
         <div id="menu_icon" className="menu_icon">
-          <svg viewBox="0 0 18 18" height={10}>
+          <svg viewBox="0 0 18 18" height={10} fill={this.props.variant === "secondary"
+            ? "white"
+            : "black"}>
             <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" />
           </svg>
         </div>
@@ -391,7 +403,9 @@ class Header extends React.Component {
     const noUserMobileMenuList = (
       <div className="list">
         <MenuList>
-          <MenuItem className="menuItem">
+          <MenuItem className="menuItem" onClick={()=>{
+            this.props.history.push('/')
+          }}>
             <ListItemIcon className="icon">
               <HomeIcon />
             </ListItemIcon>
@@ -408,7 +422,9 @@ class Header extends React.Component {
             <MenuItem
               className="menuItem"
               onClick={() => this.handleAuthDialogOpen("SignUp")}
-            >
+            ><ListItemIcon className="icon">
+              <SignUpIcon/>
+            </ListItemIcon>
               <ListItemText
                 classes={{ primary: "primary" }}
                 inset
@@ -418,7 +434,9 @@ class Header extends React.Component {
             <MenuItem
               className="menuItem"
               onClick={() => this.handleAuthDialogOpen("LogIn")}
-            >
+            ><ListItemIcon className="icon">
+              <LogInIcon/>
+            </ListItemIcon>
               <ListItemText
                 classes={{ primary: "primary" }}
                 inset
@@ -435,6 +453,7 @@ class Header extends React.Component {
         <AppBar position="fixed" className="appbar" color={this.props.variant}>
           <Toolbar>
             <Grid
+              style={window.location.pathname === '/' ? {marginTop:'10px'} : {}}
               container
               direction="row"
               justify="space-between"
@@ -475,7 +494,7 @@ class Header extends React.Component {
                   ? renderDesktopUserHeader
                   : renderLogInHeader}
               </Grid>
-              {window.innerWidth < 600 ? (
+              {window.innerWidth < 600 && window.location.pathname==='/search' ? (
                 <Grid xs={12}>
                   <FilterBar />
                 </Grid>
@@ -484,7 +503,9 @@ class Header extends React.Component {
           </Toolbar>
         </AppBar>
         <Drawer
-          classes={{
+          classes={window.location.pathname === '/search' ? {
+            paper: "drawer_mobile_search"
+          } : {
             paper: "drawer_mobile"
           }}
           anchor="top"

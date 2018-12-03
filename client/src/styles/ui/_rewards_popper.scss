@@ -3,3 +3,13 @@
   color: #656363;
   opacity: 100%;
 }
+
+.slick-prev:before {
+  position: absolute;
+  left: 30px;
+}
+
+.slick-next:before {
+  position: absolute;
+  right: 30px;
+}

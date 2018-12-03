@@ -7,40 +7,42 @@ import Slider from "react-slick";
 import { instance } from "../../Axios";
 import store from "../../redux/store";
 import { Link } from "react-router-dom";
-const rewards = {};
 const moon = require("../../img/coinBadge.png");
 
 class RewardsPopper extends React.Component {
   state = {
-    rewards: []
+    freeNight: []
   };
 
   componentWillMount() {
     instance("/rewards?email=" + store.getState().user.email).then(res => {
-      console.log(res.data.data.average);
-      this.setState({ rewards: res.data.data.average });
+      console.log("Popper:" + res.data.data.average);
+      this.setState({ freeNight: res.data.data.average });
     });
   }
 
   renderRewards = () => {
-    console.log("Second " + JSON.stringify(this.state.rewards));
-    let nights = this.state.rewards;
+    let averages = this.state.freeNight;
     let Table = [];
-    nights.map((night, index) => {
-      Table.push(
-        <div>
-          <center>
-            <Link to="/rewards">
-              <img
-                src={moon}
-                alt={"$" + night[index]}
-                style={{ width: "50px" }}
-              />
-            </Link>
-            <p>${night}</p>
-          </center>
-        </div>
-      );
+    averages.map((average, index) => {
+      if (average != 0) {
+        Table.push(
+          <div>
+            <center style={{ width: "150px" }}>
+              <Link to="/rewards">
+                <img
+                  src={moon}
+                  alt={"$" + average[index]}
+                  style={{ width: "50px", margin: 0 }}
+                />
+              </Link>
+              <p style={{ width: "50%", margin: "auto", padding: 0 }}>
+                ${average}
+              </p>
+            </center>
+          </div>
+        );
+      }
     });
     return Table;
   };
@@ -54,7 +56,7 @@ class RewardsPopper extends React.Component {
       slidesToScroll: 1
     };
     return (
-      <div style={{ margin: "auto", width: "100px", paddingTop: "10px" }}>
+      <div style={{ margin: "auto", width: "150px", paddingTop: "10px" }}>
         <Slider {...settings}>{this.renderRewards()}</Slider>
       </div>
     );
