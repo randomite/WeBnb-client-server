@@ -13,8 +13,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 
-const rewards = require("./rewards_data");
-
 const style = {
   base: {
     iconColor: "#666ee8",
@@ -44,30 +42,7 @@ class Payment extends Component {
       checked: false
     };
     this.submit = this.submit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
-
-  // componentWillMount() {
-  //     setTimeout(
-  //         function() {
-  //             instance
-  //                 .get("/rewards?email=" + store.getState().user.email)
-  //                 .then(response => {
-  //                     console.log(response);
-  //                     this.setState({rewards: response.data});
-  //                 })
-  //                 .catch(err => alert(err));
-  //         }.bind(this),
-  //         4000
-  //     );
-
-  //     setTimeout(
-  //         function() {
-  //           this.setState({ days: this.progress() });
-  //         }.bind(this),
-  //         6000
-  //     );
-  // }
 
   async submit(ev) {
     const amount = store.getState().booking.room.price;
@@ -115,39 +90,6 @@ class Payment extends Component {
       .catch(error => alert(error));
   }
 
-  async handleDelete(ev) {
-    //get diff from total and reward
-    //call to backend to delete reward
-  }
-
-  // progress = () => {
-  //     const { rewards } = this.state
-  //     let len = rewards.freeNights.length;
-  //     let last = rewards.freeNights[len - 1].length;
-  //     let nights = rewards.freeNights.length;
-  //     if (len === 0) {
-  //       nights = 0;
-  //     } else if (last < 10) {
-  //       nights = nights - 1;
-  //     }
-  //     console.log(nights);
-  //     return nights;
-  // };
-
-  progress = () => {
-    let len = rewards.freeNights.length;
-    let last = rewards.freeNights[len - 1];
-    let nights = rewards.freeNights.length;
-    if (len === 0) {
-      nights = 0;
-    } else if (last.includes(0)) {
-      nights = nights - 1;
-      rewards.freeNights.pop();
-    }
-    console.log(nights);
-    return nights;
-  };
-
   rewardsCallBack = response => {
     //going to use the discount data here
     this.applyDiscount(response);
@@ -161,42 +103,11 @@ class Payment extends Component {
   };
 
   renderNumOfNightsInfo = () => {
-    if (this.progress() > 0) {
-      return (
-        <div>
-          <p className="p_1">
-            You currently have accumulated {this.progress()} nights worth of
-            rewards.
-          </p>
-          <RewardsPopper
-            link={false}
-            callBackFromParent={this.rewardsCallBack}
-          />
-        </div>
-      );
-    } else {
-      return <p className="p_1">You currently have no rewards to claim.</p>;
-    }
-  };
-
-  renderRewardsInfo = () => {
-    const nights = rewards.freeNights;
-    const getSum = (total, num) => total + num;
-    return nights.map((index, i) => {
-      const sum = index.reduce(getSum);
-      const average = sum / 10;
-      return (
-        <div>
-          <Paper>
-            <h4>REWARDS INFORMATION</h4>
-            <p>
-              Average of free night {i + 1}: ${average}
-            </p>{" "}
-            <button>Apply</button>
-          </Paper>
-        </div>
-      );
-    });
+    return (
+      <div>
+        <RewardsPopper link={false} callBackFromParent={this.rewardsCallBack} />
+      </div>
+    );
   };
 
   handleChange = () => {
