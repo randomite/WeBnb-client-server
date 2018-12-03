@@ -464,7 +464,7 @@ class Header extends React.Component {
                 container
                 sm={1}
                 direction="row"
-                justify="space-evenly"
+                justify="space-between"
                 alignItems="center"
               >
                 <Grid item>{renderMobileMenuButton}</Grid>
@@ -473,7 +473,8 @@ class Header extends React.Component {
                     className="logo"
                     viewBox="0 0 355.5 281.42"
                     fontSize="large"
-                    onClick={this.toggleDrawer}
+                    onClick={()=> {window.innerWidth > 600 ?
+                      this.props.history.push(''): this.toggleDrawer}}
                     color={
                       this.props.variant === "secondary"
                         ? "primary"
