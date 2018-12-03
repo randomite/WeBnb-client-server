@@ -86,7 +86,7 @@ export default class Gallery extends React.Component {
           </Button>
         </div>
         <Lightbox
-          images={this.state.photos}
+          images={this.props.hotelImages}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}

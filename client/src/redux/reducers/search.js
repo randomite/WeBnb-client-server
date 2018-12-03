@@ -100,8 +100,11 @@ export default (state = initialState, action) => {
       }
     case 'search/CLEAR_HOTEL_DATA':
       return {...state, hotelData: null};
-    case 'search/GET_ROOM_DATA':
-      return {...state, roomData: action.payload};
+    case 'search/GET_ROOM_DATA':{
+      if(state.roomData){
+        return {...state, roomData: [...state.roomData, action.payload]};
+      } return {...state, roomData: [ action.payload]};
+    }
     case 'search/CLEAR_ROOM_DATA':
       return {...state, roomData: null};
     default:

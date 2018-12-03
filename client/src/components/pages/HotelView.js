@@ -13,7 +13,7 @@ import MapMarker from "../ui/MapMarker";
 import store from '../../redux/store'
 import moment from 'moment'
 import {connect} from 'react-redux'
-import {getHotelData, getRoomData} from "../../redux/actions";
+import {getHotelData} from "../../redux/actions";
 
 window.onbeforeunload = closingCode;
 function closingCode(){
@@ -25,7 +25,6 @@ class HotelView extends React.Component {
     super(props);
     this.state = {
       focusedInput: null,
-      roomData: []
     };
   }
 
@@ -35,9 +34,6 @@ class HotelView extends React.Component {
     this.props.dispatch(getHotelData(hotel_id))
   }
 
-  getRoomData(){
-    this.props.dispatch(getRoomData())
-  }
 
 
 
@@ -109,7 +105,6 @@ class HotelView extends React.Component {
                     <h3>Available Rooms</h3>
                     <div>
                       {this.props.roomData ? <RoomGrid rooms={this.props.roomData} /> : null}
-
                     </div>
                   </div>
                 </Grid>
