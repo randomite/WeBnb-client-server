@@ -9,12 +9,10 @@ class HotelMap extends React.Component {
 
 
   renderHotelMarkers = () => {
-
-    console.log('this', this.props)
     return this.props.hotels.map(hotel => (
       <MapMarker
         key={hotel.id}
-        price={hotel.rooms[0].price}
+        room_id={hotel.rooms[0].N}
         lat={hotel.latitude}
         lng={hotel.longitude}
         id={hotel.id}

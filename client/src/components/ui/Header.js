@@ -321,7 +321,7 @@ class Header extends React.Component {
         <Button
           className={buttonStyle}
           disableRipple
-          onClick={this.handleTripsMenuOpen}
+          onClick={()=>this.props.history.push('bookings')}
           buttonRef={node => {
             this.state.tripsMenuAnchorEl = node;
           }}

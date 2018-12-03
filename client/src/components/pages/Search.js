@@ -42,7 +42,7 @@ class Search extends React.Component {
           key={hotel.id}
           name={hotel.name}
           rooms={Object.keys(hotel.rooms).length}
-          price={hotel.rooms[0].price}
+          otherRooms={hotel.rooms[0].N}
           image={hotel.images[0].M.src.S}
           id={hotel.id}
         />
