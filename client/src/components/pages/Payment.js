@@ -13,7 +13,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Paper from "@material-ui/core/Paper";
 import { withRouter } from "react-router-dom";
 
-const rewards = require("./rewards_data");
 
 const style = {
   base: {
