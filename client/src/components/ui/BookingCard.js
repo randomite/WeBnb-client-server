@@ -58,7 +58,6 @@ class BookingCard extends React.Component{
     this.setState({
       startDate: startDate,
       endDate: endDate,
-      dayPrice: 0,
     })
   };
 

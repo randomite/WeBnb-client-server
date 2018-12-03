@@ -35,6 +35,7 @@ class Search extends React.Component {
     this.props.dispatch(search(checkIn, checkOut, numberOfGuests, zipCode))
   }
 
+
   renderHotels = () => {
     if (this.props.searchData){
       return this.props.searchData.map(hotel => (
@@ -46,7 +47,9 @@ class Search extends React.Component {
           image={hotel.images[0].M.src.S}
           id={hotel.id}
         />
-      ));
+      )).sort((a, b)=>{
+        console.log(a,b)
+        return 1});
     } else {
       return <div>No Data</div>
     }
