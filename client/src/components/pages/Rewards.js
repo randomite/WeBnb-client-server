@@ -20,22 +20,10 @@ class Rewards extends React.Component {
   };
 
   componentWillMount() {
-    setTimeout(
-      function() {
-        instance("/rewards?email=" + store.getState().user.email).then(res => {
-          console.log("Resource:" + res);
-          this.setState({ rewards: res.data.data });
-        });
-      }.bind(this),
-      4000
-    );
-
-    setTimeout(
-      function() {
-        this.setState({ days: this.progress() });
-      }.bind(this),
-      6000
-    );
+    instance("/rewards?email=" + store.getState().user.email).then(res => {
+      console.log("Resource:" + res);
+      this.setState({ rewards: res.data.data });
+    });
   }
 
   progress = () => {

@@ -42,7 +42,6 @@ class HotelView extends React.Component {
 
   componentWillMount(){
       this.getQuery()
-
       // If there is no search then set the dates to be now and tomorrow
       if (! (store.getState().search.endDate && store.getState().search.startDate))
           store.dispatch({
@@ -115,7 +114,8 @@ class HotelView extends React.Component {
                   <div style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
                       center={{ lat: Number(this.props.hotelData.latitude), lng: Number(this.props.hotelData.longitude)}}
-                      defaultZoom={16}
+                      zoom={15}
+                      defaultZoom={29}
                       // zoom={15}
                       bootstrapURLKeys={{
                         key: process.env.REACT_APP_MAPS_API_KEY,

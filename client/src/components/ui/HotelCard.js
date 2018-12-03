@@ -7,13 +7,29 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";
 import Grid from "@material-ui/core/Grid/Grid";
+import {instance} from "../../Axios";
+
 
 class HotelCard extends React.Component {
   //handles the navigation to the hotel view page
+
+  state={
+    price: ''
+  }
   handleNavigate = () => {
     this.props.history.push({pathname: '/hotel',
     search: new URLSearchParams({id: this.props.id }).toString()});
   };
+
+  componentWillMount(){
+    instance.get('room',{
+      params: {id: this.props.otherRooms, hotel_id: this.props.id}
+    }).then(response=>{
+      if(response.status===200){
+        this.setState({price: response.data.data.price})
+      }
+    })
+  }
 
   render() {
     return (
@@ -35,7 +51,7 @@ class HotelCard extends React.Component {
               </Typography>
               {/*Price of the lowest costing room*/}
               <Typography component="p" color="inherit" id="price">
-                ${this.props.price} per night
+                ${this.state.price} per night
               </Typography>
               {/*The reviews */}
               <Typography component="p" color="inherit" id="reviews">
