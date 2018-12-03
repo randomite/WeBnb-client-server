@@ -5,6 +5,7 @@ import {Grid} from '@material-ui/core'
 export default class RoomGrid extends React.Component{
 
     renderRooms =() =>{
+        console.log('ROOM GRID', this.props.rooms)
         return (this.props.rooms.map((room) => <RoomCard room={room} key={room.id}/>))
     };
     render() {

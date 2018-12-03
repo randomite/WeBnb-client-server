@@ -61,23 +61,6 @@ class Search extends React.Component {
 
   render() {
     const { checked } = this.state;
-
-    const map = (
-        <Grid item sm={checked ? 4: 0}>
-            <Slide
-                direction="left"
-                timeout={{ enter: 1000, exit: 1000 }}
-                in={checked}
-                mountOnEnter
-                unmountOnExit
-            >
-                <div className="map-container">
-                    <HotelMap hotels={this.props.searchData} />
-                </div>
-            </Slide>
-            {/*Displays map of search results with slide effect*/}
-        </Grid>
-    );
     return (
       <div>
         <Header />
@@ -118,7 +101,20 @@ class Search extends React.Component {
                 </Grow>
               </div>
             </Grid>
-            {map}
+            <Grid item sm={checked ? 4: 0}>
+              <Slide
+                direction="left"
+                timeout={{ enter: 1000, exit: 1000 }}
+                in={checked}
+                mountOnEnter
+                unmountOnExit
+              >
+                <div className="map-container">
+                  <HotelMap hotels={this.props.searchData} />
+                </div>
+              </Slide>
+              {/*Displays map of search results with slide effect*/}
+            </Grid>
           </Grid>
         </div>
 

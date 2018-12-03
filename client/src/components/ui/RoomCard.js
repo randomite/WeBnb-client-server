@@ -34,16 +34,16 @@ class RoomCard extends React.Component {
             this.props.id === this.props.room.id
               ? "room_card active"
               : "room_card"
-          }
-        >
-          <div>
-            <Beds room_type={1} />
+          }>
+          <div className='room_card_top'>
+            <Beds room_type={this.props.room.beds} />
+            <div  className='room_card_price'>${this.props.room.price}</div>
           </div>
           <div className="room_type">
             {this.props.room ? this.props.room.room_type : null}
           </div>
           <div>{this.props.room.beds}</div>
-          <div className='room_card_price'>${this.props.room.price}</div>
+          {/*<div  className='room_card_price'>${this.props.room.price}</div>*/}
         </Paper>
       </Grid>
     );

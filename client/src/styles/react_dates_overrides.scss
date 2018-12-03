@@ -34,7 +34,12 @@
 }
 .DateRangePickerInput__withBorder {
   border-radius: 4px !important;
+  transition: all .2s;
   border: 1px solid rgba(0, 0, 0, 0.23) !important;
+  padding: 4px !important;
+}.DateRangePickerInput__withBorder:hover {
+  border-radius: 4px !important;
+  border: 1px solid $primary !important;
   padding: 4px !important;
 }
 .DateRangePickerInput {
