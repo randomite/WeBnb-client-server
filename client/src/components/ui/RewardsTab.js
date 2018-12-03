@@ -11,9 +11,13 @@ class RewardsTab extends React.Component {
 
   renderTabs = () => {
     let nights = this.props.data.freeNights;
+    let average = this.props.data.average;
+    console.log("Averages:" + average);
     return nights.map(
       (night, index) =>
-        this.state.value === index && <RewardsTable nights={night} />
+        this.state.value === index && (
+          <RewardsTable nights={night} average={average[index]} />
+        )
     );
   };
 

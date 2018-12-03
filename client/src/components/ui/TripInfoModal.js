@@ -123,8 +123,8 @@ class TripInfoModal extends React.Component {
       });
     }
 
-    let checkIn = this.props.startDate.format("YYYY-DD-MM")
-    let checkOut = this.props.endDate.format("YYYY-DD-MM")
+    let checkIn = this.props.startDate.format("YYYY-MM-DD")
+    let checkOut = this.props.endDate.format("YYYY-MM-DD")
     let numberOfGuests = this.props.guests.total
     let zipcode = this.props.zipcode;
     this.props.dispatch(search(checkIn, checkOut, numberOfGuests, zipcode

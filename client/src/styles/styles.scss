@@ -21,9 +21,10 @@
 @import "ui/roomCard";
 @import "ui/gallery";
 @import "ui/rewards_popper";
-@import "pages/hotelView";
+
 @import "./pages/rewards";
-@import "pages/payment";
+@import './pages/hotelView';
+@import './pages/bookings';
 * {
   margin: 0;
   padding: 0;
