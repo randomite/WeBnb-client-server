@@ -108,7 +108,7 @@ class HotelView extends React.Component {
                   <h1>Location</h1>
                   <div style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
-                      defaultCenter={{ lat: Number(this.props.hotelData.latitude), lng: Number(this.props.hotelData.longitude)}}
+                      center={{ lat: Number(this.props.hotelData.latitude), lng: Number(this.props.hotelData.longitude)}}
                       defaultZoom={16}
                       // zoom={15}
                       bootstrapURLKeys={{
