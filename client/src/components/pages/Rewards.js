@@ -103,9 +103,6 @@ class Rewards extends React.Component {
           </p>
 
           <h2>How do I redeem my Free Night?</h2>
-          <p className="emphasis">
-            <h3>10 nights = 1 free night</h3>
-          </p>
           <p style={{ marginBottom: "50px" }}>
             To redeem your free night, upon checking out select Apply Free
             Night.
