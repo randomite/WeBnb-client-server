@@ -475,7 +475,7 @@ class Header extends React.Component {
                   ? renderDesktopUserHeader
                   : renderLogInHeader}
               </Grid>
-              {window.innerWidth < 600 ? (
+              {window.innerWidth < 600 && window.location.pathname==='/search' ? (
                 <Grid xs={12}>
                   <FilterBar />
                 </Grid>
