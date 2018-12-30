@@ -5,12 +5,7 @@ import RewardsPopper from "../ui/RewardsPopper";
 function HeaderPreviewMenu(props) {
   const renderContent = () => {
     if (props.content === "rewards") {
-      return <RewardsPopper />;
-    }
-    if (props.content === "trips") {
-      return {
-        /*<TripsPopper />*/
-      };
+      return <RewardsPopper link="/rewards" />;
     }
   };
 
