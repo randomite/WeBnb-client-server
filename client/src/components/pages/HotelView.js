@@ -6,7 +6,6 @@ import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 import RoomGrid from "../ui/RoomGrid";
 import BookingDetails from "../ui/BookingDetails";
-
 import { instance } from "../../Axios";
 import { Grid } from "@material-ui/core";
 import GoogleMapReact from "google-map-react";

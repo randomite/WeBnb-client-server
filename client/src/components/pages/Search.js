@@ -3,11 +3,7 @@ import Header from "../ui/Header";
 import Footer from "../ui/Footer";
 import HotelMap from "../ui/HotelMap";
 import HotelCard from "../ui/HotelCard";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Slide from "@material-ui/core/Slide";
-import Grow from "@material-ui/core/Grow";
-import Grid from "@material-ui/core/Grid/Grid";
+import {Switch, FormControlLabel, Slide, Grow, Grid }from "@material-ui/core";
 import FilterBar from "../ui/FilterBar";
 import {connect} from 'react-redux'
 import {search} from "../../redux/actions";

@@ -6,11 +6,7 @@ import Header from "../ui/Header";
 import store from "./../../redux/store";
 import moment from "moment";
 import { instance } from "../../Axios";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Slide from "@material-ui/core/Slide";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Paper from "@material-ui/core/Paper";
+import {OutlinedInput, Slide, Switch, FormControlLabel} from "@material-ui/core/";
 import { withRouter } from "react-router-dom";
 
 

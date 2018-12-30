@@ -7,7 +7,7 @@ import Footer from "../ui/Footer";
 import RewardsTab from "../ui/RewardsTab";
 import { instance } from "../../Axios";
 import store from "../../redux/store";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import {CircularProgress }from "@material-ui/core";
 const rewards = {};
 const backgroundStyle = {
   backgroundImage: `url( ${imgurl} )`

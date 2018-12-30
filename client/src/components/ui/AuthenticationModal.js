@@ -13,10 +13,10 @@ import {
   IconButton,
   DialogActions,
   Button,
-  CircularProgress
+  CircularProgress,
+  OutlinedInput,
+  FormHelperText
 } from "@material-ui/core";
-import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
-import FormHelperText from "@material-ui/core/FormHelperText/FormHelperText";
 import validator from "validator";
 import { instance } from "../../Axios";
 import store from "../../redux/store";

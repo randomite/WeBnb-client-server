@@ -1,19 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import {Grid, Paper, Typography, ButtonBase, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions }from '@material-ui/core';
 import moment from 'moment'
 import {instance} from "../../Axios";
-import Button from "@material-ui/core/Button/Button";
-import Dialog from "@material-ui/core/Dialog/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import {DateRangePicker} from "react-dates";
 import store from '../../redux/store'
 

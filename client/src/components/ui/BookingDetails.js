@@ -1,12 +1,10 @@
 import React from "react";
 import RoomCard from "./RoomCard";
-import { Button, FormControl } from "@material-ui/core";
+import { Button, FormControl, OutlinedInput, Popover } from "@material-ui/core";
 import { connect } from "react-redux";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
 import Counters from "./searchBar/Counters";
-import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
-import Popover from "@material-ui/core/Popover/Popover";
 import { withRouter } from "react-router-dom";
 
 class BookingDetails extends React.Component {
