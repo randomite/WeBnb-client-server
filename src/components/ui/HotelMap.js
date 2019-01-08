@@ -2,12 +2,9 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 import MapMarker from "../ui/MapMarker";
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types'
+import { connect } from "react-redux";
 
 class HotelMap extends React.Component {
-
-
   renderHotelMarkers = () => {
     return this.props.hotels.map(hotel => (
       <MapMarker
@@ -29,8 +26,17 @@ class HotelMap extends React.Component {
     return (
       <div className="google-map">
         <GoogleMapReact
-          defaultCenter={this.props.latitude ? { lat: Number(this.props.latitude), lng: Number(this.props.longitude)} :
-            { lat: Number(this.props.searchData[0].latitude), lng: Number(this.props.searchData[0].longitude)}}
+          defaultCenter={
+            this.props.latitude
+              ? {
+                  lat: Number(this.props.latitude),
+                  lng: Number(this.props.longitude)
+                }
+              : {
+                  lat: Number(this.props.searchData[0].latitude),
+                  lng: Number(this.props.searchData[0].longitude)
+                }
+          }
           defaultZoom={this.props.zoom}
           // zoom={15}
           bootstrapURLKeys={{
